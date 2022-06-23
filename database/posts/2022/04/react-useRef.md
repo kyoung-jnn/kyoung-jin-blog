@@ -1,0 +1,63 @@
+---
+title: React | useRef 알아보기
+date: '2022-04-05'
+tags: ['react', 'hook', 'useRef']
+summary: React, useRef Hook 이란?
+publish: true
+---
+
+# useRef? 🤨
+
+`useEffect`, `useState` 만 사용하다 **`useRef`** 같이
+우리를 헷갈리게 만드는 훅이 있습니다.
+
+JS를 사용하면 `getElementById`, `querySelector` 등
+**DOM Selector** 함수들을 이용하여 **DOM**에 접근할 수 있습니다.
+
+React 프로젝트를 하면서도 **요소의 특정 크기나 위치, 포커싱, 외부 라이브러리 사용**을 위해
+**특정 DOM** 에 접근해야할 상황이 생기게 됩니다.
+
+이때 사용하는 훅이 **`useRef`** 입니다. 👍 (함수형 컴포넌트에서!)
+
+> 클래스형 컴포넌트에는 `React.createRef` 사용
+
+`useRef` 훅이 반환한 `ref` 객체를 전달받으면
+**React의 생명주기**에서 **독립적인** 상태가 되고
+**re-render**와 상관 없는 상태가 됩니다.
+
+> 즉, **Render**와 상관 없는 값을 지정해서 사용하면 됩니다.
+
+해당 `ref` 객체는 **`.current`** 프로퍼티를 통해
+요소에 대한 **행동**을 내릴 수 있게 됩니다.
+
+## 예시 코드
+
+```typescript
+const Input = () => {
+  const inputRef = useRef(null);
+
+  const handleClick = () => {
+    inputRef.current.focus(); // current 프로퍼티에 접근
+  };
+
+  return (
+    <>
+      <input type="text" ref={inputRef} />
+      <button onClick={handleClick}>focus</button>
+    </>
+  );
+};
+```
+
+1. `inputRef` 변수에 `ref` 객체 생성
+2. `input` 태그에 `ref (inputRef)` 객체 전달
+3. 버튼 이벤트에 `.current` 프로퍼티를 이용해 DOM 접근 / 이벤트 발생
+
+> 만약 `useRef()`에 `null`이 아닌 파라미터가 전달된다면
+> 해당 파라미터는 `.current` 의 **기본 값**이 됩니다.
+
+# 결론
+
+**useRef**를 통해 단순히 **DOM**의 접근뿐만 아니라
+`ref` 객체가 변해도 **re-render**가 안되고 값이 보존되는
+이점을 이용하여 **다양한 형태로 활용**이 가능합니다!

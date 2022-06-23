@@ -1,0 +1,11 @@
+---
+title: MDX에서 Next.js 이미지 컴포넌트 적용하기
+date: '2022-06-08'
+tags: ['next.js']
+summary: Next.js 이미지 최적화 방법을 알아봅니다.
+publish: false
+---
+
+# MDX ?
+
+asd

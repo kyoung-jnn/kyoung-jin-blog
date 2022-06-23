@@ -1,0 +1,147 @@
+---
+title: React | Reconciliaion, React 렌더링 알고리즘
+date: '2022-04-18'
+tags: ['react', 'reconciliaion']
+summary: React, Reconciliaion 알고리즘
+publish: true
+---
+
+# Reconciliaion, React의 렌더링 알고리즘
+
+## Virtual DOM
+
+렌더링이 발생할 때마다 **DOM**을 조작하는 것은
+계속해서 브라우저에게 `reflow, repaint` 요청을 하기 때문에 부담이 가게 됩니다.
+
+따라서, **React**는 곧 바로 **DOM**을 직접적으로 조작하지 않고
+**Virtual DOM**을 통해 렌더링 변화를 묶어서 변화된 부분만 **DOM**에 반영하게 됩니다.
+
+우리가 흔히 `index.jsx (tsx)`에서 사용하는 **render 함수**가 이 과정을 하게되죠. 🤓
+
+```typescript
+ReactDOM.render(<App />);
+```
+
+## React의 DOM 비교, Diffing Algorithm
+
+그렇다면!
+**기존의 Virtual DOM (DOM 과 동기화된 상태)** 과 **새로운 변경사항이 있는 Virtual DOM**의 **`비교`** 는 어떻게 진행될까요? 🤔
+
+단순히 **DOM 트리 비교**를 위한 순차적인 알고리즘은 **O(n^3)** 의 시간 복잡도를 갖게 됩니다.
+만약의 **1000개**의 요소가 있는 DOM에서 **10억번의 비교 연산**을 하게 되겠죠..?
+
+이를 해결하기 위해 **React 팀**은
+[휴리스틱](https://ko.wikipedia.org/wiki/%ED%9C%B4%EB%A6%AC%EC%8A%A4%ED%8B%B1_%EC%9D%B4%EB%A1%A0) 알고리즘을 활용해서 **O(n)** 시간 복잡도를 갖게되는 **`Reconciliaion` 알고리즘**을 구현했습니다.
+
+## Reconciliaion 알고리즘
+
+> 공식 문서를 통해 **`Reconciliaion` 알고리즘** 구현에 사용 된 기초 지식들을 정리했습니다.
+
+### 1. `부모 타입`이 다르면 자식 비교를 멈춘다.
+
+```html
+// before
+<div>
+  <Component />
+</div>
+
+// after
+<span>
+  <Component />
+</span>
+```
+
+기본적으로 **`Level by Level`** 비교를 진행하면서
+트리 구조의 특징을 이용하여 **부모 엘리먼트가 바뀌게 되면 해당 엘리먼트(자식 포함)는 바뀌었다고 인식**을 하게되고 하위로의 비교를 멈춥니다.
+**자식 엘리먼트**들은 `state`가 사라지고 새로 마운트가 일어납니다.
+
+<div align="center">
+![lbl](/posts/lbl.png)
+</div>
+
+> 어찌보면 Root 밑에 2개의 DOM 요소가 존재하며, **BFS** 방식을 사용하는 느낌?
+
+### 2. `부모 타입`이 같으면 속성(attributes)을 비교한다.
+
+```html
+// before
+<div className="before" title="stuff" />
+
+// after
+<div className="after" title="stuff" />
+{/* className 속성만 수정 */}
+```
+
+속성 값이 다르면 전체 요소를 변경하지 않고 변경된 **속성만 수정**합니다!
+
+### 3. `key` 를 이용하면 변경 될 엘리먼트를 감지할 수 있다.
+
+자식 엘리먼트의 리스트를 비교할 때, **2개의 리스트**를 **순회**하면서 비교를 진행하게 됩니다.
+
+```html
+// before
+<ul>
+  <li>first</li>
+  <li>second</li>
+</ul>
+
+// after
+<ul>
+  <li>third</li>
+  {/* first -> third, 새로 렌더링 */}
+  <li>first</li>
+  {/* second -> third, 새로 렌더링 */}
+  <li>second</li>
+  {/* 새로운 요소, 새로 렌더링 */}
+</ul>
+```
+
+**key**를 사용하지 않았을 경우 변경점이 발견되었을 때, 모든 리스트를 수정하기 때문에
+굉장히 비효율적이게 됩니다.
+
+```html
+// before
+<ul>
+  <li key="first">first</li>
+  <li key="second">second</li>
+</ul>
+
+// after
+<ul>
+  <li key="third">third</li>
+  {/* 새로운 요소, 새로 렌더링 */}
+  <li key="first">first</li>
+  {/* key를 이용, 순서만 변경 */}
+  <li key="second">second</li>
+  {/* key를 이용, 순서만 변경 */}
+</ul>
+```
+
+하지만, **key**를 이용하면 기존에 존재했던 요소들을 기억하고
+불필요한 렌더링을 줄일 수 있습니다.
+
+> 인덱스를 **key**로 사용하면 재배열, 정렬에서 문제가 생긴다!
+
+### 4. 컴포넌트는 `Props`의 변화를 본다.
+
+```html
+// before
+<Component value="1" />
+
+// after
+<Component value="100" />
+```
+
+컴포넌트의 **인스턴스**는 그대로 유지하게 되고 `Props` 변경을 탐지하여 업데이트합니다.
+변경된 `Props`로 인한 컴포넌트 **내부 엘리먼트들을 다시 재귀적 Reconciliaion알고리즘을 통해 비교**를 진행합니다.
+
+## 마무리
+
+React 내부의 Reconciliaion 알고리즘을 통해 최적화된 DOM 렌더링을 이루어 낼 수 있게 되었지만
+**결국**, React의 렌더링 최적화를 위한 코드 작성은 개발자 몫! 😎
+
+---
+
+## 참고
+
+[React 공식 문서](https://ko.reactjs.org/docs/reconciliation.html)
