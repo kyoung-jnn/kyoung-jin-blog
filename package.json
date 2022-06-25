@@ -5,16 +5,20 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap & sh ./scripts/ping-sitemap.sh",
     "start": "next start",
     "lint": "next lint"
   },
   "license": "MIT",
   "dependencies": {
     "next": "12.1.6",
+    "next-contentlayer": "^0.2.5",
+    "next-themes": "^0.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "smoothscroll-polyfill": "^0.4.4",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "styled-normalize": "^8.0.7"
   },
   "devDependencies": {
     "@types/node": "18.0.0",

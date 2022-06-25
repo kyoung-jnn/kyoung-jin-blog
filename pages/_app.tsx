@@ -4,11 +4,10 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import { ThemeProvider } from "next-themes";
 import LayoutWrapper from "@/components/layout/LayoutWrapper";
-import { Global } from "@emotion/react";
 import GlobalStyle from "@/styles/global-styles";
 // import * as ga from "@/utils/gtag";
 
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   // 페이지 별 GA 적용
@@ -25,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
  */
   return (
     <>
-      <Global styles={GlobalStyle} />
+      <GlobalStyle />
       <ThemeProvider attribute="class">
         <Head>
           <meta content="width=device-width, initial-scale=1" name="viewport" />
@@ -37,3 +36,5 @@ export default function App({ Component, pageProps }: AppProps) {
     </>
   );
 }
+
+export default App;
