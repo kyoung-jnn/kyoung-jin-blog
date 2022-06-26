@@ -16,6 +16,7 @@
     "incremental": true,
     "baseUrl": "./",
     "paths": {
+      "contentlayer/generated": ["./.contentlayer/generated"],
       "@/components/*": ["components/*"],
       "@/database/*": ["database/*"],
       "@/constants/*": ["constants/*"],
@@ -25,6 +26,12 @@
       "@/hooks/*": ["hooks/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "additional.d.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "additional.d.ts",
+    ".contentlayer/generated"
+  ],
   "exclude": ["node_modules"]
 }

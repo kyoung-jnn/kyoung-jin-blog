@@ -1,7 +1,6 @@
 ---
 title: React, useState 내부 동작 방식과 클로저
 date: '2022-06-03'
-tags: ['react', 'hook']
 summary: React의 useState 내부 동작 과정을 알아봅니다.
 publish: true
 ---
@@ -51,16 +50,15 @@ function resolveDispatcher() {
 여기서 중요한 점은 `ReactCurrentDispatcher` 라는 객체입니다.
 해당 변수는 **전역**으로 설정되어 있습니다❗️
 
-<p align="center"> 
-![obj](/posts/2022/06/react-useState/obj.png)
-</p>
+<p align="center">![obj](/posts/2022/06/react-useState/obj.png)</p>
 
 > 런타임 환경에서 ReactCurrentDispatcher 객체 구성
 
 위 이미지에서 확인해보면 비단 `useState` 뿐만 아니라 다양한 **Hook**들도 해당 객체를 통해 접근한다는 것을 확인할 수 있습니다.
 
 **결국**, `useState`의 결과 값은 전역에 존재하는 값 **(ReactCurrentDispatcher.current)** 에서 온다는 것을 이해합시다. ✨
-<br/>
+
+<br />
 
 # 클로저
 
@@ -75,4 +73,4 @@ function resolveDispatcher() {
 **다른 스코프에서 관리하고 있는 state (ReactCurrentDispatcher)** 에 접근이 가능해지고 <br/>
 해당 **state**는 결국 컴포넌트에서 상태 값으로 이용되는 방식입니다. 😎
 
-<br/>
+<br />

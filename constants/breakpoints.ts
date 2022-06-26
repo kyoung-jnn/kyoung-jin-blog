@@ -1,9 +1,7 @@
-enum Breakpoints {
-  xlarge = 1920,
-  large = 1200,
-  medium = 836,
-  small = 400,
-  xSmall = 375,
-}
+const BreakPoints = {
+  moblie: 480,
+  tablet: 768,
+  desktop: 1024,
+} as const;
 
-export default Breakpoints;
+export default BreakPoints;

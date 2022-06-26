@@ -1,30 +1,34 @@
-import { GetStaticProps } from "next";
-import Image from "next/image";
-import styled from "styled-components";
-import Link from "@/components/Link";
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import Image from 'next/image';
+import styled from 'styled-components';
+import { allPosts, Post } from 'contentlayer/generated';
+import Link from '@/components/CustomLink';
 // import SocialIcon from "@/components/icons";
-import siteConfig from "@/database/siteConfig";
-import siteMetadata from "@/database/siteMetadata";
-import waving_hand from "@/public/waving-hand.webp";
-import { fadeLeft, fadeUp, waving } from "@/utils/animation";
-// import { getAllPosts } from "@/utils/post";
+import siteConfig from '@/database/siteConfig';
+import siteMetadata from '@/database/siteMetadata';
+import waving_hand from '@/public/waving-hand.webp';
+import { fadeLeft, fadeUp, waving } from '@/utils/animation';
 
 // import { FrontMatterType, PostType } from "types";
 
 // 최신 글 개수
 const MAX_DISPLAY = 3;
-/* 
+
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getAllPosts();
+  const posts = allPosts.sort(
+    (a: Post, b: Post) => Number(new Date(b.date)) - Number(new Date(a.date)),
+  );
 
   return { props: { posts } };
-}; */
+};
 
 interface HomeProps {
   posts: any;
 }
 
-export default function Home({ posts }: HomeProps) {
+export default function Home({
+  posts,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       {/*  <PageSEO

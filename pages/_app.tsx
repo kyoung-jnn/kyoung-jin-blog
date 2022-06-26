@@ -1,10 +1,11 @@
-import type { AppProps } from "next/app";
-import { useEffect } from "react";
-import { useRouter } from "next/router";
-import Head from "next/head";
-import { ThemeProvider } from "next-themes";
-import LayoutWrapper from "@/components/layout/LayoutWrapper";
-import GlobalStyle from "@/styles/global-styles";
+import type { AppProps } from 'next/app';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
+import { ThemeProvider } from 'next-themes';
+import MainLayout from '@/components/layout/MainLayout';
+import GlobalStyle from '@/styles/global-styles';
+
 // import * as ga from "@/utils/gtag";
 
 function App({ Component, pageProps }: AppProps) {
@@ -25,13 +26,13 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <GlobalStyle />
-      <ThemeProvider attribute="class">
+      <ThemeProvider attribute="data-theme" defaultTheme="light">
         <Head>
           <meta content="width=device-width, initial-scale=1" name="viewport" />
         </Head>
-        <LayoutWrapper>
+        <MainLayout>
           <Component {...pageProps} />
-        </LayoutWrapper>
+        </MainLayout>
       </ThemeProvider>
     </>
   );

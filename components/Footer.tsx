@@ -1,24 +1,43 @@
-import siteConfig from "@/database/siteConfig";
+import styled from 'styled-components';
+import siteConfig from '@/database/siteConfig';
 // import SocialIcon from '@/components/icons';
 
-export default function Footer() {
+function Footer() {
   return (
-    <footer>
-      <div className="mt-16 flex flex-col items-center">
-        {/*  <div className="mb-3 flex space-x-4">
+    <StyledFooter>
+      {/*  <SocialContainer className="mb-3 flex space-x-4">
           <SocialIcon kind="mail" href={`mailto:''`} size={6} />
           <SocialIcon
             kind="github"
             href={siteConfig.author.contacts.github}
             size={6}
           />
-        </div> */}
-        <div className="mb-5 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
-          <div>{siteConfig.author.name}</div>
-          <div>{` • `}</div>
-          <div>{`© ${new Date().getFullYear()}`}</div>
-        </div>
-      </div>
-    </footer>
+        </SocialContainer> */}
+      <DescriptionContainer>
+        <div>{siteConfig.author.name}</div>
+        <div>{` • `}</div>
+        <div>{`© ${new Date().getFullYear()}`}</div>
+      </DescriptionContainer>
+    </StyledFooter>
   );
 }
+
+const StyledFooter = styled.footer`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+`;
+
+const SocialContainer = styled.div`
+  display: flex;
+  margin-bottom: 12px;
+`;
+
+const DescriptionContainer = styled.div`
+  display: flex;
+  font-size: 14px;
+  margin-bottom: 20px;
+`;
+
+export default Footer;
