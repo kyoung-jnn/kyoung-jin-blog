@@ -1,9 +1,9 @@
 import siteMetadata from '@/database/siteMetadata';
 
 export const pageview = (url: string) => {
-  window.gtag('config', siteMetadata.analytics.google, {
+  /* window.gtag('config', siteMetadata.analytics.google, {
     page_path: url,
-  });
+  }); */
 };
 
 interface GTagEvent {
