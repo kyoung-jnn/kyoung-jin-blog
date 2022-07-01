@@ -4,8 +4,8 @@ import Document, {
   Main,
   NextScript,
   DocumentContext,
-} from "next/document";
-import { ServerStyleSheet } from "styled-components";
+} from 'next/document';
+import { ServerStyleSheet } from 'styled-components';
 // import { GoogleAnalyticsScript } from "components/common/GoogleAnalytics";
 
 export default class MyDocument extends Document {
@@ -46,7 +46,7 @@ export default class MyDocument extends Document {
           <link
             rel="stylesheet"
             type="text/css"
-            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+            href="https://rsms.me/inter/inter.css"
           />
         </Head>
         <body>

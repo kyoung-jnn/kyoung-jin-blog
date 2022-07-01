@@ -6,9 +6,10 @@ import Image from '@/components/Image';
 import siteConfig from '@/database/siteConfig';
 import Profile from '@/public/profile.webp';
 import styled from 'styled-components';
+import MDXStyle from '@/styles/mdx-styles';
 import BreakPoints from '@/constants/breakpoints';
-import 'highlight.js/styles/atom-one-dark.css';
 
+import 'highlight.js/styles/atom-one-dark.css';
 interface PostLayoutProps {
   title: string;
   date: string;
@@ -20,7 +21,7 @@ function PostLayout({ title, date, children }: PostLayoutProps) {
   const commentContainerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <SectionContainer>
+    <PostSectionContainer>
       {/* <ScrollTopAndComment commentContainerRef={commentContainerRef} /> */}
       <article>
         <PostHeader>
@@ -68,9 +69,13 @@ function PostLayout({ title, date, children }: PostLayoutProps) {
           </PostFooter>
         </PostWrapper>
       </article>
-    </SectionContainer>
+    </PostSectionContainer>
   );
 }
+
+const PostSectionContainer = styled(SectionContainer)`
+  ${MDXStyle}
+`;
 
 const PostHeader = styled.header`
   padding: 20px 0;

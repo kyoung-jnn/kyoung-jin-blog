@@ -3,31 +3,28 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import { allPosts, Post } from 'contentlayer/generated';
 import Link from '@/components/CustomLink';
+import PostCard from '@/components/PostCard';
 // import SocialIcon from "@/components/icons";
 import siteConfig from '@/database/siteConfig';
 import siteMetadata from '@/database/siteMetadata';
 import waving_hand from '@/public/waving-hand.webp';
 import { fadeLeft, fadeUp, waving } from '@/utils/animation';
 
-// import { FrontMatterType, PostType } from "types";
-
 // 최신 글 개수
 const MAX_DISPLAY = 3;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = allPosts.sort(
-    (a: Post, b: Post) => Number(new Date(b.date)) - Number(new Date(a.date)),
-  );
+  const posts = allPosts
+    .sort(
+      (a: Post, b: Post) => Number(new Date(b.date)) - Number(new Date(a.date)),
+    )
+    .slice(0, MAX_DISPLAY);
 
-  return { props: { posts } };
+  return { props: { latestPost: posts } };
 };
 
-interface HomeProps {
-  posts: any;
-}
-
 export default function Home({
-  posts,
+  latestPost,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
@@ -62,56 +59,23 @@ export default function Home({
         </div>
       </IntroSection>
       <LatestSection>
-        <div className="space-y-2 pt-6 md:space-y-5">
-          <h1 className="text-4xl font-bold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-4xl md:leading-14">
-            🔥 최신 글 | Latest
-          </h1>
-        </div>
-        {/*  <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-          {!posts.length && "포스팅이 없어요! 😅"}
-          {posts.slice(0, MAX_DISPLAY).map(({ frontMatter, slug }) => {
-            const { date, title, summary, tags } =
-              frontMatter as FrontMatterType;
+        <LatestTitle>🔥 최신 글 | Latest</LatestTitle>
+        <ul>
+          {!latestPost.length && '포스팅이 없어요! 😅'}
+          {latestPost.map(({ title, date, summary, _raw }: any) => {
+            const slug = _raw.flattenedPath.split('/')[2];
 
             return (
-              <li key={slug} className="py-10">
-                <article>
-                  <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
-                    <dl>
-                      <dt className="sr-only">Published on</dt>
-                      <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                        <time dateTime={date}>{date}</time>
-                      </dd>
-                    </dl>
-                    <div className="space-y-5 xl:col-span-3">
-                      <div className="space-y-6">
-                        <div>
-                          <h2 className="text-2xl font-bold leading-8 tracking-tight">
-                            <Link
-                              href={`/posts/${slug}`}
-                              className="text-gray-900 dark:text-gray-100"
-                            >
-                              {title}
-                            </Link>
-                          </h2>
-                          <div className="flex flex-wrap">
-                            {tags.map((tag: string) => (
-                              <Tag key={tag} text={tag} />
-                            ))}
-                          </div>
-                        </div>
-                        <div className="prose max-w-none text-gray-500 dark:text-gray-400">
-                          {summary}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              </li>
+              <PostCard
+                title={title}
+                date={date}
+                summary={summary}
+                slug={slug}
+              />
             );
           })}
         </ul>
-        {posts.length > MAX_DISPLAY && (
+        {/* {posts.length > MAX_DISPLAY && (
           <div className="flex justify-end text-base font-medium leading-6">
             <Link
               href="/posts/page/1"
@@ -139,9 +103,10 @@ const IntroSection = styled.section`
     font-size: 2.2rem;
     font-weight: 700;
     letter-spacing: -0.025em;
+    margin-top: 10px;
   }
 
-  animation: ${fadeUp} 1s;
+  animation: ${fadeUp} 1s forwards;
 `;
 
 const AnimatedHand = styled.div`
@@ -156,4 +121,8 @@ const AnimatedHand = styled.div`
 const LatestSection = styled.section`
   opacity: 0;
   animation: ${fadeLeft} 1s 0.5s forwards;
+`;
+
+const LatestTitle = styled.h1`
+  font-weight: 700;
 `;
