@@ -44,9 +44,13 @@ export default class MyDocument extends Document {
           {/* <GoogleAnalyticsScript /> */}
           {/* 폰트 */}
           <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin="anonymous"
+          />
+          <link
             rel="stylesheet"
-            type="text/css"
-            href="https://rsms.me/inter/inter.css"
+            href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
           />
         </Head>
         <body>
