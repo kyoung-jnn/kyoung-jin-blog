@@ -51,6 +51,11 @@ const LeftHeaderContainer = styled.div`
     display: none;
     font-weight: 700;
     font-size: 24px;
+    transition: color 0.3s;
+
+    :hover {
+      color: var(--focus-text);
+    }
 
     ${media.mobile} {
       display: block;

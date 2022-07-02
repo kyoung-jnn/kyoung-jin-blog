@@ -9,6 +9,7 @@ import siteConfig from '@/database/siteConfig';
 import siteMetadata from '@/database/siteMetadata';
 import waving_hand from '@/public/waving-hand.webp';
 import { fadeLeft, fadeUp, waving } from '@/utils/animation';
+import media from '@/styles/media';
 
 // 최신 글 개수
 const MAX_DISPLAY = 3;
@@ -24,7 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default function Home({
-  latestPost,
+  latestPost: latestPosts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
@@ -40,17 +41,10 @@ export default function Home({
           </AnimatedHand>
         </div>
         <div className="subtitle">Slow and Steady.</div>
-        <h3 className="pt-4 pb-2 text-2xl font-bold leading-8 tracking-tight">
-          {siteConfig.author.name}
-        </h3>
-        <div className="text-gray-500 dark:text-gray-400">
-          Frontend Engineer
-        </div>
-        <div className="text-gray-500 dark:text-gray-400">
-          KwangWoon Univ. Software Engineering
-        </div>
-        <div className="text-gray-500 dark:text-gray-400">Seoul, Korea</div>
-        <div className="flex pt-6 space-x-3">
+        <h3>{siteConfig.author.name}</h3>
+        <div>Frontend Engineer</div>
+        <div>In Seoul, Korea</div>
+        <div>
           {/* <SocialIcon kind="github" href={siteConfig.author.contacts.github} />
           <SocialIcon
             kind="mail"
@@ -61,8 +55,8 @@ export default function Home({
       <LatestSection>
         <LatestTitle>🔥 최신 글 | Latest</LatestTitle>
         <ul>
-          {!latestPost.length && '포스팅이 없어요! 😅'}
-          {latestPost.map(({ title, date, summary, _raw }: any) => {
+          {!latestPosts.length && '포스팅이 없어요! 😅'}
+          {latestPosts.map(({ title, date, summary, _raw }: any) => {
             const slug = _raw.flattenedPath.split('/')[2];
 
             return (
@@ -75,24 +69,18 @@ export default function Home({
             );
           })}
         </ul>
-        {/* {posts.length > MAX_DISPLAY && (
-          <div className="flex justify-end text-base font-medium leading-6">
-            <Link
-              href="/posts/page/1"
-              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-              aria-label="all posts"
-            >
-              모든 포스팅보기
-            </Link>
-          </div>
-        )} */}
+        <div className="more-button-wrapper">
+          <Link href="/" aria-label="all posts">
+            <button>모든 포스팅보기</button>
+          </Link>
+        </div>
       </LatestSection>
     </>
   );
 }
 
 const IntroSection = styled.section`
-  margin: 80px 0;
+  margin: 50px 0;
 
   .title {
     font-size: 2.6rem;
@@ -102,11 +90,14 @@ const IntroSection = styled.section`
   .subtitle {
     font-size: 2.2rem;
     font-weight: 700;
-    letter-spacing: -0.025em;
     margin-top: 10px;
   }
 
   animation: ${fadeUp} 1s forwards;
+
+  ${media.mobile} {
+    margin: 80px 0;
+  }
 `;
 
 const AnimatedHand = styled.div`
@@ -118,11 +109,15 @@ const AnimatedHand = styled.div`
   animation: ${waving} 2s;
 `;
 
+const LatestTitle = styled.h1`
+  font-weight: 700;
+`;
+
 const LatestSection = styled.section`
   opacity: 0;
   animation: ${fadeLeft} 1s 0.5s forwards;
-`;
 
-const LatestTitle = styled.h1`
-  font-weight: 700;
+  > .more-button-wrapper {
+    float: right;
+  }
 `;

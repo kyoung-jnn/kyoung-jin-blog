@@ -14,9 +14,7 @@ function Footer() {
           />
         </SocialContainer> */}
       <DescriptionContainer>
-        <div>{siteConfig.author.name}</div>
-        <div>{` • `}</div>
-        <div>{`© ${new Date().getFullYear()}`}</div>
+        <div>{siteConfig.author.name + ` © ${new Date().getFullYear()}`} </div>
       </DescriptionContainer>
     </StyledFooter>
   );

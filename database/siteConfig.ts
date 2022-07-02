@@ -2,18 +2,18 @@
 
 const siteConfig = {
   title: `kyoung-jnn`,
-  subtitle: "kyoung-jnn의 개발 블로그",
+  subtitle: 'kyoung-jnn의 개발 블로그',
   sitename: `kyoung-jnn's blog`,
   author: {
-    name: "kyoung-jin",
-    photo: "/public/profile.webp",
-    bio: "Frontend Engineer",
+    name: 'Kyoung Jin, Roh',
+    photo: '/public/profile.webp',
+    bio: 'Frontend Engineer',
     contacts: {
-      email: "rudwls468@gmail.com",
-      github: "https://github.com/kyoung-jnn",
-      rss: "",
-      linkedin: "",
-      instagram: "",
+      email: 'rudwls468@gmail.com',
+      github: 'https://github.com/kyoung-jnn',
+      rss: '',
+      linkedin: '',
+      instagram: '',
     },
   },
 };

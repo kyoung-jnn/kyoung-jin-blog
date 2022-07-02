@@ -1,15 +1,14 @@
 import { ReactNode, useRef } from 'react';
 import { format } from 'date-fns';
+import styled from 'styled-components';
 import Link from '@/components/CustomLink';
 import SectionContainer from '@/components/SectionContainer';
 import Image from '@/components/Image';
 import siteConfig from '@/database/siteConfig';
 import Profile from '@/public/profile.webp';
-import styled from 'styled-components';
 import MDXStyle from '@/styles/mdx-styles';
 import BreakPoints from '@/constants/breakpoints';
 
-import 'highlight.js/styles/atom-one-dark.css';
 interface PostLayoutProps {
   title: string;
   date: string;
@@ -21,7 +20,7 @@ function PostLayout({ title, date, children }: PostLayoutProps) {
   const commentContainerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <PostSectionContainer>
+    <>
       {/* <ScrollTopAndComment commentContainerRef={commentContainerRef} /> */}
       <article>
         <PostHeader>
@@ -63,19 +62,15 @@ function PostLayout({ title, date, children }: PostLayoutProps) {
                 <Comment />
               </div> */}
           <PostFooter>
-            <Link href="/posts/page/1" className="back-link">
+            <Link href="/" className="back-link">
               &larr; 돌아가기
             </Link>
           </PostFooter>
         </PostWrapper>
       </article>
-    </PostSectionContainer>
+    </>
   );
 }
-
-const PostSectionContainer = styled(SectionContainer)`
-  ${MDXStyle}
-`;
 
 const PostHeader = styled.header`
   padding: 20px 0;
@@ -83,6 +78,7 @@ const PostHeader = styled.header`
 
   .post-date {
     font-size: 20px;
+    font-weight: 300;
     color: var(--fontColor);
     margin-bottom: 10px;
   }
@@ -100,11 +96,13 @@ const PostFooter = styled.footer`
 `;
 
 const PostWrapper = styled.div`
-  display: block;
+  position: relative;
   max-width: ${BreakPoints.tablet + 'px'};
   padding: 20px 0;
   border-top: 1px solid #e5e5e5;
   border-bottom: 1px solid #e5e5e5;
+
+  ${MDXStyle}
 `;
 
 export default PostLayout;
