@@ -1,7 +1,7 @@
-const BreakPoints = {
+const BREAK_POINTS = {
   moblie: 480,
   tablet: 768,
   desktop: 1024,
 } as const;
 
-export default BreakPoints;
+export default BREAK_POINTS;

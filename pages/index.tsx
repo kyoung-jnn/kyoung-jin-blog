@@ -37,7 +37,13 @@ export default function Home({
         <div className="title">
           Hello, There
           <AnimatedHand>
-            <Image src={waving_hand} alt="waving-hand" objectFit="cover" />
+            <Image
+              src={waving_hand}
+              alt="waving-hand-image"
+              objectFit="cover"
+              width={45}
+              height={45}
+            />
           </AnimatedHand>
         </div>
         <div className="subtitle">Slow and Steady.</div>
@@ -61,6 +67,7 @@ export default function Home({
 
             return (
               <PostCard
+                key={slug}
                 title={title}
                 date={date}
                 summary={summary}
@@ -83,17 +90,17 @@ const IntroSection = styled.section`
   margin: 50px 0;
 
   .title {
-    font-size: 2.6rem;
-    font-weight: 700;
+    font-size: 50px;
+    font-weight: 900;
   }
 
   .subtitle {
-    font-size: 2.2rem;
+    font-size: 36px;
     font-weight: 700;
     margin-top: 10px;
   }
 
-  animation: ${fadeUp} 1s forwards;
+  /* animation: ${fadeUp} 1s forwards;  */
 
   ${media.mobile} {
     margin: 80px 0;
@@ -114,8 +121,8 @@ const LatestTitle = styled.h1`
 `;
 
 const LatestSection = styled.section`
-  opacity: 0;
-  animation: ${fadeLeft} 1s 0.5s forwards;
+  /* opacity: 0;   */
+  /* animation: ${fadeLeft} 1s 0.5s forwards; */
 
   > .more-button-wrapper {
     float: right;

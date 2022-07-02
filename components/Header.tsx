@@ -9,7 +9,7 @@ function Header() {
     <StyledHeader>
       <Link href="/" aria-label="home-link">
         <LeftHeaderContainer>
-          <div className="header-image">🚀</div>
+          d <div className="header-logo">🚀</div>
           <div className="header-title">{SiteConfig.title}</div>
         </LeftHeaderContainer>
       </Link>
@@ -42,7 +42,7 @@ const LeftHeaderContainer = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  > .header-image {
+  > .header-logo {
     font-size: 48px;
     margin-right: 10px;
   }
