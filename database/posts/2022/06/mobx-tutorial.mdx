@@ -1,7 +1,7 @@
 ---
 title: 상태관리, MobX 이해와 사용법
 date: '2022-06-08'
-summary: 상태관리는 위해 Mobx를 알아봅니다.
+summary: OOP적인 상태관리를 위한 Mobx
 publish: true
 ---
 
@@ -16,8 +16,6 @@ publish: true
 `Redux`, `MobX`, `Recoil` 등등 수 많은 **상태관리 라이브러리**가 나오고 있고
 
 오늘은 **MobX**를 중점으로 살펴봅시다. 😎
-
-<br />
 
 # 기존의 상태관리, Redux
 
@@ -45,10 +43,9 @@ publish: true
 
 ## MobX Core
 
-MobX는 어플리케이션에서 **세 가지** 의 중요한 개념이 존재합니다.
+`MobX`는 어플리케이션에서 **세 가지** 의 중요한 개념이 존재합니다.
 
 - **상태 (state)**
-
   - 애플리케이션을 구동하는 데이터 (일반 객체, 배열, 클래스, 순환 데이터 구조 또는 참조)
   - **Class** 를 통해 주로 제작 (OOP 🤓)
   - 코드에 `observable`로 표시를 통해 **MobX**가 추적할 수 있도록 `(중요!)`
@@ -107,9 +104,13 @@ export class CounterStore {
 
 ## MobX Flow
 
-![mobx-flow](/posts/2022/06/mobx-tutorial/mobx-flow.png)
+<Image
+  width="720"
+  height={200}
+  src={'/posts/2022/06/mobx-tutorial/mobx-flow.png'}
+/>
 
-*단방향 데이터 흐름*으로 **action**을 통해 **state (observable state)** 에 변화가 생기면
+`단방향 데이터 흐름`으로 **action**을 통해 **state (observable state)** 에 변화가 생기면
 해당 **state**를 사용하는 **view**가 다시 렌더링되고, **computed** & **reaction** 등 state 변화로 인해 파생 된 행동들이 실행됩니다.
 
 ## MobX 예제
@@ -188,9 +189,7 @@ function Count() {
 export default observer(Count);
 ```
 
----
-
-### 번외. 전역 스토어 접근 Hook 만들기 / useStore
+## 번외. 전역 스토어 접근 Hook 만들기 / useStore
 
 ```js
 import { useContext } from 'react';
