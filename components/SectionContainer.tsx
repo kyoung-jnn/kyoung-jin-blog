@@ -1,13 +1,18 @@
+import type { ReactNode } from 'react';
 import styled from 'styled-components';
 import media from '@/styles/media';
-import BreakPoints from '@/constants/breakpoints';
+import BREAK_POINTS from '@/constants/breakpoints';
 
-export default function SectionContainer({ children }: any) {
+interface SectionConatinerProps {
+  children: ReactNode;
+}
+
+export default function SectionContainer({ children }: SectionConatinerProps) {
   return <StyledSectionContainer>{children}</StyledSectionContainer>;
 }
 
 const StyledSectionContainer = styled.div`
-  max-width: ${BreakPoints.tablet + 'px'};
+  max-width: ${BREAK_POINTS.tablet + 'px'};
   margin-left: auto;
   margin-right: auto;
   padding-left: 16px;

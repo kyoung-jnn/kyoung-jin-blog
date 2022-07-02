@@ -13,16 +13,12 @@ function MainLayout({ children }: MainLayoutProps) {
     <SectionContainer>
       <StyledMainLayout>
         <Header />
-        <MainSection>{children}</MainSection>
+        <main>{children}</main>
         <Footer />
       </StyledMainLayout>
     </SectionContainer>
   );
 }
-
-const MainSection = styled.main`
-  margin-bottom: auto;
-`;
 
 const StyledMainLayout = styled.div`
   display: flex;
