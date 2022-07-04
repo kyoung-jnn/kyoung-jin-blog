@@ -56,7 +56,7 @@ function PostLayout({ title, date, children }: PostLayoutProps) {
               </dd>
             </dl> */}
           {/* 본문 영역 */}
-          <div>{children}</div>
+          <PostBody>{children}</PostBody>
           {/* 댓글 영역 */}
           {/*  <div ref={commentContainerRef}>
                 <Comment />
@@ -90,19 +90,21 @@ const PostHeader = styled.header`
   }
 `;
 
-const PostFooter = styled.footer`
-  padding-top: 10px;
-  font-size: 16px;
-`;
-
 const PostWrapper = styled.div`
   position: relative;
   max-width: ${BreakPoints.tablet + 'px'};
   padding: 20px 0;
   border-top: 1px solid #e5e5e5;
   border-bottom: 1px solid #e5e5e5;
+`;
 
+const PostBody = styled.div`
   ${MDXStyle}
+`;
+
+const PostFooter = styled.footer`
+  padding-top: 10px;
+  font-size: 16px;
 `;
 
 export default PostLayout;
