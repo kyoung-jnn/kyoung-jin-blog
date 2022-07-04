@@ -9,7 +9,7 @@ function Header() {
     <StyledHeader>
       <Link href="/" aria-label="home-link">
         <LeftHeaderContainer>
-          d <div className="header-logo">🚀</div>
+          <div className="header-logo">🚀</div>
           <div className="header-title">{SiteConfig.title}</div>
         </LeftHeaderContainer>
       </Link>
