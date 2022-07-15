@@ -5,6 +5,7 @@ import { allPosts, Post } from 'contentlayer/generated';
 import Link from '@/components/CustomLink';
 import PostCard from '@/components/PostCard';
 // import SocialIcon from "@/components/icons";
+import { PageSEO } from '@/components/SEO';
 import siteConfig from '@/database/siteConfig';
 import siteMetadata from '@/database/siteMetadata';
 import waving_hand from '@/public/waving-hand.webp';
@@ -29,10 +30,10 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      {/*  <PageSEO
+      <PageSEO
         title={siteMetadata.title}
         description={siteMetadata.description}
-      /> */}
+      />
       <IntroSection>
         <div className="title">
           Hello, There
@@ -77,7 +78,7 @@ export default function Home({
           })}
         </ul>
         <div className="more-button-wrapper">
-          <Link href="/" aria-label="all posts">
+          <Link href="/posts/page/1" aria-label="all posts">
             <button>모든 포스팅보기</button>
           </Link>
         </div>
@@ -100,7 +101,7 @@ const IntroSection = styled.section`
     margin-top: 10px;
   }
 
-  /* animation: ${fadeUp} 1s forwards;  */
+  animation: ${fadeUp} 1s forwards;
 
   ${media.mobile} {
     margin: 80px 0;
@@ -121,8 +122,8 @@ const LatestTitle = styled.h1`
 `;
 
 const LatestSection = styled.section`
-  /* opacity: 0;   */
-  /* animation: ${fadeLeft} 1s 0.5s forwards; */
+  opacity: 0;
+  animation: ${fadeLeft} 1s 0.5s forwards;
 
   > .more-button-wrapper {
     float: right;

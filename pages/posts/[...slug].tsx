@@ -1,6 +1,5 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import { allPosts, Post } from 'contentlayer/generated';
-import { InferGetStaticPropsType } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import MDXComponents from '@/components/MDXComponents';
 import PostLayout from '@/components/layout/PostLayout';
@@ -11,7 +10,7 @@ interface SlugInterface {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = allPosts.map((post) => ({
+  const paths = allPosts.map((post: Post) => ({
     params: { slug: [post._raw.flattenedPath.split('/')[2]] },
   }));
 
