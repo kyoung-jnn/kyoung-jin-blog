@@ -24,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
   // Default Styling
   body {
     letter-spacing: -0.5px;
+    color: var(--text);
   }
 
   *,
@@ -34,7 +35,11 @@ const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
-    color: black;
+    color: var(--text);
+    transition: color 0.5s;
+    &:hover {
+      color: var(--focus-text);
+    }
   }
 
   ul, li {
