@@ -24,7 +24,7 @@ const StyledFooter = styled.footer`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 40px;
 `;
 
 const SocialContainer = styled.div`
@@ -34,7 +34,7 @@ const SocialContainer = styled.div`
 
 const DescriptionContainer = styled.div`
   display: flex;
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 20px;
 `;
 

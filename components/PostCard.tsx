@@ -30,6 +30,7 @@ const StyledPostCard = styled.li`
   margin-bottom: 10px;
   border: 2px solid transparent;
   border-radius: 10px;
+  color: var(--text);
   cursor: pointer;
 
   transition: all 0.3s;

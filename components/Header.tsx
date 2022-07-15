@@ -7,7 +7,7 @@ import media from '@/styles/media';
 function Header() {
   return (
     <StyledHeader>
-      <Link href="/" aria-label="home-link">
+      <Link href="/" aria-label="home link">
         <LeftHeaderContainer>
           <div className="header-logo">🚀</div>
           <div className="header-title">{SiteConfig.title}</div>

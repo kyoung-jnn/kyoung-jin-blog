@@ -20,11 +20,6 @@ function MainLayout({ children }: MainLayoutProps) {
   );
 }
 
-const StyledMainLayout = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
-`;
+const StyledMainLayout = styled.div``;
 
 export default MainLayout;
