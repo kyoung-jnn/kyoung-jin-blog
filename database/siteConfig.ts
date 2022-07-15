@@ -12,7 +12,8 @@ const siteConfig = {
       email: 'rudwls468@gmail.com',
       github: 'https://github.com/kyoung-jnn',
       rss: '',
-      linkedin: '',
+      linkedin:
+        'https://www.linkedin.com/in/%EA%B2%BD%EC%A7%84-%EB%85%B8-028b7421b/',
       instagram: '',
     },
   },
