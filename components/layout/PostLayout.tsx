@@ -103,7 +103,7 @@ const PostBody = styled.div`
 `;
 
 const PostFooter = styled.footer`
-  padding-top: 10px;
+  padding-top: 30px;
   font-size: 16px;
 `;
 
