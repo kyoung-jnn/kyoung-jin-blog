@@ -62,7 +62,7 @@ export default function PostList({
   return (
     <>
       <PageSEO
-        title={`Posts - ${siteConfig.author.name}`}
+        title={`작성한 글, 포스팅`}
         description={siteMetadata.description}
       />
       <ListLayout

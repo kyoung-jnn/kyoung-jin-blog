@@ -20,7 +20,7 @@ const CommonSEO = ({
       <meta name="author" content={siteMetadata.author} />
       <meta name="reply-to" content={siteMetadata.email} />
       {/* 로봇 방문 허용 */}
-      <meta name="robots" content="index,follow" />
+      <meta name="robots" content="index, follow" />
       {/* Open Graph */}
       <meta property="og:site_name" content={siteMetadata.siteName} />
       <meta property="og:title" content={siteMetadata.title} />
@@ -69,7 +69,6 @@ export const PageSEO = ({
   );
 };
 
-// Post
 // Post Page
 export const PostSEO = ({
   url,
