@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Link from './CustomLink';
+import ThemeSwitch from '@/components/ThemeSwitch';
 import SiteConfig from '@/database/siteConfig';
 import headerNavLinks from '@/constants/headerMenu';
 import media from '@/styles/media';
@@ -21,7 +22,7 @@ function Header() {
             </Link>
           ))}
         </div>
-        {/* <ThemeSwitch /> */}
+        <ThemeSwitch />
         {/* <MobileNav /> */}
       </RightHeaderContainer>
     </StyledHeader>
@@ -51,11 +52,6 @@ const LeftHeaderContainer = styled.div`
     display: none;
     font-weight: 700;
     font-size: 24px;
-    transition: color 0.3s;
-
-    :hover {
-      color: var(--focus-text);
-    }
 
     ${media.mobile} {
       display: block;

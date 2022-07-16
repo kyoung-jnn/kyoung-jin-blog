@@ -64,6 +64,7 @@ const MDXStyle = css`
   blockquote {
     margin: 0;
     padding: 1px 10px;
+    color: var(--focus-text);
     background-color: var(--focus-bg);
     border-radius: 10px;
   }

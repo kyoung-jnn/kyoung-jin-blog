@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Post } from 'contentlayer/generated';
 import PostCard from '@/components/PostCard';
 import Pagination from '@/components/Pagination';
-import SearchIcon from '@/components/icon/search';
+import SearchIcon from '@/components/icons/search';
 import useDebounce from '@/hooks/useDebounce';
 
 interface ListLayout {
