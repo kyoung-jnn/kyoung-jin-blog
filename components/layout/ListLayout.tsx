@@ -94,19 +94,20 @@ const SearchInputWrapper = styled.div`
   > .icon {
     position: absolute;
     top: 25%;
-    left: 220px;
+    left: 270px;
     width: 20px;
     color: var(--focus-text);
   }
 `;
 
 const SearchInput = styled.input`
-  width: 250px;
+  width: 300px;
   height: 40px;
   padding: 10px;
   outline: none;
   border-radius: 5px;
   border: 2px solid var(--focus-bg);
+  background-color: var(--bg);
   transition: border 0.5s;
   :focus {
     border: 2px solid var(--focus-text);

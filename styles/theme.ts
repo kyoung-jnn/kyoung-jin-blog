@@ -2,16 +2,16 @@ import { css } from 'styled-components';
 
 export const lightTheme = css`
   --fg: #000;
-  --bg: #fff;
-  --text: #1e272e;
+  --bg: #f9f9f9;
+  --text: #141414;
   --focus-text: #0984e3;
   --focus-bg: #f1f2f6;
 `;
 
 export const darkTheme = css`
-  --fg: #fff;
+  --fg: #f9f9f9;
   --bg: #000;
-  --text: #1e272e;
+  --text: #141414;
   --focus-text: #0984e3;
   --focus-bg: #f1f2f6;
 `;

@@ -40,6 +40,8 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          {/* 파비콘 */}
+          <link rel="shortcut icon" href="/favicon.ico" />
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           {/* <GoogleAnalyticsScript /> */}
           {/* 폰트 */}

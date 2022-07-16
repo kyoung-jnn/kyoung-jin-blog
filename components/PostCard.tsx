@@ -56,9 +56,9 @@ const ContentContainer = styled.div`
 
 const DateContainer = styled.div`
   font-size: 15px;
-  color: var(--fontColor);
   font-weight: 300;
   margin-top: 10px;
+  color: var(--fontColor);
 `;
 
 export default PostCard;

@@ -25,6 +25,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     letter-spacing: -0.5px;
     color: var(--text);
+    background-color: var(--bg);
   }
 
   *,
