@@ -49,8 +49,7 @@ const PaginationNav = styled.nav`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   color: var(--text);
-  font-weight: 700;
-  font-size: 18px;
+  font-size: 20px;
 
   .center {
     text-align: center;

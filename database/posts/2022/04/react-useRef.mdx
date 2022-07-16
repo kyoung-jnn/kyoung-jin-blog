@@ -7,7 +7,7 @@ publish: true
 
 # useRef? 🤨
 
-`useEffect`, `useState` 만 사용하다 **`useRef`** 같이
+`useEffect`, `useState` 만 사용하다 `useRef` 같이
 우리를 헷갈리게 만드는 훅이 있습니다.
 
 JS를 사용하면 `getElementById`, `querySelector` 등
@@ -16,7 +16,7 @@ JS를 사용하면 `getElementById`, `querySelector` 등
 React 프로젝트를 하면서도 **요소의 특정 크기나 위치, 포커싱, 외부 라이브러리 사용**을 위해
 **특정 DOM** 에 접근해야할 상황이 생기게 됩니다.
 
-이때 사용하는 훅이 **`useRef`** 입니다. 👍 (함수형 컴포넌트에서!)
+이때 사용하는 훅이 `useRef` 입니다. 👍 (함수형 컴포넌트에서!)
 
 > 클래스형 컴포넌트에는 `React.createRef` 사용
 
@@ -26,8 +26,8 @@ React 프로젝트를 하면서도 **요소의 특정 크기나 위치, 포커�
 
 > 즉, **Render**와 상관 없는 값을 지정해서 사용하면 됩니다.
 
-해당 `ref` 객체는 **`.current`** 프로퍼티를 통해
-요소에 대한 **행동**을 내릴 수 있게 됩니다.
+해당 `ref` 객체는 `.current` 프로퍼티를 통해
+요소에 대한 행동을 내릴 수 있게 됩니다.
 
 ## 예시 코드
 

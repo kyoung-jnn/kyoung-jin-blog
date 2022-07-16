@@ -11,9 +11,9 @@ publish: true
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 ```
 
-> **`메모이제이션(Memoization)`** 된 값을 반환합니다.
+> `메모이제이션(Memoization)` 된 값을 반환합니다.
 
-**`useMemo`** 는 위와 같은 한 문장으로 정리할 수 있습니다.
+`useMemo` 는 위와 같은 한 문장으로 정리할 수 있습니다.
 
 `useMemo`를 이용하여 우리는 훅의 **deps / 2번째 파라미터**로 들어가는 **변수**가 변하지 않으면
 해당 변수를 이용하는 함수의 실행을 하지 않고
@@ -68,6 +68,6 @@ const usingMemo = ({ prop1, prop2 }) => {
 };
 ```
 
-**`useMemo`** 를 이용하여 **값의 변화를 인지해야할 부분**을 감싸게 되면
-`prop1`의 변화가 없으면 **불필요한 연산(computeExpensiveValue)을 수행하지 않고**
+`useMemo` 를 이용하여 **값의 변화를 인지해야할 부분**을 감싸게 되면
+`prop1`의 변화가 없으면 불필요한 연산(computeExpensiveValue)을 수행하지 않고
 기존의 변수의 값을 이용합니다. ✨
