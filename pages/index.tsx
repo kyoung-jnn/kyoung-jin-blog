@@ -2,9 +2,9 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Image from 'next/image';
 import styled from 'styled-components';
 import { allPosts, Post } from 'contentlayer/generated';
+import Icon from '@/components/icons';
 import Link from '@/components/CustomLink';
 import PostCard from '@/components/PostCard';
-// import SocialIcon from "@/components/icons";
 import { PageSEO } from '@/components/SEO';
 import siteConfig from '@/database/siteConfig';
 import siteMetadata from '@/database/siteMetadata';
@@ -51,13 +51,23 @@ export default function Home({
         <h3>{siteConfig.author.name}</h3>
         <div>Frontend Engineer</div>
         <div>In Seoul, Korea</div>
-        <div>
-          {/* <SocialIcon kind="github" href={siteConfig.author.contacts.github} />
-          <SocialIcon
+        <IconContainer>
+          <Icon
             kind="mail"
             href={`mailto:${siteConfig.author.contacts.email}`}
-          /> */}
-        </div>
+            size={24}
+          />
+          <Icon
+            kind="github"
+            href={siteConfig.author.contacts.github}
+            size={24}
+          />
+          <Icon
+            kind="linkedin"
+            href={siteConfig.author.contacts.linkedin}
+            size={24}
+          />
+        </IconContainer>
       </IntroSection>
       <LatestSection>
         <LatestTitle>🔥 최신 글 | Latest</LatestTitle>
@@ -127,5 +137,12 @@ const LatestSection = styled.section`
 
   > .more-button-wrapper {
     float: right;
+  }
+`;
+
+const IconContainer = styled.div`
+  margin-top: 20px;
+  div {
+    margin-right: 15px;
   }
 `;
