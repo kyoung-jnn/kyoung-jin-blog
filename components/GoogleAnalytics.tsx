@@ -1,16 +1,13 @@
 import siteMetadata from '@/database/siteMetadata';
-import Script from 'next/script';
 
 export const GoogleAnalyticsScript = () => {
   return (
     <>
-      <Script
-        strategy="afterInteractive"
+      <script
+        async
         src={`https://www.googletagmanager.com/gtag/js?id=${siteMetadata.analytics.google}`}
-      ></Script>
-      <Script
-        id="gtag-init"
-        strategy="afterInteractive"
+      ></script>
+      <script
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
