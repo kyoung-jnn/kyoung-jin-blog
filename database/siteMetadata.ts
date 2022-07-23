@@ -15,7 +15,7 @@ const siteMetadata = {
   socialBanner: 'https://i.ibb.co/vswNk1C/banner.png',
   locale: 'ko_KR',
   analytics: {
-    // google: "G-074LXJ6QT4",
+    google: 'G-074LXJ6QT4',
   },
 };
 
