@@ -5,24 +5,23 @@ import Head from 'next/head';
 import { ThemeProvider } from 'next-themes';
 import MainLayout from '@/components/layout/MainLayout';
 import GlobalStyle from '@/styles/global-styles';
-
-// import * as ga from "@/utils/gtag";
+import * as ga from '@/utils/gtag';
 
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   // 페이지 별 GA 적용
-  /*  useEffect(() => {
+  useEffect(() => {
     const handleRouteChange = (url: string) => {
       ga.pageview(url);
     };
-    router.events.on("routeChangeComplete", handleRouteChange);
+    router.events.on('routeChangeComplete', handleRouteChange);
 
     return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
+      router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, [router.events]);
- */
+
   return (
     <>
       <GlobalStyle />

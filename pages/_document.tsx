@@ -6,7 +6,7 @@ import Document, {
   DocumentContext,
 } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
-// import { GoogleAnalyticsScript } from "components/common/GoogleAnalytics";
+import { GoogleAnalyticsScript } from '@/components/GoogleAnalytics';
 
 export default class MyDocument extends Document {
   // Styled-components
@@ -43,7 +43,7 @@ export default class MyDocument extends Document {
           {/* 파비콘 */}
           <link rel="shortcut icon" href="/favicon.ico" />
           {/* Global Site Tag (gtag.js) - Google Analytics */}
-          {/* <GoogleAnalyticsScript /> */}
+          <GoogleAnalyticsScript />
           {/* 폰트 */}
           <link
             rel="preconnect"
