@@ -3,7 +3,7 @@ import 'highlight.js/styles/atom-one-dark.css';
 
 const MDXStyle = css`
   * {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.5;
     letter-spacing: 0;
   }
@@ -16,19 +16,19 @@ const MDXStyle = css`
   h6 {
     font-weight: 800;
     margin: 20px 0;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.02em;
   }
 
   h1 {
-    font-size: 32px;
+    font-size: 36px;
   }
 
   h2 {
-    font-size: 26px;
+    font-size: 30px;
   }
 
   h3 {
-    font-size: 20px;
+    font-size: 24px;
   }
 
   // 줄바꿈
@@ -58,6 +58,10 @@ const MDXStyle = css`
   li {
     margin: 10px;
     list-style: disc;
+
+    strong {
+      font-weight: 900;
+    }
   }
 
   // '>' 표시
@@ -67,6 +71,10 @@ const MDXStyle = css`
     color: var(--focus-text);
     background-color: var(--focus-bg);
     border-radius: 10px;
+
+    p > code {
+      font-weight: 700;
+    }
   }
 `;
 

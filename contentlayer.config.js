@@ -3,7 +3,7 @@ import highlight from 'rehype-highlight';
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
-  filePathPattern: `**/*.mdx`,
+  filePathPattern: `**/*.md*`,
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
