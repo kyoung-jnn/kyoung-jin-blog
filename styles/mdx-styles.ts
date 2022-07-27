@@ -1,11 +1,12 @@
 import { css } from 'styled-components';
-import 'highlight.js/styles/atom-one-dark.css';
+import 'highlight.js/styles/atom-one-dark-reasonable.css';
 
 const MDXStyle = css`
   * {
     font-size: 18px;
-    line-height: 1.5;
+    line-height: 1.55;
     letter-spacing: 0;
+    font-family: 'Ieter', sans-serif;
   }
 
   h1,
@@ -38,15 +39,20 @@ const MDXStyle = css`
 
   // 강조 글씨
   p > code {
-    font-weight: 900;
-    font-family: 'Ieter', sans-serif;
+    font-weight: 800;
+    border-bottom: 2px solid var(--focus-text);
+    margin: 0 1px;
+  }
+  li > code {
+    font-weight: 800;
     border-bottom: 2px solid var(--focus-text);
     margin: 0 1px;
   }
 
   // 코드 블록
   pre > code {
-    border-radius: 10px;
+    font-weight: 400;
+    border-radius: 10px !important;
   }
 
   // 리스트
@@ -58,10 +64,11 @@ const MDXStyle = css`
   li {
     margin: 10px;
     list-style: disc;
+  }
 
-    strong {
-      font-weight: 900;
-    }
+  // 볼드체
+  strong {
+    font-weight: 800;
   }
 
   // '>' 표시
