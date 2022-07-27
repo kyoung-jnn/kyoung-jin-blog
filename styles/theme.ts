@@ -10,8 +10,8 @@ export const lightTheme = css`
 
 export const darkTheme = css`
   --fg: #f9f9f9;
-  --bg: #121212;
-  --text: #f9f9f9;
+  --bg: #100f0f;
+  --text: #f1f1f1;
   --focus-text: #27ae60;
   --focus-bg: #f1f2f6;
 `;

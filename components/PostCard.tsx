@@ -44,10 +44,10 @@ const StyledPostCard = styled.li<{ theme: any }>`
     ${({ theme }) =>
       theme === Theme.light
         ? css`
-            filter: drop-shadow(0px 0px 15px #f1f2f6);
+            filter: drop-shadow(0px 0px 25px #d8d6e9);
           `
         : css`
-            filter: drop-shadow(0px 0px 15px #656565);
+            filter: drop-shadow(0px 0px 5px #d8d6e9);
           `}};
   }
 `;
