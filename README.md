@@ -1,4 +1,4 @@
-# 마음에 드는 블로그 템플릿 없어서 직접 만든 Next.js 블로그 🥰 [Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=Jin-blog-7wjugws10-kyoung-jnn)
+## 마음에 드는 블로그 템플릿 없어서 직접 만든 Next.js [블로그](https://therealsujitk-vercel-badge.vercel.app/?app=Jin-blog-7wjugws10-kyoung-jnn) 🥰
 
 <p align="center">
 <img width="420" height="250" src="https://user-images.githubusercontent.com/55469709/179347118-cee5802d-959d-4bd0-ba43-3365827909b8.jpg"/>
