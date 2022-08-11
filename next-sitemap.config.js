@@ -3,4 +3,5 @@
 module.exports = {
   siteUrl: 'https://kyoung-jnn.com',
   generateRobotsTxt: true,
+  generateIndexSitemap: false,
 };
