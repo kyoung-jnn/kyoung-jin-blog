@@ -1,7 +1,6 @@
 import { useTheme } from 'next-themes';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import Link from '@/components/CustomLink';
-import { Theme } from './ThemeSwitch';
 
 interface PostCardProps {
   title: string;
@@ -14,7 +13,7 @@ const PostCard = ({ title, date, summary, slug }: PostCardProps) => {
   const { theme } = useTheme();
 
   return (
-    <Link href={`/posts/${slug}`} className="text-gray-900 dark:text-gray-100">
+    <Link href={`/posts/${slug}`}>
       <StyledPostCard key={slug} theme={theme}>
         <ContentContainer>
           <h2 className="title">{title}</h2>
@@ -28,7 +27,7 @@ const PostCard = ({ title, date, summary, slug }: PostCardProps) => {
   );
 };
 
-const StyledPostCard = styled.li<{ theme: any }>`
+const StyledPostCard = styled.li<{ theme: string }>`
   padding: 15px 10px;
   margin-bottom: 10px;
   border: 2px solid transparent;
@@ -37,18 +36,10 @@ const StyledPostCard = styled.li<{ theme: any }>`
   cursor: pointer;
 
   transition: all 0.3s;
-  :hover {
+  &:hover {
     color: var(--focus-text);
     background-color: var(--focus-bg);
-
-    ${({ theme }) =>
-      theme === Theme.light
-        ? css`
-            filter: drop-shadow(0px 0px 25px #d8d6e9);
-          `
-        : css`
-            filter: drop-shadow(0px 0px 5px #d8d6e9);
-          `}};
+    filter: drop-shadow(0px 0px 10px #d8d6e9);
   }
 `;
 
