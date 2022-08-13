@@ -66,6 +66,7 @@ const StyledButton = styled.button.attrs({ type: 'button' })`
   background-color: var(--focus-bg);
   cursor: pointer;
   filter: drop-shadow(0px 0px 5px #d8d6e9);
+  -webkit-tap-highlight-color: transparent !important;
 
   .icon {
     width: 25px;
