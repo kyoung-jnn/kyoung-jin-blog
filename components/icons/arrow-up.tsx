@@ -1,4 +1,4 @@
-export default function ArrowUP({ className }: { className?: string }) {
+export default function ArrowUp({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 20 20">
       <path

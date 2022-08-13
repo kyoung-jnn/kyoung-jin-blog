@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Link from './CustomLink';
 import ThemeSwitch from '@/components/ThemeSwitch';
+import MobileNav from '@/components/MobileNav';
 import SiteConfig from '@/database/siteConfig';
 import headerNavLinks from '@/constants/headerMenu';
 import media from '@/styles/media';
@@ -23,7 +24,7 @@ function Header() {
           ))}
         </div>
         <ThemeSwitch />
-        {/* <MobileNav /> */}
+        <MobileNav />
       </RightHeaderContainer>
     </StyledHeader>
   );
