@@ -2,7 +2,6 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import { allPosts, Post } from 'contentlayer/generated';
 import ListLayout from '@/components/layout/ListLayout';
 import { PageSEO } from '@/components/SEO';
-import siteConfig from '@/database/siteConfig';
 import siteMetadata from '@/database/siteMetadata';
 
 const POSTS_PER_PAGE = 6;
