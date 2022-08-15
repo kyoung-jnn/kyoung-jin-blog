@@ -1,0 +1,40 @@
+---
+title: ?? 연산자 | Nullish Coalescing
+date: '2021-12-28'
+summary: JavaScript의 ?? 연산자
+publish: true
+---
+
+# ?? 연산자 / Nullish Coalescing
+
+## || 연산자의 문제점
+
+> JavaScript에서 `|| 연산자 (Logical OR)`는
+> **null & undefined** 감지를 따로 하지 못 합니다.
+
+```javascript
+false || 'true'; // 'true';
+'' || 'true'; // 'true'
+null || 'true'; // 'true'
+undefined || 'true'; // 'true'
+```
+
+**`||` 연산자**에서 좌항이 **falsy** 한 경우 무조건 오른쪽을 선택하기 때문입니다.
+
+> JS 내부에서 **falsy** 한 경우는 **`null`, `undefined`, `false`, `NaN`, `0`, `""`**
+
+---
+
+## ?? 연산자
+
+**ES2020**에서 **`??` 연산자**가 추가되었습니다.
+
+**`??` 연산자**를 사용하면 **nullish**
+즉, **undefined & null** 에 대해서 처리를 할 수 있습니다. 👍
+
+```javascript
+false ?? 'true'; // false;
+'' ?? 'true'; // ''
+null ?? 'true'; // 'true'
+undefined ?? 'true'; // 'true'
+```

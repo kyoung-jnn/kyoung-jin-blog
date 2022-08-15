@@ -1,0 +1,189 @@
+---
+title: Webpack으로 CRA없이 React(Typescript) 시작하기
+date: '2021-09-22'
+summary: React + Typescript + Webpack 구성
+publish: true
+---
+
+항상 **create-react-app** 방식으로 편안하게 **React** 프로젝트를 진행했습니다.
+
+하지만, `CRA` 에 너무 의존하면 추후 **`Webpack`, `Babel`** 에 대한
+추가적인 설정을 해야 할 때 어려움이 발생할 것 같아서 초기 구성을 처음부터 진행해봤습니다. 🥲
+
+---
+
+# React + Typescript + Webpack 구성
+
+## 1. React
+
+```typescript
+npm init -y
+npm i react react-dom
+```
+
+- **init**: 프로젝트 폴더 초기화 **`package.json`** 생성
+- **react, react-dom**: 기본 **react** 구성 설치
+
+## 2. Typescript
+
+```typescript
+npm i -D typescript @types/react @types/react-dom ts-loader
+
+// 직접 접근 (options)
+./node_modules/.bin/tsc --init
+```
+
+- **typescript, @types/react, @types/react-dom**: **typescript** 설치 및 타입 설치
+- **ts-loader**: **typescript -> javascript 변환 loader**
+- **tsc --init**: **`tsconfig.json`** 생성
+  > **typescript** 가 전역으로 설치 되지 않았다면
+  > **node_modules** 폴더에 직접 접근하여 생성!
+
+### 2-1. tsconfig.json
+
+> **`tsconfig.json`** 가 생성되면 모든 옵션들이 영어 해석과 함께 주석처리 되어 나타납니다.
+>
+> 한글이 필요하다면 [이 포스팅](https://geonlee.tistory.com/214)에서 한글로 번역해서 포스팅 해주셨습니다. 👍
+
+## 3. Babel
+
+```
+npm i -D babel-loader @babel/core
+npm i -D @babel/preset-env @babel/preset-react @babel/preset-typescript
+```
+
+**babel-loader** 와 **typescript에 추가적인 모듈** 설치
+
+### 3-1. babel.config.js
+
+```javascript
+module.exports = {
+  presets: [
+    '@babel/preset-react',
+    '@babel/preset-env',
+    '@babel/preset-typescript',
+  ],
+};
+```
+
+프로젝트 루트에 **babel 전체설정파일 생성**
+
+## 4. Webpack
+
+```
+npm i -D webpack webpack-cli webpack-dev-server html-webpack-plugin
+```
+
+- **webpack, webpack-cli**: webpack 설치
+- **webpack-dev-server**: 개발 과정 실시간 반영을 위해 설치
+- **html-webpack-plugin**: 생성된 결과물에 `html`을 포함시켜줍니다.
+
+### 4-1. webpack.config.js
+
+```javascript
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+module.exports = (env, argv) => {
+  const prod = argv.mode === "production";
+
+  return {
+  mode: prod ? "production" : "development",
+  devtool: prod ? "hidden-source-map" : "eval",
+  entry: "./src/index.tsx",
+  output: {
+    path: path.join(__dirname, "/dist"),
+    filename: "bundle.js",
+  },
+  resolve: {
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: ["babel-loader", "ts-loader"],
+      },
+    ],
+  },
+
+  plugins: [
+    new webpack.ProvidePlugin({
+      React: "react",
+    }),
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
+    }),
+  ],
+  },
+};
+```
+
+**Webpack** 설치 후 루트에 **설정 파일**을 생성하여 위와 같은 옵션을 부여해줍니다.
+옵션의 종류는 굉장히 다양하기 때문에 개인, 팀의 목표에 맞춰 설정합니다.
+
+- **mode**: 개발, 프로덕션 모드 확인
+- **devtool**: 모드에 따라 SourceMap 확인 여부
+- **entry**: 컴파일을 시작할 파일, 해당 파일부터 필요한 모듈 로딩 및 하나의 파일로 묶기
+- **output**: **webpack**이 **생성한 결과물**의 위치 및 이름
+- **resolve**: 배열안 확장자에 따라서 처리
+- **module**: **`loader`** 설정 / **babel-loader, ts-loader 등**
+
+> **loader 란? 🤔**
+>
+> **webpack**이 JavaScript, TypeScript 파일이 아닌
+> **HTML, CSS, IMG, 폰트** 등을 변환할 수 있도록 도와주는 속성
+
+- **plugins**: **부가 기능**을 할 플러그인 설정!
+
+### 4-2. Webpack-dev-server 설정
+
+```javascript
+const webpack = require('webpack');
+const path = require("path");
+...
+
+module.exports = (env, argv) => {
+  const prod = argv.mode === "production";
+
+  return {
+  devServer: {
+    port: 3000,
+    hot: true,
+  },
+  ...,
+  plugins: [
+    ...,
+    new webpack.HotModuleReplacementPlugin(),
+  ],
+  }
+}
+```
+
+**`webpack-dev-server`** 를 이용하면
+**실시간**으로 개발 모드로 개발하는 중 변경사항이 프로젝트에 반영됩니다.
+
+## 5. package.json
+
+```json
+ "scripts": {
+    "dev": "webpack-dev-server --mode=development --open --hot --progress",
+    "build": "webpack --mode=production  --progress",
+    "start": "webpack --mode=development  --progress"
+  },
+```
+
+드디어 마지막입니다. 😆
+
+명령어를 설정하여 `webpack`을 실행할 수 있도록 지정합니다.
+`npm run dev` 명령어 실행시 `localhost:3000`으로 홈페이지가 열리게 됩니다.
+
+# 마치며 👏
+
+**CRA** 를 이용하면 **편리**하기는 하지만
+간단한 프로젝트에 너무 많은 서브 코드들이 생성이 되는것 같아
+이제 **Webpack boilerplate** 코드를 저장한 뒤
+앞으로 사이드 프로젝트를 실행 할 때 **CRA** 대신 사용해야겠습니다.
+
+> 위 과정은 **정말 기초적인 webpack 과정**입니다.
+> `css-loader`, `file-loader`를 추가하여
+> **css, 파일, 이미지**를 프로젝트에 사용 가능하게 설정해야 합니다.

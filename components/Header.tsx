@@ -8,35 +8,40 @@ import media from '@/styles/media';
 
 function Header() {
   return (
-    <StyledHeader>
-      <Link href="/" aria-label="home link">
-        <LeftHeaderContainer>
-          <div className="header-logo">🚀</div>
-          <div className="header-title">{SiteConfig.title}</div>
-        </LeftHeaderContainer>
-      </Link>
-      <RightHeaderContainer>
-        <div className="menu-list">
-          {headerNavLinks.map(({ title, href }) => (
-            <Link key={title} href={href} className="menu-item">
-              {title}
-            </Link>
-          ))}
-        </div>
-        <ThemeSwitch />
-        <MobileNav />
-      </RightHeaderContainer>
-    </StyledHeader>
+    <Wrapper>
+      <Nav>
+        <Link href="/" aria-label="home link">
+          <LeftHeaderContainer>
+            <div className="header-logo">🚀</div>
+            <div className="header-title">{SiteConfig.title}</div>
+          </LeftHeaderContainer>
+        </Link>
+        <RightHeaderContainer>
+          <div className="menu-list">
+            {headerNavLinks.map(({ title, href }) => (
+              <Link key={title} href={href} className="menu-item">
+                {title}
+              </Link>
+            ))}
+          </div>
+          <ThemeSwitch />
+          <MobileNav />
+        </RightHeaderContainer>
+      </Nav>
+    </Wrapper>
   );
 }
 
 export default Header;
 
-const StyledHeader = styled.header`
+const Wrapper = styled.header`
+  padding: 40px 0;
+`;
+
+const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 40px 0;
 `;
 
 const LeftHeaderContainer = styled.div`
