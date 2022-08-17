@@ -1,7 +1,7 @@
 ---
 title: Next.js, Hydrate란?
 date: '2022-08-17'
-summary: Google web dev, Animation 파트를 보고 간략히 정리를 해보았습니다.
+summary: Next.js의 Hydrate, Pre-rendering에 대해서
 publish: true
 ---
 
