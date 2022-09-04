@@ -2,7 +2,7 @@
 title: React, Compound Components (컴파운드 컴포넌트 패턴)
 date: '2022-08-26'
 summary: React의 컴포넌트 디자인 패턴
-publish: true
+publish: false
 ---
 
 # Compound Components Pattern
