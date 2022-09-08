@@ -55,8 +55,8 @@ const PostHeader = styled.header`
   }
 
   .post-title {
-    font-size: 40px;
-    font-weight: 900;
+    font-size: 36px;
+    font-weight: 700;
     letter-spacing: -1.5px;
   }
 `;

@@ -26,6 +26,7 @@ const GlobalStyle = createGlobalStyle`
     letter-spacing: -0.5px;
     color: var(--text);
     background-color: var(--bg);
+    -webkit-font-smoothing: antialiased;
   }
 
   *,
