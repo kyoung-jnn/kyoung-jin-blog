@@ -13,5 +13,5 @@ export const darkTheme = css`
   --bg: #100f0f;
   --text: #f1f1f1;
   --focus-text: #27ae60;
-  --focus-bg: #d2dae2;
+  --focus-bg: #393e46;
 `;

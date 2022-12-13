@@ -75,8 +75,8 @@ const rotateMoon = keyframes`
 `;
 
 const StyledButton = styled.button`
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   margin-left: 10px;
   cursor: pointer;
 

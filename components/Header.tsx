@@ -35,7 +35,8 @@ function Header() {
 export default Header;
 
 const Wrapper = styled.header`
-  padding: 40px 0;
+  position: sticky;
+  padding: 15px 0;
 `;
 
 const Nav = styled.nav`
@@ -50,14 +51,14 @@ const LeftHeaderContainer = styled.div`
   align-items: center;
 
   > .header-logo {
-    font-size: 48px;
+    font-size: 28px;
     margin-right: 10px;
   }
 
   > .header-title {
     display: none;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 21px;
 
     ${media.mobile} {
       display: block;

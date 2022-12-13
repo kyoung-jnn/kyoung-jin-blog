@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   // Font
-  html  { font-family: 'Inter', sans-serif; }
+  html  { font-family: 'Inter', sans-serif; scroll-behavior:smooth; }
   @supports (font-variation-settings: normal) {
     html { font-family: 'Inter var', sans-serif; }
   }
@@ -51,6 +51,16 @@ const GlobalStyle = createGlobalStyle`
   
   button {
     all: unset;
+  }
+
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0 0 5px 0;
   }
 `;
 

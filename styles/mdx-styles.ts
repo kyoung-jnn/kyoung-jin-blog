@@ -5,7 +5,8 @@ const MDXStyle = css`
   * {
     font-size: 16px;
     line-height: 1.8;
-    letter-spacing: 0;
+    letter-spacing: -0.2px;
+    font-weight: 500;
     font-family: 'Ieter', sans-serif;
   }
 
@@ -16,20 +17,21 @@ const MDXStyle = css`
   h5,
   h6 {
     font-weight: 800;
-    margin: 15px 0;
     letter-spacing: -0.02em;
   }
 
   h1 {
-    font-size: 30px;
+    font-size: 32px;
+    margin-top: 32px;
   }
 
   h2 {
     font-size: 26px;
+    margin-top: 20px;
   }
 
   h3 {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   // 줄바꿈
@@ -75,7 +77,6 @@ const MDXStyle = css`
   blockquote {
     margin: 0;
     padding: 1px 10px;
-    color: var(--focus-text);
     background-color: var(--focus-bg);
     border-radius: 10px;
 

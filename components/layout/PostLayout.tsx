@@ -6,6 +6,7 @@ import MDXStyle from '@/styles/mdx-styles';
 import BreakPoints from '@/constants/breakpoints';
 import Comment from '@/components/Comment';
 import ScrollTopAndComment from '@/components/ScrollTopAndComment';
+import TOC from '@/components/TOC';
 
 interface PostLayoutProps {
   title: string;
@@ -19,21 +20,22 @@ function PostLayout({ title, date, children }: PostLayoutProps) {
 
   return (
     <>
+      <TOC />
       <article>
         <PostHeader>
-          <div className="post-date">
-            <time dateTime={updatedAt}>{updatedAt}</time>
-          </div>
-          <div className="post-title">{title}</div>
+          <time className="post-date" dateTime={updatedAt}>
+            {updatedAt}
+          </time>
+          <h1 className="post-title">{title}</h1>
         </PostHeader>
         <PostWrapper>
           {/* 본문 영역 */}
           <PostBody>{children}</PostBody>
-          {/* 댓글 영역 */}
-          <div ref={commentContainerRef}>
-            <Comment />
-          </div>
           <PostFooter>
+            {/* 댓글 영역 */}
+            <div ref={commentContainerRef}>
+              <Comment />
+            </div>
             <Link href="/posts/page/1">&larr; 돌아가기</Link>
           </PostFooter>
           <ScrollTopAndComment commentContainerRef={commentContainerRef} />
@@ -58,6 +60,7 @@ const PostHeader = styled.header`
     font-size: 36px;
     font-weight: 700;
     letter-spacing: -1.5px;
+    margin-top: 20px;
   }
 `;
 
@@ -74,8 +77,9 @@ const PostBody = styled.div`
 `;
 
 const PostFooter = styled.footer`
-  padding-top: 30px;
+  margin-top: 30px;
   font-size: 16px;
+  border-top: 1px solid #e5e5e5;
 `;
 
 export default PostLayout;
