@@ -5,6 +5,8 @@ summary: git hooks과 lint-staged 사용하기
 publish: true
 ---
 
+# commit시 ESlint 자동화를 시켜보자
+
 **협업을 할 때 우리는 결국 하나의 코드를 일정하게 유지해야 합니다.**
 
 이를 위해서 주로 `컨벤션`을 정하거나 `ESlint` 설정을 통해 코드에 규칙을 부여하곤 하는데,
@@ -12,13 +14,13 @@ publish: true
 
 > `git hooks`를 이용하여 **commit**시 **lint** 스크립트가 자동으로 실행되게 구성해봅시다.
 
-### 🪝 git hooks
+### git hooks 🪝
 
 **git**에서는 **commit**이 올라가기전 특정 스크립트를 수행할 수 있게 해주는 `git hooks`이라는 기능을 제공합니다.
 
 > **commit**이 올라가기전, **갈고리를 걸어서 못 올라가게 하고** 스크립트 먼저 실행시키기~
 
-## 1. simple-git-hooks 설치 (git hooks 설정)
+## simple-git-hooks 설치 (git hooks 설정)
 
 간단히 `git hooks` 추가를 위해 `simple-git-hooks` 패키지를 설치합니다.
 
@@ -52,7 +54,7 @@ yarn lint-staged
 
 > `.git/hooks` 폴더에는 다양한 hooks들이 존재합니다. 😎
 
-## 2. lint-staged 설치
+## lint-staged 설치
 
 만약에 **git staging 상태**가 아닌 모든 파일들을 **lint** 검사하면 시간이 많이 걸리게 됩니다.
 때문에, **git staging 상태** 파일들에 대해서만 **lint** 를 해줘야 합니다.
@@ -78,7 +80,7 @@ yarn add -D lint-staged
 
 프로젝트의 **package.json**에 위와 같은 스크립트를 추가합니다. 저는 **.js, .ts** 파일 모두 **lint**를 원하고 `prettier` 설정 또한 자동으로 포멧팅되길 원하기 때문에 위와 같이 설정을 주었습니다.
 
-## 3. 테스트!
+## 테스트!
 
 ```
 ✔ Preparing lint-staged...

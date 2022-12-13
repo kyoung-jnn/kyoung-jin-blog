@@ -67,7 +67,7 @@ const PostHeader = styled.header`
 const PostWrapper = styled.div`
   position: relative;
   max-width: ${BreakPoints.tablet + 'px'};
-  padding: 20px 0;
+  padding-bottom: 20px;
   border-top: 1px solid #e5e5e5;
   border-bottom: 1px solid #e5e5e5;
 `;

@@ -26,12 +26,13 @@ const MDXStyle = css`
   }
 
   h2 {
-    font-size: 26px;
+    font-size: 24px;
     margin-top: 20px;
   }
 
   h3 {
     font-size: 20px;
+    margin-top: 12px;
   }
 
   // 줄바꿈
