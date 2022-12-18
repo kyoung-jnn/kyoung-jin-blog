@@ -30,6 +30,8 @@ const Image = ({ src, auto = false, size = 'large', ...rest }: Props) => {
         alt={src}
         layout={auto ? 'fill' : 'fixed'}
         objectFit={auto ? 'cover' : 'fill'}
+        placeholder="blur"
+        blurDataURL={src}
         {...(!auto && sizes[size])}
         {...rest}
       />

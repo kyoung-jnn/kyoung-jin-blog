@@ -60,7 +60,7 @@ const PostHeader = styled.header`
 
   .post-date {
     font-size: 20px;
-    font-weight: 300;
+    font-weight: 400;
     color: var(--fontColor);
     margin-bottom: 10px;
   }

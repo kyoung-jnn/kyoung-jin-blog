@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "start": "next start",
     "postbuild": "next-sitemap & sh ./scripts/ping-sitemap.sh",
     "simple-git-hooks": "simple-git-hooks",
     "prepare": "yarn simple-git-hooks"
