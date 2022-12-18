@@ -61,7 +61,7 @@ export default function PostList({
   return (
     <>
       <PageSEO
-        title={`작성한 글, 포스팅 목록`}
+        title={`작성한 글, 포스팅 목록 | Kyoung Jin, Roh`}
         description={siteMetadata.description}
       />
       <ListLayout
@@ -69,7 +69,7 @@ export default function PostList({
         pagePosts={pagePosts}
         totalPage={totalPage}
         currentPage={currentPage}
-        title={`📝 Page, ${currentPage}`}
+        title={`📒 Page, ${currentPage}`}
         paginationLink="/posts/page"
       />
     </>

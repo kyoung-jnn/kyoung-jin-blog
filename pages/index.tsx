@@ -10,10 +10,9 @@ import siteConfig from '@/database/siteConfig';
 import siteMetadata from '@/database/siteMetadata';
 import waving_hand from '@/public/waving-hand.webp';
 import { fadeLeft, fadeUp, waving } from '@/utils/animation';
-import media from '@/styles/media';
 
 // 최신 글 개수
-const MAX_DISPLAY = 3;
+const MAX_DISPLAY = 5;
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = allPosts
@@ -35,7 +34,7 @@ export default function Home({
         description={siteMetadata.description}
       />
       <IntroSection>
-        <div className="title">
+        <h1 className="title">
           Hello, There
           <AnimatedHand>
             <Image
@@ -46,12 +45,24 @@ export default function Home({
               height={45}
             />
           </AnimatedHand>
-        </div>
-        <div className="subtitle">Slow and Steady.</div>
-        <h3>{siteConfig.author.name}</h3>
-        <div>Frontend Engineer</div>
-        <div>In Seoul, Korea</div>
-        <IconContainer>
+        </h1>
+        <h2 className="subtitle">Slow and Steady.</h2>
+        <ProfileSection>
+          <Image
+            src="https://avatars.githubusercontent.com/u/55469709?s=400&u=9d32f97f83bf19b48b488ce2c007f4a82b432c99&v=4"
+            alt="profile-image"
+            aria-label="프로필 이미지"
+            width={110}
+            height={110}
+            style={{
+              borderRadius: '50%',
+            }}
+          />
+          <h3 className="name">{siteConfig.author.name}</h3>
+          <div>Frontend Engineer</div>
+          <div>In Seoul, Korea</div>
+        </ProfileSection>
+        <ContactSection>
           <Icon
             kind="mail"
             href={`mailto:${siteConfig.author.contacts.email}`}
@@ -67,10 +78,9 @@ export default function Home({
             href={siteConfig.author.contacts.linkedin}
             size={24}
           />
-        </IconContainer>
+        </ContactSection>
       </IntroSection>
       <LatestSection>
-        <LatestTitle>🔥 최신 글 | Latest</LatestTitle>
         <ul>
           {!latestPosts.length && '포스팅이 없어요! 😅'}
           {latestPosts.map(({ title, date, summary, _raw }: any) => {
@@ -98,11 +108,11 @@ export default function Home({
 }
 
 const IntroSection = styled.section`
-  margin: 50px 0;
+  margin: 50px 0 30px;
 
   .title {
     font-size: 50px;
-    font-weight: 900;
+    font-weight: 800;
   }
 
   .subtitle {
@@ -112,10 +122,6 @@ const IntroSection = styled.section`
   }
 
   animation: ${fadeUp} 1s forwards;
-
-  ${media.mobile} {
-    margin: 80px 0;
-  }
 `;
 
 const AnimatedHand = styled.div`
@@ -127,22 +133,27 @@ const AnimatedHand = styled.div`
   animation: ${waving} 2s;
 `;
 
-const LatestTitle = styled.h1`
-  font-weight: 700;
+const ProfileSection = styled.section`
+  margin-top: 20px;
+
+  .name {
+    margin-top: 10px;
+  }
+`;
+
+const ContactSection = styled.section`
+  margin-top: 20px;
+  div {
+    margin-right: 15px;
+  }
 `;
 
 const LatestSection = styled.section`
   opacity: 0;
   animation: ${fadeLeft} 1s 0.5s forwards;
+  border-top: 1px solid #e5e5e5;
 
   > .more-button-wrapper {
     float: right;
-  }
-`;
-
-const IconContainer = styled.div`
-  margin-top: 20px;
-  div {
-    margin-right: 15px;
   }
 `;

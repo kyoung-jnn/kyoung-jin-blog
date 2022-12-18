@@ -43,7 +43,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 function PostPage({ post }: InferGetStaticPropsType<typeof getStaticProps>) {
   const MDXPost = useMDXComponent(post.body.code);
-  const { title, date, _raw, body } = post;
+  const { title, date, body, thumbnail, _raw } = post;
   const short_description = body.raw
     .replace(/[#|*|`]/g, '') // 마크다운 문법 제거
     .replace(/[-]/g, '') // - 제거
@@ -65,7 +65,7 @@ function PostPage({ post }: InferGetStaticPropsType<typeof getStaticProps>) {
         summary={short_description}
         date={date}
       />
-      <PostLayout title={title} date={date}>
+      <PostLayout title={title} date={date} thumbnail={thumbnail}>
         <MDXPost components={MDXComponents} />
       </PostLayout>
     </>

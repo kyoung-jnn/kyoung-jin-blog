@@ -6,44 +6,55 @@ import MDXStyle from '@/styles/mdx-styles';
 import BreakPoints from '@/constants/breakpoints';
 import Comment from '@/components/Comment';
 import ScrollTopAndComment from '@/components/ScrollTopAndComment';
+import TOC from '@/components/TOC';
+import { fadeIn } from '@/utils/animation';
+import Image from '../Image';
 
 interface PostLayoutProps {
   title: string;
   date: string;
+  thumbnail?: string;
   children: ReactNode;
 }
 
-function PostLayout({ title, date, children }: PostLayoutProps) {
+function PostLayout({ title, date, thumbnail, children }: PostLayoutProps) {
   const updatedAt = format(new Date(date), 'yyyy-MM-dd');
   const commentContainerRef = useRef<HTMLDivElement>(null);
 
   return (
     <>
-      <article>
+      <TOC />
+      <Wrapper>
         <PostHeader>
-          <div className="post-date">
-            <time dateTime={updatedAt}>{updatedAt}</time>
-          </div>
-          <div className="post-title">{title}</div>
+          <time className="post-date" dateTime={updatedAt}>
+            {updatedAt}
+          </time>
+          <h1 className="post-title">{title}</h1>
+          {thumbnail && <Image src={thumbnail} alt="썸네일" auto priority />}
         </PostHeader>
         <PostWrapper>
           {/* 본문 영역 */}
           <PostBody>{children}</PostBody>
-          {/* 댓글 영역 */}
-          <div ref={commentContainerRef}>
-            <Comment />
-          </div>
           <PostFooter>
+            {/* 댓글 영역 */}
+            <div ref={commentContainerRef}>
+              <Comment />
+            </div>
             <Link href="/posts/page/1">&larr; 돌아가기</Link>
           </PostFooter>
           <ScrollTopAndComment commentContainerRef={commentContainerRef} />
         </PostWrapper>
-      </article>
+      </Wrapper>
     </>
   );
 }
 
+const Wrapper = styled.article`
+  animation: ${fadeIn} 0.5s forwards;
+`;
+
 const PostHeader = styled.header`
+  position: relative;
   padding: 20px 0;
   text-align: center;
 
@@ -58,13 +69,14 @@ const PostHeader = styled.header`
     font-size: 36px;
     font-weight: 700;
     letter-spacing: -1.5px;
+    margin-top: 20px;
   }
 `;
 
 const PostWrapper = styled.div`
   position: relative;
   max-width: ${BreakPoints.tablet + 'px'};
-  padding: 20px 0;
+  padding-bottom: 20px;
   border-top: 1px solid #e5e5e5;
   border-bottom: 1px solid #e5e5e5;
 `;
@@ -74,8 +86,9 @@ const PostBody = styled.div`
 `;
 
 const PostFooter = styled.footer`
-  padding-top: 30px;
+  margin-top: 30px;
   font-size: 16px;
+  border-top: 1px solid #e5e5e5;
 `;
 
 export default PostLayout;

@@ -80,11 +80,11 @@ export default function ListLayout({
 }
 
 const PostListTitleSection = styled.section`
-  margin-bottom: 30px;
+  margin-top: 40px;
 `;
 
 const PostListTitle = styled.h1`
-  font-size: 40px;
+  font-size: 32px;
   font-weight: 700;
 `;
 
