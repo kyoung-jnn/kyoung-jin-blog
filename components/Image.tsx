@@ -1,4 +1,4 @@
-import NextImage from 'next/image';
+import NextImage, { ImageProps } from 'next/image';
 import styled, { css } from 'styled-components';
 
 const sizes = {
@@ -16,24 +16,21 @@ const sizes = {
   },
 } as const;
 
-interface ImageProps {
+interface Props extends ImageProps {
   src: string;
   auto: boolean;
-  size: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
 }
 
-const Image = ({ src, auto = false, size = 'large', ...rest }: ImageProps) => {
+const Image = ({ src, auto = false, size = 'large', ...rest }: Props) => {
   return (
-    <ImageWrapper aria-label="post image" auto={auto}>
-      <LazyLoadImage
+    <ImageWrapper aria-label="포스팅 이미지" auto={auto}>
+      <_Image
         src={src}
         alt={src}
-        width={sizes[size].width}
-        height={sizes[size].height}
         layout={auto ? 'fill' : 'fixed'}
         objectFit={auto ? 'cover' : 'fill'}
-        placeholder="blur"
-        blurDataURL={src}
+        {...(!auto && sizes[size])}
         {...rest}
       />
     </ImageWrapper>
@@ -58,8 +55,7 @@ const ImageWrapper = styled.div<{ auto: boolean }>`
     `};
 `;
 
-const LazyLoadImage = styled(NextImage)`
-  transition: 0.3s;
+const _Image = styled(NextImage)`
   border-radius: 5px;
 `;
 

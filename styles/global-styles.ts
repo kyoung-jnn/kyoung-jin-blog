@@ -53,6 +53,9 @@ const GlobalStyle = createGlobalStyle`
     all: unset;
   }
 
+  img {
+    -webkit-user-drag: none;
+  }
 
   h1,
   h2,

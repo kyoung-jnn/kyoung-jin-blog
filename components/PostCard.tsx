@@ -39,7 +39,7 @@ const StyledPostCard = styled.li<{ theme: string }>`
   &:hover {
     color: var(--focus-text);
     background-color: var(--focus-bg);
-    filter: drop-shadow(0px 0px 10px #d8d6e9);
+    filter: drop-shadow(0px 0px 10px var(--focus-bg));
   }
 `;
 

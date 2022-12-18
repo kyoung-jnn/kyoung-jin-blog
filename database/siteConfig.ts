@@ -1,9 +1,7 @@
 // 사이트의 일반 정보
 
 const siteConfig = {
-  title: `kyoung-jnn`,
-  subtitle: 'kyoung-jnn의 개발 블로그',
-  sitename: `kyoung-jnn's blog`,
+  title: `Kyoung Jin, Roh`,
   author: {
     name: 'Kyoung Jin, Roh',
     photo: '/public/profile.webp',

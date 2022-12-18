@@ -2,6 +2,7 @@
 title: async/await를 map 안에서 쓰기
 date: '2022-09-18'
 summary: async/await in map
+thumbnail: '/posts/2022/09/async-in-map/thumbnail.png'
 publish: true
 ---
 
@@ -41,7 +42,7 @@ const response = await userIdList.map(async (id) => {
 
 **Promise.all**은 하나의 **Promise**가 실패하면 병렬적으로 수행하던 작업을 멈추고 오류를 반환합니다. (모든 Promise의 Resolve를 보장함)
 
-따라서, 각각의 Promise들의 **성공, 실패여부 없이 모든 데이터(Resolve, Reject)**를 가져오고 싶다면 `Promise.allSettled`를 사용하면 됩니다.
+따라서, 각각의 Promise들의 **성공, 실패여부 없이 모든 데이터 (Resolve, Reject)** 를 가져오고 싶다면 `Promise.allSettled`를 사용하면 됩니다.
 
 ```js
 const response = await Promise.all(

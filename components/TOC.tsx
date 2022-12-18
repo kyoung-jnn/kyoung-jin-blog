@@ -12,7 +12,7 @@ function TOC() {
 
     // 본문의 h 태그를 가져온다
     const tableElements = Array.from(document.querySelectorAll('h1, h2, h3'))
-      .slice(1)
+      .slice(1) // 제목은 제외
       .map((tableElement, index) => {
         tableElement['id'] = tableElement.innerHTML.replace(/\s/g, '-');
         return tableElement;
@@ -53,7 +53,7 @@ const Wrapper = styled.div`
     margin-top: 150px;
     margin-left: 740px;
     padding: 10px 20px 10px 10px;
-    border-left: 3px solid var(--focus-bg);
+    border-left: 1px solid #e5e5e5;
   }
 `;
 

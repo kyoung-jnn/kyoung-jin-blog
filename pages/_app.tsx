@@ -6,6 +6,7 @@ import { ThemeProvider } from 'next-themes';
 import MainLayout from '@/components/layout/MainLayout';
 import GlobalStyle from '@/styles/global-styles';
 import * as ga from '@/utils/gtag';
+import ProgressBar from '@/components/ProgressBar';
 
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -30,6 +31,7 @@ function App({ Component, pageProps }: AppProps) {
           <meta content="width=device-width, initial-scale=1" name="viewport" />
         </Head>
         <MainLayout>
+          <ProgressBar />
           <Component {...pageProps} />
         </MainLayout>
       </ThemeProvider>

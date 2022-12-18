@@ -7,6 +7,9 @@ const nextConfig = {
     locales: ['ko'],
     defaultLocale: 'ko',
   },
+  images: {
+    domains: ['avatars.githubusercontent.com'],
+  },
 };
 
 module.exports = withContentlayer(nextConfig);

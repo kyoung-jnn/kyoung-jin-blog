@@ -12,6 +12,7 @@ export default function SectionContainer({ children }: SectionConatinerProps) {
 }
 
 const StyledSectionContainer = styled.div`
+  position: relative;
   max-width: ${BREAK_POINTS.tablet + 'px'};
   margin-left: auto;
   margin-right: auto;

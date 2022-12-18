@@ -7,26 +7,30 @@ import BreakPoints from '@/constants/breakpoints';
 import Comment from '@/components/Comment';
 import ScrollTopAndComment from '@/components/ScrollTopAndComment';
 import TOC from '@/components/TOC';
+import { fadeIn } from '@/utils/animation';
+import Image from '../Image';
 
 interface PostLayoutProps {
   title: string;
   date: string;
+  thumbnail?: string;
   children: ReactNode;
 }
 
-function PostLayout({ title, date, children }: PostLayoutProps) {
+function PostLayout({ title, date, thumbnail, children }: PostLayoutProps) {
   const updatedAt = format(new Date(date), 'yyyy-MM-dd');
   const commentContainerRef = useRef<HTMLDivElement>(null);
 
   return (
     <>
       <TOC />
-      <article>
+      <Wrapper>
         <PostHeader>
           <time className="post-date" dateTime={updatedAt}>
             {updatedAt}
           </time>
           <h1 className="post-title">{title}</h1>
+          {thumbnail && <Image src={thumbnail} alt="썸네일" auto priority />}
         </PostHeader>
         <PostWrapper>
           {/* 본문 영역 */}
@@ -40,12 +44,17 @@ function PostLayout({ title, date, children }: PostLayoutProps) {
           </PostFooter>
           <ScrollTopAndComment commentContainerRef={commentContainerRef} />
         </PostWrapper>
-      </article>
+      </Wrapper>
     </>
   );
 }
 
+const Wrapper = styled.article`
+  animation: ${fadeIn} 0.5s forwards;
+`;
+
 const PostHeader = styled.header`
+  position: relative;
   padding: 20px 0;
   text-align: center;
 

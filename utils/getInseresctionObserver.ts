@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 
-const options = { threshold: 1, rootMargin: '0px' };
+const options = { threshold: 1 };
 
 export const getIntersectionObserver = (
   setCurrentTable: Dispatch<SetStateAction<string>>,

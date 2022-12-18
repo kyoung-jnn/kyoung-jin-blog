@@ -3,8 +3,8 @@ import 'highlight.js/styles/atom-one-dark-reasonable.css';
 
 const MDXStyle = css`
   * {
-    font-size: 16px;
-    line-height: 1.8;
+    font-size: 18px;
+    line-height: 1.6;
     letter-spacing: -0.2px;
     font-weight: 500;
     font-family: 'Ieter', sans-serif;
@@ -37,24 +37,28 @@ const MDXStyle = css`
 
   // 줄바꿈
   p {
-    margin: 10px 0;
+    margin-top: 10px 0;
+  }
+
+  // 볼드체
+  strong {
+    font-weight: 800;
   }
 
   // 강조 글씨
   p > code {
-    font-weight: 700;
+    font-weight: 800;
     border-bottom: 2px solid var(--focus-text);
-    margin: 0 0.5px;
   }
   li > code {
-    font-weight: 700;
+    font-weight: 800;
     border-bottom: 2px solid var(--focus-text);
-    margin: 0 0.5px;
   }
 
   // 코드 블록
   pre > code {
-    font-weight: 400;
+    position: relative;
+    font-weight: 600;
     border-radius: 10px !important;
   }
 
@@ -63,27 +67,26 @@ const MDXStyle = css`
   ol {
     margin: 10px;
   }
-
   li {
     margin: 10px;
     list-style: disc;
-  }
-
-  // 볼드체
-  strong {
-    font-weight: 700;
   }
 
   // '>' 표시
   blockquote {
     margin: 0;
     padding: 1px 10px;
+    color: var(--blockquote-text);
     background-color: var(--focus-bg);
     border-radius: 10px;
 
     p > code {
-      font-weight: 700;
+      font-weight: 780;
     }
+  }
+
+  a {
+    color: var(--blockquote-text);
   }
 `;
 
