@@ -9,6 +9,8 @@ const nextConfig = {
   },
   images: {
     domains: ['avatars.githubusercontent.com'],
+    imageSizes: [32, 96, 128],
+    deviceSizes: [768, 1280, 1920],
   },
 };
 
