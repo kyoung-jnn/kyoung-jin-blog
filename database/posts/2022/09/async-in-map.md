@@ -2,7 +2,7 @@
 title: async/await를 map 안에서 쓰기
 date: '2022-09-18'
 summary: async/await in map
-thumbnail: '/posts/2022/09/async-in-map/thumbnail.png'
+thumbnail: '/thumbnail/js.png'
 publish: true
 ---
 

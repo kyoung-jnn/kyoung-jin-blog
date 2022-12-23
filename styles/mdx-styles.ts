@@ -47,12 +47,39 @@ const MDXStyle = css`
 
   // 강조 글씨
   p > code {
-    font-weight: 800;
-    border-bottom: 2px solid var(--focus-text);
+    font-weight: 600;
+    border-radius: 5px;
+    color: var(--blockquote-text);
+    background-color: var(--code-bg);
+    font-size: 90%;
+    padding: 3.5px 5px;
   }
-  li > code {
+
+  p > strong > code {
     font-weight: 800;
-    border-bottom: 2px solid var(--focus-text);
+    border-radius: 5px;
+    color: var(--blockquote-text);
+    background-color: var(--code-bg);
+    font-size: 90%;
+    padding: 3.5px 5px;
+  }
+
+  li > code {
+    font-weight: 600;
+    border-radius: 5px;
+    color: var(--blockquote-text);
+    background-color: var(--code-bg);
+    font-size: 90%;
+    padding: 3.5px 5px;
+  }
+
+  // '>' 표시
+  blockquote {
+    margin: 0;
+    padding: 1px 10px;
+    color: var(--blockquote-text);
+    background-color: var(--blockquote-bg);
+    border-radius: 10px;
   }
 
   // 코드 블록
@@ -72,21 +99,8 @@ const MDXStyle = css`
     list-style: disc;
   }
 
-  // '>' 표시
-  blockquote {
-    margin: 0;
-    padding: 1px 10px;
-    color: var(--blockquote-text);
-    background-color: var(--focus-bg);
-    border-radius: 10px;
-
-    p > code {
-      font-weight: 780;
-    }
-  }
-
   a {
-    color: var(--blockquote-text);
+    color: var(--focus-text);
   }
 `;
 
