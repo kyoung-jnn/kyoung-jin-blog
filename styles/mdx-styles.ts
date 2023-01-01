@@ -1,13 +1,15 @@
 import { css } from 'styled-components';
-import 'highlight.js/styles/atom-one-dark-reasonable.css';
+import 'highlight.js/styles/monokai-sublime.css';
 
 const MDXStyle = css`
   * {
-    font-size: 18px;
-    line-height: 1.6;
-    letter-spacing: -0.2px;
+    font-size: 17px;
+    line-height: 1.7;
     font-weight: 500;
-    font-family: 'Ieter', sans-serif;
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+      Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo',
+      'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji',
+      'Segoe UI Symbol', sans-serif;
   }
 
   h1,
@@ -16,13 +18,13 @@ const MDXStyle = css`
   h4,
   h5,
   h6 {
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: -0.02em;
   }
 
   h1 {
     font-size: 32px;
-    margin-top: 32px;
+    margin-top: 20px;
   }
 
   h2 {
@@ -32,17 +34,12 @@ const MDXStyle = css`
 
   h3 {
     font-size: 20px;
-    margin-top: 12px;
-  }
-
-  // 줄바꿈
-  p {
-    margin-top: 10px 0;
+    margin-top: 14px;
   }
 
   // 볼드체
   strong {
-    font-weight: 800;
+    font-weight: 700;
   }
 
   // 강조 글씨
@@ -56,7 +53,7 @@ const MDXStyle = css`
   }
 
   p > strong > code {
-    font-weight: 800;
+    font-weight: 700;
     border-radius: 5px;
     color: var(--blockquote-text);
     background-color: var(--code-bg);
@@ -85,7 +82,7 @@ const MDXStyle = css`
   // 코드 블록
   pre > code {
     position: relative;
-    font-weight: 600;
+    font-weight: 500;
     border-radius: 10px !important;
   }
 

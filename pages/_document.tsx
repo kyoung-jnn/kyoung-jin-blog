@@ -45,14 +45,12 @@ export default class MyDocument extends Document {
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <GoogleAnalyticsScript />
           {/* 폰트 */}
-          <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin="anonymous"
-          />
+          <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
           <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+            as="style"
+            crossOrigin="anonymous"
+            href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.6/static/pretendard.css"
           />
         </Head>
         <body>

@@ -112,7 +112,7 @@ const IntroSection = styled.section`
 
   .title {
     font-size: 50px;
-    font-weight: 800;
+    font-weight: 700;
   }
 
   .subtitle {
