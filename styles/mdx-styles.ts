@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import 'highlight.js/styles/monokai-sublime.css';
+import 'highlight.js/styles/atom-one-dark-reasonable.css';
 
 const MDXStyle = css`
   * {
@@ -28,7 +28,7 @@ const MDXStyle = css`
   }
 
   h2 {
-    font-size: 24px;
+    font-size: 26px;
     margin-top: 20px;
   }
 
@@ -80,9 +80,10 @@ const MDXStyle = css`
   }
 
   // 코드 블록
-  pre > code {
+  pre > code > span {
     position: relative;
     font-weight: 500;
+    line-height: 17px;
     border-radius: 10px !important;
   }
 
