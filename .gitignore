@@ -37,3 +37,6 @@ yarn-error.log*
 
 # Contentlayer
 .contentlayer
+
+/public/robots.txt
+/public/sitemap.xml
