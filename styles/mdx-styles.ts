@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import 'highlight.js/styles/atom-one-dark-reasonable.css';
+import SyntaxStyle from './syntax-styles';
 
 const MDXStyle = css`
   * {
@@ -79,10 +79,7 @@ const MDXStyle = css`
   }
 
   // 코드 블록
-  pre > code {
-    font-size: 14px;
-    border-radius: 5px !important;
-  }
+  ${SyntaxStyle}
 
   // 리스트
   ul,

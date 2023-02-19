@@ -1,5 +1,6 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
-import highlight from 'rehype-highlight';
+import rehypePrettyCode from 'rehype-pretty-code';
+import { rehypePrettyCodeOptions } from './styles/rehype-styles';
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
@@ -20,5 +21,5 @@ export const Post = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: 'database/posts',
   documentTypes: [Post],
-  mdx: { rehypePlugins: [highlight] },
+  mdx: { rehypePlugins: [[rehypePrettyCode, rehypePrettyCodeOptions]] },
 });

@@ -9,6 +9,8 @@ export const lightTheme = css`
   --focus-bg: #f1f2f6;
   --blockquote-bg: #f1f2f6;
   --code-bg: #dfe4ea;
+  --syntax-text: #75715e;
+  --syntax-bg: #272822;
 `;
 
 export const darkTheme = css`
@@ -20,4 +22,6 @@ export const darkTheme = css`
   --focus-bg: #dfe4ea;
   --blockquote-bg: #353b48;
   --code-bg: #808e9b;
+  --syntax-text: #75715e;
+  --syntax-bg: #272822;
 `;
