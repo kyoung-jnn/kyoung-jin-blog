@@ -3,13 +3,8 @@ import 'highlight.js/styles/atom-one-dark-reasonable.css';
 
 const MDXStyle = css`
   * {
-    font-size: 17px;
     line-height: 1.7;
     font-weight: 500;
-    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
-      Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo',
-      'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji',
-      'Segoe UI Symbol', sans-serif;
   }
 
   h1,
@@ -50,6 +45,10 @@ const MDXStyle = css`
     background-color: var(--code-bg);
     font-size: 90%;
     padding: 3.5px 5px;
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+      Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo',
+      'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji',
+      'Segoe UI Symbol', sans-serif;
   }
 
   p > strong > code {
@@ -80,11 +79,9 @@ const MDXStyle = css`
   }
 
   // 코드 블록
-  pre > code > span {
-    position: relative;
-    font-weight: 500;
-    line-height: 17px;
-    border-radius: 10px !important;
+  pre > code {
+    font-size: 14px;
+    border-radius: 5px !important;
   }
 
   // 리스트
