@@ -1,6 +1,7 @@
 ---
 title: React의 useState 내부 동작 방식과 클로저
 date: '2022-12-26'
+thumbnail: '/thumbnail/react.png',
 summary: React, useState 내부 동작 과정 파헤치기
 publish: true
 ---

@@ -1,6 +1,7 @@
 ---
 title: useImperativeHandle 훅 찍어 먹기
 date: '2023-02-05'
+thumbnail: '/thumbnail/react.png',
 summary: React, useImperativeHandle 훅
 publish: true
 ---

@@ -6,7 +6,7 @@ thumbnail: '/thumbnail/react.png'
 publish: true
 ---
 
-```
+```terminal
 Use of undeclared identifier 'RCTLinkingManager'
 ```
 
