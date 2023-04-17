@@ -1,27 +1,23 @@
-import { css } from '@emotion/react';
-import emotionNormalize from 'emotion-normalize';
-
+import { createGlobalStyle } from 'styled-components';
+import { normalize } from 'styled-normalize';
 import { darkTheme, lightTheme } from './theme';
 
-const GlobalStyles = css`
+const GlobalStyle = createGlobalStyle`
   // CSS Reset
-  ${emotionNormalize}
+  ${normalize}
 
   // Using next-themes
   :root {
     ${lightTheme}
   }
 
-  [data-theme='dark'] {
-    ${darkTheme}
+  [data-theme="dark"] {
+   ${darkTheme}
   }
-
+  
   // Default Styling
   body {
-    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
-      Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo',
-      'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji',
-      'Segoe UI Symbol', sans-serif;
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -45,12 +41,11 @@ const GlobalStyles = css`
     }
   }
 
-  ul,
-  li {
+  ul, li {
     list-style: none;
     padding: 0px;
   }
-
+  
   button {
     all: unset;
   }
@@ -69,4 +64,4 @@ const GlobalStyles = css`
   }
 `;
 
-export default GlobalStyles;
+export default GlobalStyle;
