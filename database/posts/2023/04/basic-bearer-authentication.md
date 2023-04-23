@@ -1,7 +1,7 @@
 ---
 title: HTTP Basic, Bearer 인증 방식
 date: '2023-04-16'
-summary: HTTP Basic, Bearer 인증 방식을 알아보자.
+summary: HTTP Basic, Bearer 인증 방식을 알아보자
 publish: true
 ---
 

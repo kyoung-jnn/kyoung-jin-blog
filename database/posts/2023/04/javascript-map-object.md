@@ -1,7 +1,7 @@
 ---
-title: JavaScript Object를 HashMap 처럼 쓰지 말자, 맵 객체 (Map Object)
+title: JavaScript Map 객체 (Map Object)
 date: 2023-04-23
-summary: 맵 객체 (Map Object) 한번 써보면 헤어나오지 못해 🥹
+summary: JavaScript Plain Object를 HashMap 처럼 쓰지 말자
 publish: true
 ---
 
@@ -10,10 +10,10 @@ publish: true
 ✅: const hashMap = new Map();
 ```
 
-# HashMap, Map
+# HashMap과 Map
 
 **Java**에서는 key-value 형식의 데이터를 저장할 때, `HashMap`을 이용한다. 해시 함수를 통해서 value의 저장 위치가 결정되므로 **탐색**에서 탁월한 시간 복잡도(`O(1)`)를 보인다.
-**JavaScript**에서는 key-value 형식의 데이터를 저장할때 일반 **Plain Object**를 사용하곤 한다.
+**JavaScript**에서는 key-value 형식의 데이터를 저장할 때 **Plain Object**를 사용하곤 한다.
 
 ```js showLineNumbers
 const map = {};
@@ -26,38 +26,64 @@ map['key3'] = 'value3';
 // 2. 특정 key를 가지고 있는지 확인
 if (map.hasOwnProperty('key1')) {
   console.log('Map contains key1');
+  // 3. 특정 key의 value 확인
   console.log(map['key1']);
 }
-
-// 3. 특정 key의 value 확인
 ```
 
-**하지만**, HashMap과 같이 key-value 자료형 저장에 특화된 객체가 존재하는데 그것이 바로 `Map` 이다!
-JavaScript, `Map`의 특징들을 알아보자.
+**하지만**, HashMap과 같이 key-value 자료형 저장에 특화된 객체가 JavaScript(ES6)에 존재하는데 그것이 바로 `Map` 이다!
+JavaScript, `Map`의 사용법 및 특징들을 알아보자.
 
-# Map 기본 함수
+# Map 기본 사용법
+
+생성자를 통해서 `Map` 객체를 생성한다. 그 후 `set 함수`를 통해 객체의 key-value를 지정한다.
+
+> **이중 배열**을 이용해서 선언과 초기화를 한번에 할 수도 있다. 😎
+
+`get 함수`를 통해서 특정 key에 해당하는 value를 가져온다.
 
 ```js showLineNumbers
-// 생성자를 통해서 생성
 const map = new Map();
-map.set('latest', '최신순');
+map.set('item', '신발');
+map.set('brand', '나이키');
 
-// 이중 배열로 한번에 생성도 가능
+// 이중 배열 이용
 const map = new Map([
-  ['latest', '최신순'],
-  ['view', '조회순'],
+  ['item', '신발'],
+  ['brand', '나이키'],
 ]);
 
+map.get('item'); // '신발'
+```
+
+## TypeScript, Generic 이용해서 생성시 타입 지정하기
+
+`TypeScript`에서 Map 객체를 사용할때 `Generic`를 통해서 Map의 key-value의 타입을 지정할 수 있다. 이를 통해서 **set, get 함수**를 사용할 때 **타입 추론 및 가드**를 자동으로 해주기 때문에 상당히 편하다.
+
+```js showLineNumbers
+// K는 Key, V는 Value
+interface MapConstructor {
+    new <K, V>(entries?: readonly (readonly [K, V])[] | null): Map<K, V>;
+    ...
+}
+```
+
+```js showLineNumbers {4}
+type MapKey = 'item' | 'brand';
+type MapValue = '신발' | '나이키';
+
+const map = new Map<MapKeys, MapValue>([
+  ['item', '신발'],
+  ['brand', '나이키'],
+]);
+
+```
+
+## 그 밖에 함수
+
+```js showLineNumbers
 // 맵 size 반환
 map.size; // size: 2
-
-// key-value 넣기
-map.set(key, value);
-map.set('oldest', '오래된순');
-
-// 특정 key로 value 구하기
-map.get(key);
-map.get('view'); // '조회순'
 
 // 특정 key를 가지고 있는지 확인하기
 map.has(key); // boolean
@@ -77,11 +103,9 @@ map.entries(); // MapIterator
 
 ## Key로 다양한 형식(타입)이 올 수 있다.
 
-**Plain Object의** 경우 **문자열**(String), **심볼**(Symbol)만 객체의 프로퍼티로 올 수 있다.
+**Plain Object의** 경우 **문자열**(String), **심볼**(Symbol)만 객체의 프로퍼티로 올 수 있다. **Map**의 경우 **숫자**(Number), **객체**(Object) 심지어 **함수**(Function)도 올 수가 있다. (모든 자료형)
 
-**Map**의 경우 **숫자**(Number), **객체**(Object) 심지어 **함수**(Function)도 올 수가 있다. (모든 자료형)
-
-```js showLineNumbers
+```js showLineNumbers {7,8}
 const map = new Map();
 
 const profileObject = { name: 'jin' };
@@ -94,9 +118,9 @@ console.log(map.get(200)); // Success
 
 ## 순회가 쉽다.
 
-**Plain Object**는 순회를 위해 Key들을 가져오고 해당 Key들을 통해서 다시 Value로 접근하면서 순회를 진행해야 했다. Map의 경우 내부적으로 **Iterator**를 제공하기 때문에 해당 **Iterator**를 통해서 **깔끔한 순회**가 가능해진다.
+**Plain Object**는 순회를 위해 key들을 가져오고, 해당 key들을 통해서 다시 value로 접근하면서 순회를 진행해야 했다. Map의 경우 내부적으로 **Iterator**를 제공하기 때문에 해당 **Iterator**를 통해서 **깔끔한 순회**가 가능해진다.
 
-```js showLineNumbers
+```js showLineNumbers {7,11}
 const plainObject = {
   item: '신발',
   brand: '나이키',
@@ -112,7 +136,7 @@ for (const [key, value] of Object.entries(plainObject)) {
 }
 ```
 
-```js showLineNumbers
+```js showLineNumbers {10}
 const map = new Map([
   ['item', '신발'],
   ['brand', '나이키'],
@@ -138,7 +162,7 @@ for (const [key, value] of map) {
 > - Plain Object: ~1600ms
 > - Map: < 1ms
 
-```js showLineNumbers
+```js showLineNumbers {7}
 const plainObject = {};
 plainObject['key1'] = 1;
 plainObject['key2'] = 1;
@@ -148,7 +172,7 @@ plainObject['key100'] = 1;
 console.log(Object.keys(plainObject).length) // O(100), O(n)
 ```
 
-```js showLineNumbers
+```js showLineNumbers {7}
 const map = new Map();
 map.set('key1', 1);
 map.set('key2', 1);
