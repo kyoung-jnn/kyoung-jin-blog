@@ -42,7 +42,7 @@ const Image = ({ src, auto = false, size = 'large', ...rest }: Props) => {
 const ImageWrapper = styled.div<{ auto: boolean }>`
   display: flex;
   justify-content: center;
-  margin: 15px 0;
+  margin: 20px;
   ${({ auto }) =>
     auto &&
     css`
