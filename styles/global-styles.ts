@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
+    scroll-behavior: smooth;
     color: var(--text);
     background-color: var(--bg);
   }

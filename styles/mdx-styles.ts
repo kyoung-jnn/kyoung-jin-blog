@@ -37,6 +37,10 @@ const MDXStyle = css`
     font-weight: 700;
   }
 
+  p {
+    font-size: 17px;
+  }
+
   // 강조 글씨
   p > code {
     font-weight: 600;
