@@ -2,6 +2,12 @@ const { withContentlayer } = require('next-contentlayer');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  swcMinify: true, // Terser가 아닌 SWC
+  compiler: {
+    styledComponents: {
+      ssr: true,
+    },
+  },
   reactStrictMode: true,
   i18n: {
     locales: ['ko'],
