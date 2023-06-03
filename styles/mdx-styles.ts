@@ -38,6 +38,8 @@ const MDXStyle = css`
   }
 
   p {
+    margin-top: 5px;
+    margin-bottom: 0;
     font-size: 17px;
   }
 
@@ -76,6 +78,7 @@ const MDXStyle = css`
   // '>' 표시
   blockquote {
     margin: 0;
+    margin-top: 10px;
     padding: 1px 10px;
     color: var(--blockquote-text);
     background-color: var(--blockquote-bg);
@@ -86,13 +89,24 @@ const MDXStyle = css`
   ${SyntaxStyle}
 
   // 리스트
-  ul,
-  ol {
-    margin: 10px;
+  ul {
+    margin: 5px 20px;
+    font-size: 17px;
   }
-  li {
-    margin: 10px;
+
+  ol {
+    padding: 0;
+    margin: 5px 20px;
+    font-size: 17px;
+  }
+
+  ul > li {
     list-style: disc;
+    margin: 5px;
+  }
+  ol > li {
+    list-style: number;
+    margin: 5px;
   }
 
   a {

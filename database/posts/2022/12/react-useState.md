@@ -1,7 +1,7 @@
 ---
 title: React의 useState 내부 동작 방식과 클로저
 date: '2022-12-26'
-thumbnail: '/thumbnail/react.png',
+thumbnail: '/thumbnail/react.png'
 summary: React, useState 내부 동작 과정 파헤치기
 publish: true
 ---
@@ -10,7 +10,7 @@ publish: true
 
 **React**를 사용하다보면 **상태 관리**를 위해 **React**에서 제공하는 `useState` Hook을 자연스럽게 사용한다.
 
-'**내가 `useState` Hook을 정말로 작동 원리를 이해하고 사용하고 있는가?**' 에 대한 회의감이 문득 들어서, 내부 코드와 동작 방식에 대해서 조금 생각해 보았다. 🤓
+'**내가 `useState` Hook을 정말로 작동 원리를 이해하고 사용하고 있는가?**' 에 대한 회의감이 문득 들어서, 내부 코드와 동작 방식에 대해서 조금 생각해 보았다.
 
 # 내부 구현 코드
 
