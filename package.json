@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "contentlayer build && next build",
     "start": "next start",
     "postbuild": "next-sitemap",
     "simple-git-hooks": "simple-git-hooks",
