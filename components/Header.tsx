@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import Link from './CustomLink';
 import ThemeSwitch from '@/components/ThemeSwitch';
 import MobileNav from '@/components/MobileNav';

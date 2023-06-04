@@ -3,11 +3,11 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import SectionContainer from '@/components/SectionContainer';
 
-interface MainLayoutProps {
+interface Props {
   children: ReactNode;
 }
 
-function MainLayout({ children }: MainLayoutProps) {
+function MainLayout({ children }: Props) {
   return (
     <>
       <Header />

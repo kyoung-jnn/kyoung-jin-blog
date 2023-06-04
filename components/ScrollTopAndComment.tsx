@@ -1,5 +1,5 @@
-import { RefObject, useEffect, useState } from 'react';
-import styled from 'styled-components';
+import { RefObject, useEffect } from 'react';
+import styled from '@emotion/styled';
 import smoothscroll from 'smoothscroll-polyfill'; // Safari 에서 smooth 효과 적용
 import ArrowUp from '@/components/icons/arrow-up';
 import Message from '@/components/icons/message';
@@ -56,7 +56,7 @@ const Wrapper = styled.div`
   gap: 10px;
 `;
 
-const StyledButton = styled.button.attrs({ type: 'button' })`
+const StyledButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;

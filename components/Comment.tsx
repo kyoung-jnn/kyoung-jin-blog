@@ -15,7 +15,7 @@ function Comment() {
     theme === 'dark' ? commentThemeConfig.darkTheme : commentThemeConfig.theme;
 
   useEffect(() => {
-    if (mounted) {
+    if (mounted && commentRef.current) {
       // 기존에 존재하던 댓글 삭제 (테마 변화시)
       const existedComment = commentRef.current?.firstChild;
       if (existedComment) {
@@ -29,7 +29,7 @@ function Comment() {
       });
       utterancesScript.setAttribute('theme', commentTheme);
 
-      commentRef.current!.appendChild(utterancesScript);
+      commentRef.current.appendChild(utterancesScript);
     }
 
     return () => {

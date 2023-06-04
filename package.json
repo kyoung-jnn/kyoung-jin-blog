@@ -7,13 +7,16 @@
     "dev": "next dev",
     "build": "contentlayer build && next build",
     "start": "next start",
+    "lint": "yarn eslint . --fix",
     "postbuild": "next-sitemap",
     "simple-git-hooks": "simple-git-hooks",
     "prepare": "yarn simple-git-hooks"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
     "contentlayer": "^0.3.3",
-    "date-fns": "^2.28.0",
+    "emotion-normalize": "^11.0.1",
     "next": "^12.3.4",
     "next-contentlayer": "^0.3.3",
     "next-themes": "^0.2.0",
@@ -22,23 +25,26 @@
     "react-dom": "18.2.0",
     "rehype-pretty-code": "^0.9.4",
     "shiki": "^0.14.1",
-    "smoothscroll-polyfill": "^0.4.4",
-    "styled-components": "^5.3.5",
-    "styled-normalize": "^8.0.7"
+    "smoothscroll-polyfill": "^0.4.4"
   },
   "devDependencies": {
+    "@emotion/eslint-plugin": "^11.11.0",
     "@types/node": "18.0.0",
     "@types/react": "18.0.14",
     "@types/react-dom": "18.0.5",
     "@types/smoothscroll-polyfill": "^0.3.1",
-    "@types/styled-components": "^5.1.25",
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
+    "@typescript-eslint/parser": "^5.59.8",
     "eslint": "8.18.0",
-    "eslint-config-next": "12.1.6",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "lint-staged": "^13.0.3",
     "next-sitemap": "^3.1.5",
     "prettier": "^2.7.1",
     "simple-git-hooks": "^2.8.0",
-    "typescript": "4.7.4"
+    "typescript": "5.0.4"
   },
   "simple-git-hooks": {
     "pre-commit": "yarn lint-staged"

@@ -33,7 +33,8 @@ declare module 'react' {
 ## Before
 
 ```js showLineNumbers
-import styled, { css } from 'styled-components';
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import Button from './Button';
 
 <StyledButton />;
@@ -46,7 +47,7 @@ const StyledButton = styled(Button)`
 ## After
 
 ```js showLineNumbers
-import { css } from 'styled-components';
+import { css } from '@emotion/react';
 
 <Button
   css={css`

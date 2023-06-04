@@ -2,14 +2,14 @@ import { useState } from 'react';
 import Menu from '@/components/icons/menu';
 import headerMenu from '@/constants/headerMenu';
 import Link from 'next/link';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import media from '@/styles/media';
 import { fadeLeft } from '@/utils/animation';
 
 function MobileNav() {
   const [hasNav, setHasNav] = useState(false);
 
-  const onToggleMobileNav = (e: any) => {
+  const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     setHasNav((status) => {
       if (status) {
@@ -24,19 +24,16 @@ function MobileNav() {
 
   return (
     <Wrapper>
-      <HamburgerButton
-        aria-label="Toggle Menu Button"
-        onClick={onToggleMobileNav}
-      >
+      <HamburgerButton aria-label="Toggle Menu Button" onClick={handleClick}>
         <Menu />
       </HamburgerButton>
       {hasNav && (
         <NavContainer>
           <Background />
-          <MenuContainer onClick={onToggleMobileNav}>
+          <MenuContainer onClick={handleClick}>
             {headerMenu.map(({ title, href }) => (
               <Link key={title} href={href}>
-                <a onClick={onToggleMobileNav}>
+                <a>
                   <MenuItem>{title}</MenuItem>
                 </a>
               </Link>
@@ -65,7 +62,7 @@ const NavContainer = styled.div`
   animation: ${fadeLeft} 0.5s ease-in-out;
 `;
 
-const HamburgerButton = styled.button.attrs({ type: 'button' })`
+const HamburgerButton = styled.button`
   width: 30px;
   height: 30px;
 `;

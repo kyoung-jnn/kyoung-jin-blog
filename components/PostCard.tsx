@@ -1,5 +1,4 @@
-import { useTheme } from 'next-themes';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import Link from '@/components/CustomLink';
 
 interface PostCardProps {
@@ -10,11 +9,9 @@ interface PostCardProps {
 }
 
 const PostCard = ({ title, date, summary, slug }: PostCardProps) => {
-  const { theme } = useTheme();
-
   return (
     <Link href={`/posts/${slug}`}>
-      <StyledPostCard key={slug} theme={theme}>
+      <StyledPostCard key={slug}>
         <ContentContainer>
           <h2 className="title">{title}</h2>
           <div className="summary">{summary}</div>
@@ -27,7 +24,7 @@ const PostCard = ({ title, date, summary, slug }: PostCardProps) => {
   );
 };
 
-const StyledPostCard = styled.li<{ theme: string }>`
+const StyledPostCard = styled.li`
   padding: 15px 10px;
   margin-bottom: 10px;
   border: 2px solid transparent;

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import media from '@/styles/media';
 import BREAK_POINTS from '@/constants/breakpoints';
 

@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Image from 'next/image';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { allPosts, Post } from 'contentlayer/generated';
 import Icon from '@/components/icons';
 import Link from '@/components/CustomLink';
@@ -82,7 +83,7 @@ export default function Home({
       </IntroSection>
       <LatestSection>
         <ul>
-          {!latestPosts.length && '포스팅이 없어요! 😅'}
+          {!latestPosts.length && '포스팅이 존재하지 않습니다. 🥹'}
           {latestPosts.map(({ title, date, summary, _raw }: any) => {
             const slug = _raw.flattenedPath.split('/')[2];
 

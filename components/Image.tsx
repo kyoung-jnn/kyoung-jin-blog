@@ -1,5 +1,6 @@
 import NextImage, { ImageProps } from 'next/image';
-import styled, { css } from 'styled-components';
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 
 const sizes = {
   small: {

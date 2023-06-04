@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import siteConfig from '@/database/siteConfig';
 // import SocialIcon from '@/components/icons';
 
@@ -25,11 +25,6 @@ const StyledFooter = styled.footer`
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
-`;
-
-const SocialContainer = styled.div`
-  display: flex;
-  margin-bottom: 12px;
 `;
 
 const DescriptionContainer = styled.div`
