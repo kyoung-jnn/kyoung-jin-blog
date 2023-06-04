@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import { css } from '@emotion/react';
 
 const SyntaxStyle = css`
   pre[data-theme='dark'] {

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { Post } from 'contentlayer/generated';
 import PostCard from '@/components/PostCard';
 import Pagination from '@/components/Pagination';

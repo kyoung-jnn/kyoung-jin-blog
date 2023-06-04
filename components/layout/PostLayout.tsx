@@ -1,5 +1,5 @@
 import { ReactNode, useRef } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import Link from '@/components/CustomLink';
 import MDXStyle from '@/styles/mdx-styles';
 import BreakPoints from '@/constants/breakpoints';

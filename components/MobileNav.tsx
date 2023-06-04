@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Menu from '@/components/icons/menu';
 import headerMenu from '@/constants/headerMenu';
 import Link from 'next/link';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import media from '@/styles/media';
 import { fadeLeft } from '@/utils/animation';
 
@@ -65,7 +65,7 @@ const NavContainer = styled.div`
   animation: ${fadeLeft} 0.5s ease-in-out;
 `;
 
-const HamburgerButton = styled.button.attrs({ type: 'button' })`
+const HamburgerButton = styled.button`
   width: 30px;
   height: 30px;
 `;

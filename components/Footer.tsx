@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import siteConfig from '@/database/siteConfig';
 // import SocialIcon from '@/components/icons';
 

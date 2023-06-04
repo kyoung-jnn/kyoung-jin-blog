@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
 import Sun from '@/components/icons/sun';
 import Moon from '@/components/icons/moon';
-import styled, { keyframes } from 'styled-components';
+import styled from '@emotion/styled';
+import { keyframes } from '@emotion/react';
 import Image from 'next/image';
 
 export const Theme = {

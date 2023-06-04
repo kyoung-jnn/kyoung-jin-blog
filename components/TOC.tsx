@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import styled, { css } from 'styled-components';
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import { getIntersectionObserver } from '@/utils/getInseresctionObserver';
 import media from '@/styles/media';
 

@@ -1,6 +1,6 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Image from 'next/image';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { allPosts, Post } from 'contentlayer/generated';
 import Icon from '@/components/icons';
 import Link from '@/components/CustomLink';

@@ -4,9 +4,10 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { ThemeProvider } from 'next-themes';
 import MainLayout from '@/components/layout/MainLayout';
-import GlobalStyle from '@/styles/global-styles';
+import GlobalStyles from '@/styles/global-styles';
 import * as ga from '@/utils/gtag';
 import ProgressBar from '@/components/ProgressBar';
+import { Global } from '@emotion/react';
 
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -25,11 +26,11 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <GlobalStyle />
       <ThemeProvider attribute="data-theme" defaultTheme="light">
         <Head>
           <meta content="width=device-width, initial-scale=1" name="viewport" />
         </Head>
+        <Global styles={GlobalStyles} />
         <MainLayout>
           <ProgressBar />
           <Component {...pageProps} />
