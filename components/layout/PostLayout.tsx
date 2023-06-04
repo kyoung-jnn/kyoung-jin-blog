@@ -1,5 +1,4 @@
 import { ReactNode, useRef } from 'react';
-import { format } from 'date-fns';
 import styled from 'styled-components';
 import Link from '@/components/CustomLink';
 import MDXStyle from '@/styles/mdx-styles';
@@ -9,16 +8,17 @@ import ScrollTopAndComment from '@/components/ScrollTopAndComment';
 import TOC from '@/components/TOC';
 import { fadeIn } from '@/utils/animation';
 import Image from '../Image';
+import { dateToFormat } from '@/utils/time';
 
-interface PostLayoutProps {
+interface Props {
   title: string;
   date: string;
   thumbnail?: string;
   children: ReactNode;
 }
 
-function PostLayout({ title, date, thumbnail, children }: PostLayoutProps) {
-  const updatedAt = format(new Date(date), 'yyyy-MM-dd');
+function PostLayout({ title, date, thumbnail, children }: Props) {
+  const updatedAt = dateToFormat(new Date(date));
   const commentContainerRef = useRef<HTMLDivElement>(null);
 
   return (

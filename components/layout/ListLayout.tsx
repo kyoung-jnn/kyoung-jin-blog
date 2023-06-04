@@ -6,7 +6,7 @@ import Pagination from '@/components/Pagination';
 import SearchIcon from '@/components/icons/search';
 import useDebounce from '@/hooks/useDebounce';
 
-interface ListLayout {
+interface Props {
   allPosts: Array<Post>;
   pagePosts: Array<Post>;
   totalPage: number;
@@ -22,7 +22,7 @@ export default function ListLayout({
   currentPage,
   title,
   paginationLink,
-}: ListLayout) {
+}: Props) {
   const [searchValue, setSearchValue] = useState('');
   const debouncedSearchValue = useDebounce(searchValue);
 
