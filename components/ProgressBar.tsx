@@ -9,7 +9,7 @@ function ProgressBar() {
       height={2}
       showOnShallow={true}
       options={{ showSpinner: false }}
-      transformCSS={(css) => {
+      transformCSS={() => {
         return (
           <style>
             {

@@ -9,7 +9,7 @@ import { fadeLeft } from '@/utils/animation';
 function MobileNav() {
   const [hasNav, setHasNav] = useState(false);
 
-  const onToggleMobileNav = (e: any) => {
+  const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     setHasNav((status) => {
       if (status) {
@@ -24,19 +24,16 @@ function MobileNav() {
 
   return (
     <Wrapper>
-      <HamburgerButton
-        aria-label="Toggle Menu Button"
-        onClick={onToggleMobileNav}
-      >
+      <HamburgerButton aria-label="Toggle Menu Button" onClick={handleClick}>
         <Menu />
       </HamburgerButton>
       {hasNav && (
         <NavContainer>
           <Background />
-          <MenuContainer onClick={onToggleMobileNav}>
+          <MenuContainer onClick={handleClick}>
             {headerMenu.map(({ title, href }) => (
               <Link key={title} href={href}>
-                <a onClick={onToggleMobileNav}>
+                <a>
                   <MenuItem>{title}</MenuItem>
                 </a>
               </Link>

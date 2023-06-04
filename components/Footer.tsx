@@ -27,11 +27,6 @@ const StyledFooter = styled.footer`
   margin-top: 40px;
 `;
 
-const SocialContainer = styled.div`
-  display: flex;
-  margin-bottom: 12px;
-`;
-
 const DescriptionContainer = styled.div`
   display: flex;
   font-size: 16px;

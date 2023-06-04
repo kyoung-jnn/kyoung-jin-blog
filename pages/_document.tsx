@@ -1,10 +1,4 @@
-import Document, {
-  Html,
-  Head,
-  Main,
-  NextScript,
-  DocumentContext,
-} from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { GoogleAnalyticsScript } from '@/components/GoogleAnalytics';
 
 export default class MyDocument extends Document {

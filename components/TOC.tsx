@@ -14,7 +14,7 @@ function TOC() {
     // 본문의 h 태그를 가져온다
     const tableElements = Array.from(document.querySelectorAll('h1, h2, h3'))
       .slice(1) // 제목은 제외
-      .map((tableElement, index) => {
+      .map((tableElement) => {
         tableElement['id'] = tableElement.innerHTML.replace(/\s/g, '-');
         return tableElement;
       });
