@@ -1,11 +1,11 @@
 ---
-title: TypeScript 조건부 타입 이해하기 (Conditional Type)
+title: TypeScript 조건부 타입 이해하기, Conditional Type
 date: 2023-05-05
 summary: TypeScript의 조건부 타입에 대해서
 publish: true
 ---
 
-# 조건부 타입, Conditional Types
+# 조건부 타입, Conditional Type
 
 ```typescript
 type Type = T extends U ? X : Y;
