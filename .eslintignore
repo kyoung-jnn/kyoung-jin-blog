@@ -1,0 +1,4 @@
+node_modules
+lint-staged.config.js
+next.config.js
+server.js

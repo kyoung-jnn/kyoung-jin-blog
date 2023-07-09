@@ -10,17 +10,17 @@ module.exports = {
     es6: true,
     node: true,
     browser: true,
+    commonjs: true,
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: { jsx: true },
   },
-  plugins: ['@typescript-eslint', 'import', 'react', 'react-hooks', '@emotion'],
+  plugins: ['@typescript-eslint', 'import', 'react', '@emotion'],
   extends: [
     'eslint:recommended',
+    'next',
     'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
-    'plugin:react-hooks/recommended',
     'prettier',
   ],
   settings: {
@@ -28,7 +28,7 @@ module.exports = {
     react: { version: 'detect' },
   },
   rules: {
-    'react/react-in-jsx-scope': 'off', // import React 필수
-    'react/no-unknown-property': ['error', { ignore: ['css'] }], // emotion css attributes
+    'react/react-in-jsx-scope': STATUS.OFF, // import React 필수
+    'react/no-unknown-property': [STATUS.ERROR, { ignore: ['css'] }], // emotion css attributes
   },
 };

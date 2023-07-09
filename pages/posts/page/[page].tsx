@@ -6,6 +6,11 @@ import siteMetadata from '@/database/siteMetadata';
 
 const POSTS_PER_PAGE = 6;
 
+interface PageParams {
+  [key: string]: string;
+  page: string;
+}
+
 // 동적 라우팅을 위한 매소드
 export const getStaticPaths: GetStaticPaths = async () => {
   const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
@@ -21,14 +26,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-interface PageParamsType {
-  [key: string]: string;
-  page: string;
-}
-
 // getStaticPaths 에서 동적 라우팅으로 지정된 params 받아옴
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { page } = params as PageParamsType;
+  const { page } = params as PageParams;
   const totalPage = Math.ceil(allPosts.length / POSTS_PER_PAGE);
   const currentPage = parseInt(page);
 
@@ -46,6 +46,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
+      allPosts,
       pagePosts,
       totalPage,
       currentPage,
@@ -54,6 +55,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export default function PostList({
+  allPosts,
   pagePosts,
   totalPage,
   currentPage,

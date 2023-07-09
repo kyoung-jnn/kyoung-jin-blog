@@ -26,13 +26,15 @@ interface Props extends ImageProps {
 const Image = ({ src, auto = false, size = 'large', ...rest }: Props) => {
   return (
     <ImageWrapper aria-label="포스팅 이미지" auto={auto}>
-      <_Image
+      <NextImage
         src={src}
-        alt={src}
         layout={auto ? 'fill' : 'fixed'}
         objectFit={auto ? 'cover' : 'fill'}
         placeholder="blur"
         blurDataURL={src}
+        style={{
+          borderRadius: '5px',
+        }}
         {...(!auto && sizes[size])}
         {...rest}
       />
@@ -56,10 +58,6 @@ const ImageWrapper = styled.div<{ auto: boolean }>`
         height: auto !important;
       }
     `};
-`;
-
-const _Image = styled(NextImage)`
-  border-radius: 5px;
 `;
 
 export default Image;

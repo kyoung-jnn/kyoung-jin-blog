@@ -6,7 +6,7 @@ import PostLayout from '@/components/layout/PostLayout';
 import { PostSEO } from '@/components/SEO';
 import siteMetadata from '@/database/siteMetadata';
 
-interface SlugInterface {
+interface Slug {
   [key: string]: string | string[] | undefined;
   slug: string[];
 }
@@ -23,7 +23,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { slug } = params as SlugInterface;
+  const { slug } = params as Slug;
   // 현재 포스팅 찾기
   const post = allPosts.find((post) =>
     post._raw.flattenedPath.includes(slug[0]),

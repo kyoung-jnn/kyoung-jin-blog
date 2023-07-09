@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
-import Link from './CustomLink';
 import ThemeSwitch from '@/components/ThemeSwitch';
 import MobileNav from '@/components/MobileNav';
 import SiteConfig from '@/database/siteConfig';
 import headerNavLinks from '@/constants/headerMenu';
 import media from '@/styles/media';
 import BREAK_POINTS from '@/constants/breakpoints';
+import Link from 'next/link';
 
 function Header() {
   return (

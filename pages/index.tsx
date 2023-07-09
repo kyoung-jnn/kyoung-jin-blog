@@ -4,7 +4,7 @@ import Image from 'next/image';
 import styled from '@emotion/styled';
 import { allPosts, Post } from 'contentlayer/generated';
 import Icon from '@/components/icons';
-import Link from '@/components/CustomLink';
+import Link from 'next/link';
 import PostCard from '@/components/PostCard';
 import { PageSEO } from '@/components/SEO';
 import siteConfig from '@/database/siteConfig';

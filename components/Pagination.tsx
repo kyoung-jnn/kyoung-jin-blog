@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import Link from '@/components/CustomLink';
+import Link from 'next/link';
 
 interface PaginationProps {
   totalPage: number;
