@@ -1,6 +1,5 @@
 {
   "name": "kyoung-jin-blog",
-  "version": "1.0.0",
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -44,9 +43,9 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "lint-staged": "^13.0.3",
     "next-sitemap": "^3.1.5",
-    "prettier": "^2.7.1",
+    "prettier": "^3.0.0",
     "simple-git-hooks": "^2.8.0",
-    "typescript": "5.0.4"
+    "typescript": "^5.1.6"
   },
   "simple-git-hooks": {
     "pre-commit": "yarn lint-staged"
@@ -56,5 +55,6 @@
       "eslint",
       "prettier --write"
     ]
-  }
+  },
+  "packageManager": "yarn@3.6.0"
 }
