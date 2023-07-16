@@ -17,6 +17,7 @@ const MAX_DISPLAY = 5;
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = allPosts
+    .filter((post) => post.publish)
     .sort(
       (a: Post, b: Post) => Number(new Date(b.date)) - Number(new Date(a.date)),
     )
