@@ -17,10 +17,21 @@ const GlobalStyles = css`
 
   // Default Styling
   body {
-    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
-      Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo',
-      'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji',
-      'Segoe UI Symbol', sans-serif;
+    font-family:
+      Pretendard,
+      -apple-system,
+      BlinkMacSystemFont,
+      system-ui,
+      Roboto,
+      'Helvetica Neue',
+      'Segoe UI',
+      'Apple SD Gothic Neo',
+      'Noto Sans KR',
+      'Malgun Gothic',
+      'Apple Color Emoji',
+      'Segoe UI Emoji',
+      'Segoe UI Symbol',
+      sans-serif;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -56,6 +67,11 @@ const GlobalStyles = css`
 
   img {
     -webkit-user-drag: none;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #e5e5e5;
   }
 
   h1,

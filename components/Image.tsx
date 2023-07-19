@@ -23,7 +23,7 @@ interface Props extends ImageProps {
   size?: 'small' | 'medium' | 'large';
 }
 
-const Image = ({ src, auto = false, size = 'large', ...rest }: Props) => {
+const Image = ({ src, auto = false, size = 'medium', ...rest }: Props) => {
   return (
     <ImageWrapper aria-label="포스팅 이미지" auto={auto}>
       <NextImage
