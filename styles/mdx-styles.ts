@@ -49,12 +49,23 @@ const MDXStyle = css`
     border-radius: 5px;
     color: var(--blockquote-text);
     background-color: var(--code-bg);
-    font-size: 90%;
-    padding: 3.5px 5px;
-    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
-      Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo',
-      'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji',
-      'Segoe UI Symbol', sans-serif;
+    font-size: 95%;
+    padding: 3px 4px;
+    font-family:
+      Pretendard,
+      -apple-system,
+      BlinkMacSystemFont,
+      system-ui,
+      Roboto,
+      'Helvetica Neue',
+      'Segoe UI',
+      'Apple SD Gothic Neo',
+      'Noto Sans KR',
+      'Malgun Gothic',
+      'Apple Color Emoji',
+      'Segoe UI Emoji',
+      'Segoe UI Symbol',
+      sans-serif;
   }
 
   p > strong > code {
@@ -62,8 +73,8 @@ const MDXStyle = css`
     border-radius: 5px;
     color: var(--blockquote-text);
     background-color: var(--code-bg);
-    font-size: 90%;
-    padding: 3.5px 5px;
+    font-size: 95%;
+    padding: 3px 4px;
   }
 
   li > code {
@@ -71,18 +82,20 @@ const MDXStyle = css`
     border-radius: 5px;
     color: var(--blockquote-text);
     background-color: var(--code-bg);
-    font-size: 90%;
-    padding: 3.5px 5px;
+    font-size: 95%;
+    padding: 3px 4px;
   }
 
   // '>' 표시
   blockquote {
-    margin: 0;
-    margin-top: 10px;
-    padding: 1px 10px;
+    margin: 15px 0;
+    padding: 5px 10px;
     color: var(--blockquote-text);
     background-color: var(--blockquote-bg);
-    border-radius: 10px;
+    border-left: 3px solid var(--focus-text);
+    > p {
+      margin: 0;
+    }
   }
 
   // 코드 블록
