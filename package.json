@@ -4,10 +4,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
-    "build": "contentlayer build && next build",
+    "build": "contentlayer build && next build && next-sitemap",
     "start": "next start",
     "lint": "yarn eslint . --fix",
-    "postbuild": "next-sitemap",
     "simple-git-hooks": "simple-git-hooks",
     "prepare": "yarn simple-git-hooks"
   },
