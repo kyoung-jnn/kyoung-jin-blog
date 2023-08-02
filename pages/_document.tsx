@@ -8,6 +8,11 @@ export default class MyDocument extends Document {
         <Head>
           {/* 파비콘 */}
           <link rel="shortcut icon" href="/favicon.ico" />
+          {/* Naver */}
+          <meta
+            name="naver-site-verification"
+            content="90fde3e7dfdfe8af10193837b23f5a11239155ba"
+          />
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <GoogleAnalyticsScript />
           {/* 폰트 */}
