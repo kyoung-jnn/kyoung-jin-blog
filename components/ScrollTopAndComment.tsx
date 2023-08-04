@@ -1,7 +1,7 @@
 import { RefObject, useEffect } from 'react';
 import styled from '@emotion/styled';
 import smoothscroll from 'smoothscroll-polyfill'; // Safari 에서 smooth 효과 적용
-import ArrowUp from '@/components/icons/arrow-up';
+import ArrowUp from '@/components/icons/ArrowUp';
 import Message from '@/components/icons/message';
 
 interface ScrollTopAndCommentProps {
