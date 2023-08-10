@@ -23,7 +23,7 @@ FID는 이벤트 처리의 **지연**만 측정하기 때문에 이벤트 처리
 
 # INP(Interaction to Next Paint)의 등장
 
-<Image src='/posts/2023/08/interaction-to-next-paint/inp-timeline.png' auto/>
+<Image src='/posts/2023/08/interaction-to-next-paint/inp-timeline.png' />
 
 이를 해결하기 위해, 2022년 구글은 [INP(Interaction to Next Paint)](https://web.dev/inp/)라는 지표를 [발표](https://web.dev/inp-cwv/?hl=ko)한다. 이는 2024년 3월부터 Core Web Vitals의 **FID**를 **대체** 할 예정이다.
 
@@ -31,15 +31,13 @@ FID는 이벤트 처리의 **지연**만 측정하기 때문에 이벤트 처리
 
 사용자가 웹 페이지를 방문하면서 발생시킬 수 있는 모든 `상호작용`들을 관찰하여 **페이지 전반적인 상호작용 반응성을 평가하는 지표**이다.
 
-**INP**는 **첫번째 상호작용을 포함한 모든 상초작용들을 측정**하여 페이지 전체 수명동안 가장 느린 상호작용을 기준으로 삼는다. 또한 상호작용이 시작되면 이벤트 핸들링과 브라우저가 다음 프레임을 그리기전(Paint 전)까지 과정을 측정으로 삼는다.
-
-결국, **INP**를 통해 이뤄야 할 목표는 사용자가 수행하는 모든 상호 작용에 대해 `상호 작용이 시작한 때부터 다음 프레임이 그려질 때까지의 시간`을 가능한 한 짧게 만드는 것.
+**FID**와 다르게 **INP**는 **첫번째 상호작용을 포함한 모든 상초작용들을 측정**하여 페이지 전체 수명동안 가장 느린 상호작용을 기준으로 삼는다. 또한 상호작용이 시작되면 이벤트 핸들링과 브라우저가 다음 프레임을 그리기전(Paint 전)까지 과정을 측정으로 삼는다.
 
 <Video src='/posts/2023/08/interaction-to-next-paint/inp-vido.mp4' />
 
 # INP 점수 측정하기
 
-<Image src='/posts/2023/08/interaction-to-next-paint/inp-metric.png' auto/>
+<Image src='/posts/2023/08/interaction-to-next-paint/inp-metric.png' />
 
 - **200ms** 이하인 경우 페이지의 응답성이 좋다!
 - **200ms** 초과, **500ms** 미만인 경우 페이지의 응답성이 개선되어야 한다
@@ -51,9 +49,29 @@ FID는 이벤트 처리의 **지연**만 측정하기 때문에 이벤트 처리
 
 # 상호작용의 구성
 
-<Image src='/posts/2023/08/interaction-to-next-paint/interaction-single.svg' auto/>
+<Image src='/posts/2023/08/interaction-to-next-paint/interaction-single.svg' caption="단일 상호작용"/>
 
-<Image src='/posts/2023/08/interaction-to-next-paint/interaction-multi.svg' auto/>
+INP에서 말하는 `상호작용`이란 3단계에 걸쳐서 구성된다.
+
+**Input Delay**는 입력을 받은 시점부터 발생하며, 메인 스레드의 긴 작업 등으로 생길 수 있다. **Processing Time**은 상호작용의 이벤트 핸들러가 실행되는 데 걸리는 시간이다. 마지막으로 **Presentation delay**에는 다음 프레임을 렌더링하고 페인팅한다.
+
+3단계를 모두 거치면서 걸린 시간이 상호작용이 걸린 시간이다.
+
+> 📣 브라우저에서는 종종 **JavaScript**를 이용해서 사용작용이 가능하지만 INP에서 지칭하는 상호작용은 체크박스, 라디오 버튼 및 CSS로 구동되는 컨트롤과 같이 **JavaScript**로 구동되지 않는 부분을 말한다.
+
+> 또한 **3가지의 상호작용 유형**만이 관찰된다.
+>
+> - 마우스로 클릭하기
+> - 터치스크린으로 기기를 탭 하기
+> - 물리적인 키보드 혹은 화면에서 키보드 누르기
+
+<Image src='/posts/2023/08/interaction-to-next-paint/interaction-multi.svg' caption="복합 상호작용"/>
+
+사진과 같이 상호작용은 **여러 부분**으로 구성될 수도 있다.
+
+**첫번째 부분**은 마우스 버튼을 눌렀을 때 상호작용 3단계를 거친 후 프레임이 렌더링된다. 그 후, **두번째 부분**에서 사용자가 마우스 버튼에서 손을 떼는 순간 다시 일련의 과정을 거친 후 새로운 프레임이 렌더링되면서 상호작용이 종료된다.
+
+2가지의 부분에서 가장 긴 시간이 **해당 상호작용의 대기시간**으로 선택된다.
 
 # INP 점수 측정 방법
 
@@ -75,3 +93,7 @@ INP를 알아보는 방법에는 현장 측정과 실험실 측정이 있습니�
 - 개발자 도구 Lighthouse **Timespan mode**
   - 사용자가 정의한 시간 동안 분석하는 mode
 - [Web Vitals Chrome 확장 프로그램](https://chrome.google.com/webstore/detail/web-vitals/ahfhijdlegdabablpippeagghigmibma?hl=en)
+
+# INP의 목표
+
+결국, **INP**를 통해 이뤄야 할 목표는 사용자가 수행하는 **모든 상호 작용**에 대해 `상호 작용이 시작한 때부터 다음 프레임이 그려질 때까지의 시간`을 가능한 한 짧게 만드는 것이다.
