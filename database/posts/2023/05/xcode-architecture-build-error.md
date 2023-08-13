@@ -5,7 +5,7 @@ summary: iOS arm64, x84_64 Architecture 프로세서 빌드 오류
 publish: true
 ---
 
-기존의 USE 연결을 통한 실제 기기 테스트를 하다가 **Xcode에서 iPhone 시뮬레이터를 실행**시키려는데 빌드 오류가 발생했다.
+기존의 **USB 연결**을 통한 실제 기기 테스트를 하다가 **Xcode에서 iPhone 시뮬레이터를 실행**시키려는데 빌드 오류가 발생했다.
 
 # 원인
 
