@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 
 export const lightTheme = css`
-  --fg: #121212;
+  --fg: #151718;
   --bg: #f9f9f9;
   --text: #131313;
   --mid-text: #61677a;
@@ -16,7 +16,7 @@ export const lightTheme = css`
 
 export const darkTheme = css`
   --fg: #f9f9f9;
-  --bg: #131313;
+  --bg: #151718;
   --text: #f1f1f1;
   --mid-text: #61677a;
   --focus-text: #27ae60;
