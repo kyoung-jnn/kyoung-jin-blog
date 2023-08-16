@@ -11,6 +11,8 @@ import siteConfig from '@/database/siteConfig';
 import siteMetadata from '@/database/siteMetadata';
 import waving_hand from '@/public/waving-hand.webp';
 import { fadeLeft, fadeUp, waving } from '@/utils/animation';
+import media from '@/styles/media';
+import BREAK_POINTS from '@/constants/breakpoints';
 
 // 최신 글 개수
 const MAX_DISPLAY = 5;
@@ -26,11 +28,11 @@ export const getStaticProps: GetStaticProps = async () => {
   return { props: { latestPost: posts } };
 };
 
-export default function Home({
+function Home({
   latestPost: latestPosts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <>
+    <Wrapper>
       <PageSEO
         title={siteMetadata.title}
         description={siteMetadata.description}
@@ -105,9 +107,23 @@ export default function Home({
           </Link>
         </div>
       </LatestSection>
-    </>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  position: relative;
+  max-width: ${BREAK_POINTS.tablet + 'px'};
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+
+  ${media.tablet} {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+`;
 
 const IntroSection = styled.section`
   margin: 50px 0 30px;
@@ -159,3 +175,5 @@ const LatestSection = styled.section`
     float: right;
   }
 `;
+
+export default Home;

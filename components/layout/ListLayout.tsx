@@ -5,6 +5,8 @@ import PostCard from '@/components/PostCard';
 import Pagination from '@/components/Pagination';
 import SearchIcon from '@/components/icons/search';
 import useDebounce from '@/hooks/useDebounce';
+import BREAK_POINTS from '@/constants/breakpoints';
+import media from '@/styles/media';
 
 interface Props {
   allPosts: Array<Post>;
@@ -37,7 +39,7 @@ export default function ListLayout({
   const displayPosts = searchValue ? filteredBlogPosts : pagePosts;
 
   return (
-    <>
+    <Wrapper>
       <PostListTitleSection>
         <PostListTitle>{title}</PostListTitle>
         <SearchInputWrapper>
@@ -75,9 +77,23 @@ export default function ListLayout({
           link={paginationLink}
         />
       )}
-    </>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  position: relative;
+  max-width: ${BREAK_POINTS.tablet + 'px'};
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+
+  ${media.tablet} {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+`;
 
 const PostListTitleSection = styled.section`
   margin-top: 40px;

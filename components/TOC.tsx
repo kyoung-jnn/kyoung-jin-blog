@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { getIntersectionObserver } from '@/utils/getInseresctionObserver';
-import media from '@/styles/media';
 
 function TOC() {
   const [currentTable, setCurrentTable] = useState<string>('');
@@ -45,23 +44,13 @@ function TOC() {
 }
 
 const Wrapper = styled.div`
-  display: none;
-
-  ${media.desktop} {
-    display: block;
-    position: fixed;
-    z-index: 1000;
-    margin-top: 150px;
-    margin-left: 740px;
-    padding: 10px 20px 10px 10px;
-    border-left: 1px solid #e5e5e5;
-  }
+  padding: 10px;
+  border-left: 1px solid #e5e5e5;
 `;
 
 const TableItem = styled.a<{ isActive: boolean; depth: string }>`
   display: block;
   margin-bottom: 10px;
-  opacity: 0.8;
   font-size: 15px;
   font-weight: 600;
   color: ${({ isActive }) =>

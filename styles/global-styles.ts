@@ -8,6 +8,10 @@ const GlobalStyles = css`
 
   // Using next-themes
   :root {
+    scroll-behavior: smooth;
+  }
+
+  [data-theme='light'] {
     ${lightTheme}
   }
 
@@ -35,7 +39,6 @@ const GlobalStyles = css`
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    scroll-behavior: smooth;
     color: var(--text);
     background-color: var(--bg);
   }

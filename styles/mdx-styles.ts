@@ -3,7 +3,7 @@ import SyntaxStyle from './syntax-styles';
 
 const MDXStyle = css`
   * {
-    line-height: 1.7;
+    line-height: 1.8;
     font-weight: 500;
   }
 
@@ -40,7 +40,8 @@ const MDXStyle = css`
   p {
     margin-top: 5px;
     margin-bottom: 0;
-    font-size: 17px;
+    font-size: 16px;
+    font-weight: 400;
   }
 
   // 강조 글씨

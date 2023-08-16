@@ -2,13 +2,13 @@ import { ReactNode, useRef } from 'react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import MDXStyle from '@/styles/mdx-styles';
-import BreakPoints from '@/constants/breakpoints';
 import Comment from '@/components/Comment';
 import ScrollTopAndComment from '@/components/ScrollTopAndComment';
 import TOC from '@/components/TOC';
-import { fadeIn } from '@/utils/animation';
+import { fadeUp } from '@/utils/animation';
 import Image from '../Image';
 import { dateToFormat } from '@/utils/time';
+import media from '@/styles/media';
 
 interface Props {
   title: string;
@@ -22,70 +22,95 @@ function PostLayout({ title, date, thumbnail, children }: Props) {
   const commentContainerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <>
-      <TOC />
-      <Wrapper>
+    <Wrapper>
+      {/* 본문 영역 */}
+      <PostWrapper>
         <PostHeader>
+          <h1 className="post-title">{title}</h1>
           <time className="post-date" dateTime={updatedAt}>
             {updatedAt}
           </time>
-          <h1 className="post-title">{title}</h1>
           {thumbnail && <Image src={thumbnail} alt="썸네일" auto priority />}
         </PostHeader>
-        <PostWrapper>
-          {/* 본문 영역 */}
-          <PostBody>{children}</PostBody>
-          <PostFooter>
-            {/* 댓글 영역 */}
-            <div ref={commentContainerRef}>
-              <Comment />
-            </div>
-            <Link href="/posts/page/1">&larr; 돌아가기</Link>
-          </PostFooter>
-          <ScrollTopAndComment commentContainerRef={commentContainerRef} />
-        </PostWrapper>
-      </Wrapper>
-    </>
+        <PostContent>{children}</PostContent>
+      </PostWrapper>
+      {/* 목차 */}
+      <PostSideBar>
+        <TOC />
+        <ScrollTopAndComment commentContainerRef={commentContainerRef} />
+      </PostSideBar>
+      {/* 스크롤 */}
+      <PostFooter>
+        {/* 댓글 영역 */}
+        <div ref={commentContainerRef}>
+          <Comment />
+        </div>
+        <Link href="/posts/page/1">&larr; 돌아가기</Link>
+      </PostFooter>
+    </Wrapper>
   );
 }
 
-const Wrapper = styled.article`
-  animation: ${fadeIn} 0.5s forwards;
+const Wrapper = styled.div`
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(auto, 768px) minmax(auto, 240px);
+  justify-content: center;
+  align-items: start;
+  gap: 10px;
+  margin: 0 auto;
+  padding: 10px;
+  animation: ${fadeUp} 0.5s forwards;
+
+  ${media.desktop} {
+    padding: 50px 40px 40px;
+    grid-template-columns: minmax(auto, 768px) minmax(auto, 320px);
+  }
+`;
+
+const PostWrapper = styled.article`
+  grid-column: 1 / 3;
+  ${media.tablet} {
+    grid-column: 1;
+  }
 `;
 
 const PostHeader = styled.header`
   position: relative;
   padding: 20px 0;
-  text-align: center;
-
-  .post-date {
-    font-size: 20px;
-    font-weight: 400;
-    color: var(--fontColor);
-    margin-bottom: 10px;
-  }
+  text-align: left;
+  border-bottom: 1px solid #e5e5e5;
 
   .post-title {
-    font-size: 36px;
+    font-size: 34px;
     font-weight: 700;
     letter-spacing: -1.5px;
-    margin-top: 20px;
+  }
+
+  .post-date {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--fontColor);
+    margin-top: 00px;
   }
 `;
 
-const PostWrapper = styled.div`
-  position: relative;
-  max-width: ${BreakPoints.tablet + 'px'};
-  padding-bottom: 20px;
-  border-top: 1px solid #e5e5e5;
-  border-bottom: 1px solid #e5e5e5;
-`;
-
-const PostBody = styled.div`
+const PostContent = styled.div`
   ${MDXStyle}
 `;
 
+const PostSideBar = styled.aside`
+  position: relative;
+  display: none;
+  ${media.tablet} {
+    display: block;
+    position: sticky;
+    top: 90px;
+  }
+`;
+
 const PostFooter = styled.footer`
+  grid-column: 1 / 3;
   margin-top: 30px;
   font-size: 16px;
   border-top: 1px solid #e5e5e5;

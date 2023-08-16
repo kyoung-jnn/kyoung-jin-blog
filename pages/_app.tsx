@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { ThemeProvider } from 'next-themes';
-import MainLayout from '@/components/layout/MainLayout';
+import DefaultLayout from '@/components/layout/DefaultLayout';
 import GlobalStyles from '@/styles/global-styles';
 import * as ga from '@/utils/gtag';
 import ProgressBar from '@/components/ProgressBar';
@@ -31,10 +31,10 @@ function App({ Component, pageProps }: AppProps) {
           <meta content="width=device-width, initial-scale=1" name="viewport" />
         </Head>
         <Global styles={GlobalStyles} />
-        <MainLayout>
+        <DefaultLayout>
           <ProgressBar />
           <Component {...pageProps} />
-        </MainLayout>
+        </DefaultLayout>
       </ThemeProvider>
     </>
   );
