@@ -41,7 +41,6 @@ const MDXStyle = css`
     margin-top: 5px;
     margin-bottom: 0;
     font-size: 16px;
-    font-weight: 400;
   }
 
   // 강조 글씨
