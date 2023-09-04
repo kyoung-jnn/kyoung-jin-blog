@@ -7,7 +7,7 @@ publish: true
 
 > Core Web Vitals 포스팅 [보러가기](https://kyoung-jnn.com/posts/web-vitals)
 
-**Google Chrome**팀에서 웹 페이지 사용자 경험을 측정하기 위해 `Web Vitals`를 도입했다. 하위 개념으로 3가지 중요한 메트릭을 `Core Web Vitals`라고 한다.
+**Google Chrome** 팀에서 웹 페이지 사용자 경험을 측정하기 위해 `Web Vitals`를 도입했다. 하위 개념으로 3가지 중요한 메트릭을 `Core Web Vitals`라고 한다.
 
 Chrome 사용 데이터를 따르면 페이지에서 사용자 시간의 90%는 **페이지가 로드된 후** 소비된다고 한다. 따라서 상호작용 응답성을 측정하고 단축하는 건 페이지를 구현함에 있어서 큰 목표이다.
 
