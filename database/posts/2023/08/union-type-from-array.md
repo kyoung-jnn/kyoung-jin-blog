@@ -1,5 +1,5 @@
 ---
-title: TypeScript 배열의 값으로 유니온 타입(Union Type) 만들기
+title: TypeScript, 배열의 값으로 유니온 타입(Union Type) 만들기
 date: 2023-08-24
 summary: 배열의 값으로 이루어진 유니온 타입을 만들어보자
 publish: true
