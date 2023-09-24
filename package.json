@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
-    "build": "contentlayer build && next build && next-sitemap && yarn ping-sitemap",
+    "build": "next build && next-sitemap && yarn ping-sitemap",
     "start": "next start",
     "lint": "yarn eslint . --fix",
     "simple-git-hooks": "simple-git-hooks",
@@ -15,15 +15,13 @@
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
-    "contentlayer": "^0.3.3",
+    "@notionhq/client": "^2.2.13",
     "emotion-normalize": "^11.0.1",
     "next": "^13.4.9",
-    "next-contentlayer": "^0.3.3",
     "next-themes": "^0.2.0",
     "nextjs-progressbar": "^0.0.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rehype-pretty-code": "^0.9.4",
     "sharp": "^0.32.1",
     "shiki": "^0.14.1",
     "smoothscroll-polyfill": "^0.4.4"
