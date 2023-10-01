@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import styled from '@emotion/styled';
-import { Post } from 'contentlayer/generated';
 import PostCard from '@/components/PostCard';
 import Pagination from '@/components/Pagination';
-import SearchIcon from '@/components/icons/search';
+import SearchIcon from '@/components/icons/Search';
 import useDebounce from '@/hooks/useDebounce';
 import BREAK_POINTS from '@/constants/breakpoints';
 import media from '@/styles/media';
+import { ParsedPageProperties } from '@/types/notion';
 
 interface Props {
-  allPosts: Array<Post>;
-  pagePosts: Array<Post>;
+  allPosts: ParsedPageProperties[];
+  pagePosts: ParsedPageProperties[];
   totalPage: number;
   currentPage: number;
   title: string;
@@ -31,9 +31,7 @@ export default function ListLayout({
   const filteredBlogPosts = allPosts.filter(({ title, summary }) => {
     const searchContent = title + summary;
 
-    return searchContent
-      .toLowerCase()
-      .includes(debouncedSearchValue.toLowerCase());
+    return '';
   });
 
   const displayPosts = searchValue ? filteredBlogPosts : pagePosts;
@@ -56,9 +54,7 @@ export default function ListLayout({
         <div className="not-post">포스팅이 없습니다...😖</div>
       )}
       <ul>
-        {displayPosts.map(({ title, date, summary, _raw }) => {
-          const slug = _raw.flattenedPath.split('/')[2];
-
+        {displayPosts.map(({ title, date, summary, slug }) => {
           return (
             <PostCard
               key={slug}

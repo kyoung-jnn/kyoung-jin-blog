@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Menu from '@/components/icons/menu';
+import Menu from '@/components/icons/Menu';
 import headerMenu from '@/constants/headerMenu';
 import Link from 'next/link';
 import styled from '@emotion/styled';
