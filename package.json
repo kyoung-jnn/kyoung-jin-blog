@@ -7,10 +7,8 @@
     "build": "next build && next-sitemap && yarn ping-sitemap",
     "start": "next start",
     "lint": "yarn eslint . --fix",
-    "simple-git-hooks": "simple-git-hooks",
     "ping-sitemap": "sh ./scripts/ping-sitemap.sh",
-    "postinstall": "husky install",
-    "prepare": "yarn simple-git-hooks"
+    "postinstall": "husky install"
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",
@@ -20,10 +18,13 @@
     "next": "^13.4.9",
     "next-themes": "^0.2.0",
     "nextjs-progressbar": "^0.0.16",
+    "notion-to-md": "^3.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-markdown": "^8.0.7",
+    "react-syntax-highlighter": "^15.5.0",
+    "remark-gfm": "3.0.1",
     "sharp": "^0.32.1",
-    "shiki": "^0.14.1",
     "smoothscroll-polyfill": "^0.4.4"
   },
   "devDependencies": {
@@ -32,6 +33,7 @@
     "@types/node": "18.0.0",
     "@types/react": "18.0.14",
     "@types/react-dom": "18.0.5",
+    "@types/react-syntax-highlighter": "^15.5.7",
     "@types/smoothscroll-polyfill": "^0.3.1",
     "@typescript-eslint/eslint-plugin": "^5.59.8",
     "@typescript-eslint/parser": "^5.59.8",
@@ -44,11 +46,7 @@
     "lint-staged": "^13.0.3",
     "next-sitemap": "^3.1.5",
     "prettier": "^3.0.0",
-    "simple-git-hooks": "^2.8.0",
     "typescript": "^5.1.6"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "yarn lint-staged"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [

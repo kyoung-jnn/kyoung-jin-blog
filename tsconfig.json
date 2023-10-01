@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -20,40 +16,17 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "contentlayer/generated": [
-        "./.contentlayer/generated"
-      ],
-      "@/components/*": [
-        "components/*"
-      ],
-      "@/database/*": [
-        "database/*"
-      ],
-      "@/constants/*": [
-        "constants/*"
-      ],
-      "@/utils/*": [
-        "utils/*"
-      ],
-      "@/styles/*": [
-        "styles/*"
-      ],
-      "@/public/*": [
-        "public/*"
-      ],
-      "@/hooks/*": [
-        "hooks/*"
-      ]
+      "@/components/*": ["components/*"],
+      "@/database/*": ["database/*"],
+      "@/constants/*": ["constants/*"],
+      "@/utils/*": ["utils/*"],
+      "@/styles/*": ["styles/*"],
+      "@/public/*": ["public/*"],
+      "@/hooks/*": ["hooks/*"],
+      "@/api/*": ["api/*"],
+      "@/types/*": ["types/*"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "additional.d.ts",
-    ".contentlayer/generated"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "additional.d.ts"],
+  "exclude": ["node_modules"]
 }

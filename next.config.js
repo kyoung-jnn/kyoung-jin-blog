@@ -1,19 +1,19 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const { withContentlayer } = require('next-contentlayer');
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  swcMinify: true, // Terser가 아닌 SWC
+  swcMinify: true, // SWC
   reactStrictMode: true,
   i18n: {
     locales: ['ko'],
     defaultLocale: 'ko',
   },
   images: {
-    domains: ['avatars.githubusercontent.com'],
+    domains: [
+      'avatars.githubusercontent.com',
+      'prod-files-secure.s3.us-west-2.amazonaws.com', // notion image
+    ],
     imageSizes: [32, 96, 128],
     deviceSizes: [768, 1280, 1920],
   },
 };
 
-module.exports = withContentlayer(nextConfig);
+module.exports = nextConfig;
