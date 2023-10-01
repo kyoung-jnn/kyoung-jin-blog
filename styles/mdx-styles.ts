@@ -1,5 +1,4 @@
 import { css } from '@emotion/react';
-import SyntaxStyle from './syntax-styles';
 
 const MDXStyle = css`
   * {
@@ -49,7 +48,7 @@ const MDXStyle = css`
     border-radius: 5px;
     color: var(--blockquote-text);
     background-color: var(--code-bg);
-    font-size: 95%;
+    font-size: 0.95rem;
     padding: 3px 4px;
     font-family:
       Pretendard,
@@ -73,7 +72,7 @@ const MDXStyle = css`
     border-radius: 5px;
     color: var(--blockquote-text);
     background-color: var(--code-bg);
-    font-size: 95%;
+    font-size: 0.95rem;
     padding: 3px 4px;
   }
 
@@ -82,7 +81,7 @@ const MDXStyle = css`
     border-radius: 5px;
     color: var(--blockquote-text);
     background-color: var(--code-bg);
-    font-size: 95%;
+    font-size: 0.95rem;
     padding: 3px 4px;
   }
 
@@ -97,9 +96,6 @@ const MDXStyle = css`
       margin: 0;
     }
   }
-
-  // 코드 블록
-  ${SyntaxStyle}
 
   // 리스트
   ul {
