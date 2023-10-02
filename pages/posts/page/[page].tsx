@@ -6,6 +6,7 @@ import { getPosts } from 'api/notion';
 import { convertDTO } from '@/utils/notion';
 import SITE_CONFIG from '@/database/siteConfig';
 import { ParsedPageProperties } from '@/types/notion';
+import { useRouter } from 'next/router';
 
 const POSTS_PER_PAGE = 6;
 
@@ -75,6 +76,12 @@ export default function PostList({
   totalPage,
   currentPage,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       <PageSEO

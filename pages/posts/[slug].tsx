@@ -7,6 +7,7 @@ import Markdown from '@/components/Markdown';
 import { convertDTO } from '@/utils/notion';
 import SITE_CONFIG from '@/database/siteConfig';
 import { Post } from 'types/notion';
+import { useRouter } from 'next/router';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getPosts();
@@ -59,6 +60,12 @@ function PostPage({
   thumbnail,
   title,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       <PostSEO

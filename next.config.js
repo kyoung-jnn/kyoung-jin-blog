@@ -2,10 +2,6 @@
 const nextConfig = {
   swcMinify: true, // SWC
   reactStrictMode: true,
-  i18n: {
-    locales: ['ko'],
-    defaultLocale: 'ko',
-  },
   images: {
     domains: [
       'avatars.githubusercontent.com',
