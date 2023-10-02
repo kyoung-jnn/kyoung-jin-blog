@@ -1,23 +1,23 @@
 import { useState } from 'react';
 import styled from '@emotion/styled';
-import { Post } from 'contentlayer/generated';
 import PostCard from '@/components/PostCard';
 import Pagination from '@/components/Pagination';
-import SearchIcon from '@/components/icons/search';
+import SearchIcon from '@/components/icons/Search';
 import useDebounce from '@/hooks/useDebounce';
 import BREAK_POINTS from '@/constants/breakpoints';
 import media from '@/styles/media';
+import { ParsedPageProperties } from '@/types/notion';
 
 interface Props {
-  allPosts: Array<Post>;
-  pagePosts: Array<Post>;
+  allPosts: ParsedPageProperties[];
+  pagePosts: ParsedPageProperties[];
   totalPage: number;
   currentPage: number;
   title: string;
   paginationLink: string;
 }
 
-export default function ListLayout({
+function ListLayout({
   allPosts,
   pagePosts,
   totalPage,
@@ -40,9 +40,9 @@ export default function ListLayout({
 
   return (
     <Wrapper>
-      <PostListTitleSection>
-        <PostListTitle>{title}</PostListTitle>
-        <SearchInputWrapper>
+      <HeroWrapper>
+        <Title>{title}</Title>
+        <InputWrapper>
           <SearchInput
             aria-label="Search Post"
             type="text"
@@ -50,15 +50,13 @@ export default function ListLayout({
             placeholder="포스팅 검색"
           />
           <SearchIcon className="icon" />
-        </SearchInputWrapper>
-      </PostListTitleSection>
+        </InputWrapper>
+      </HeroWrapper>
       {!filteredBlogPosts.length && (
-        <div className="not-post">포스팅이 없습니다...😖</div>
+        <NotFound>포스팅이 존재하지 않습니다...😖</NotFound>
       )}
       <ul>
-        {displayPosts.map(({ title, date, summary, _raw }) => {
-          const slug = _raw.flattenedPath.split('/')[2];
-
+        {displayPosts.map(({ title, date, summary, slug }) => {
           return (
             <PostCard
               key={slug}
@@ -81,6 +79,8 @@ export default function ListLayout({
   );
 }
 
+export default ListLayout;
+
 const Wrapper = styled.div`
   position: relative;
   max-width: ${BREAK_POINTS.tablet + 'px'};
@@ -95,17 +95,18 @@ const Wrapper = styled.div`
   }
 `;
 
-const PostListTitleSection = styled.section`
+const HeroWrapper = styled.section`
   margin-top: 40px;
 `;
 
-const PostListTitle = styled.h1`
+const Title = styled.h1`
   font-size: 32px;
   font-weight: 700;
 `;
 
-const SearchInputWrapper = styled.div`
+const InputWrapper = styled.div`
   position: relative;
+  margin-top: 20px;
 
   > .icon {
     position: absolute;
@@ -128,4 +129,10 @@ const SearchInput = styled.input`
   :focus {
     border: 2px solid var(--focus-text);
   }
+`;
+
+const NotFound = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 40px;
 `;

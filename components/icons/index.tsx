@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import MailIcon from '@/components/icons/mail';
-import GithubIcon from '@/components/icons/github';
-import LinkedinIcon from '@/components/icons/linkedin';
+import MailIcon from '@/components/icons/Mail';
+import GithubIcon from '@/components/icons/Github';
+import LinkedinIcon from '@/components/icons/Linkedin';
 import { ComponentType } from 'react';
 
 type IconType = 'mail' | 'github' | 'linkedin';

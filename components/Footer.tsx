@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import siteConfig from '@/database/siteConfig';
+import SITE_CONFIG from '@/database/siteConfig';
 // import SocialIcon from '@/components/icons';
 
 function Footer() {
@@ -14,7 +14,9 @@ function Footer() {
           />
         </SocialContainer> */}
       <DescriptionContainer>
-        <div>{siteConfig.author.name + ` © ${new Date().getFullYear()}`} </div>
+        <div>
+          {SITE_CONFIG.author.name + ` © ${new Date().getFullYear()}`}{' '}
+        </div>
       </DescriptionContainer>
     </StyledFooter>
   );

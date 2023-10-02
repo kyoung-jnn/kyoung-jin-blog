@@ -1,19 +1,26 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
-import { allPosts, Post } from 'contentlayer/generated';
 import ListLayout from '@/components/layout/ListLayout';
 import { PageSEO } from '@/components/SEO';
 import siteMetadata from '@/database/siteMetadata';
+import { getPosts } from 'api/notion';
+import { convertDTO } from '@/utils/notion';
+import SITE_CONFIG from '@/database/siteConfig';
+import { ParsedPageProperties } from '@/types/notion';
 
 const POSTS_PER_PAGE = 6;
 
-interface PageParams {
-  [key: string]: string;
-  page: string;
-}
-
 // 동적 라우팅을 위한 매소드
 export const getStaticPaths: GetStaticPaths = async () => {
-  const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+  const posts = await getPosts();
+
+  if (!posts) {
+    return {
+      paths: [],
+      fallback: true,
+    };
+  }
+
+  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
   const paths = Array.from({ length: totalPages }, (_, index) => ({
     params: {
       page: (index + 1).toString(),
@@ -22,14 +29,22 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: 'blocking', // true 와 비슷하지만 fallback 화면을 보여주지 않음 -> SSG 전용!
+    fallback: true,
   };
 };
 
-// getStaticPaths 에서 동적 라우팅으로 지정된 params 받아옴
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { page } = params as PageParams;
-  const totalPage = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+export const getStaticProps: GetStaticProps<{
+  allPosts: ParsedPageProperties[];
+  pagePosts: ParsedPageProperties[];
+  totalPage: number;
+  currentPage: number;
+}> = async ({ params }) => {
+  const page = params?.page as string;
+
+  const posts = await getPosts();
+  const parsedPosts = posts.map((post) => convertDTO(post));
+
+  const totalPage = Math.ceil(posts.length / POSTS_PER_PAGE);
   const currentPage = parseInt(page);
 
   if (isNaN(currentPage) || currentPage <= 0 || currentPage > totalPage) {
@@ -38,20 +53,19 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     };
   }
 
-  const pagePosts = allPosts
-    .filter((post) => post.publish)
-    .sort(
-      (a: Post, b: Post) => Number(new Date(b.date)) - Number(new Date(a.date)),
-    )
-    .slice(POSTS_PER_PAGE * (currentPage - 1), POSTS_PER_PAGE * currentPage);
+  const pagePosts = parsedPosts.slice(
+    POSTS_PER_PAGE * (currentPage - 1),
+    POSTS_PER_PAGE * currentPage,
+  );
 
   return {
     props: {
-      allPosts,
+      allPosts: parsedPosts,
       pagePosts,
       totalPage,
       currentPage,
     },
+    revalidate: SITE_CONFIG.revalidateTime,
   };
 };
 

@@ -1,6 +1,6 @@
-// 사이트의 일반 정보
+// site default configuration setting
 
-const siteConfig = {
+const SITE_CONFIG = {
   title: `Kyoung Jin, Roh`,
   author: {
     name: 'Kyoung Jin, Roh',
@@ -15,6 +15,7 @@ const siteConfig = {
       instagram: '',
     },
   },
-};
+  revalidateTime: 60 * 60 * 24 * 7, // a week
+} as const;
 
-export default siteConfig;
+export default SITE_CONFIG;

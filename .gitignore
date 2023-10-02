@@ -26,17 +26,13 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # local env files
-.env*.local
+.env
 
 # vercel
 .vercel
 
 # typescript
 *.tsbuildinfo
-
-
-# Contentlayer
-.contentlayer
 
 /public/robots.txt
 /public/sitemap.xml

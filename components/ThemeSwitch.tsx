@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
-import Sun from '@/components/icons/sun';
-import Moon from '@/components/icons/moon';
+import Sun from '@/components/icons/Sun';
+import Moon from '@/components/icons/Moon';
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
 import Image from 'next/image';

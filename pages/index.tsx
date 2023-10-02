@@ -1,36 +1,39 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Image from 'next/image';
 import styled from '@emotion/styled';
-import { allPosts, Post } from 'contentlayer/generated';
 import Icon from '@/components/icons';
 import Link from 'next/link';
 import PostCard from '@/components/PostCard';
 import { PageSEO } from '@/components/SEO';
-import siteConfig from '@/database/siteConfig';
+import SITE_CONFIG from '@/database/siteConfig';
 import siteMetadata from '@/database/siteMetadata';
 import waving_hand from '@/public/waving-hand.webp';
 import { fadeLeft, fadeUp, waving } from '@/utils/animation';
 import media from '@/styles/media';
 import BREAK_POINTS from '@/constants/breakpoints';
+import { convertDTO } from '@/utils/notion';
+import { ParsedPageProperties } from '@/types/notion';
+import { getPosts } from '@/api/notion';
 
-// 최신 글 개수
-const MAX_DISPLAY = 5;
+// latest post count
+const POSTS_HOME = 5;
 
-export const getStaticProps: GetStaticProps = async () => {
-  const posts = allPosts
-    .filter((post) => post.publish)
-    .sort(
-      (a: Post, b: Post) => Number(new Date(b.date)) - Number(new Date(a.date)),
-    )
-    .slice(0, MAX_DISPLAY);
+export const getStaticProps: GetStaticProps<{
+  latestPosts: ParsedPageProperties[];
+}> = async () => {
+  const posts = await getPosts();
 
-  return { props: { latestPost: posts } };
+  const parsedPosts = posts.map((post) => convertDTO(post));
+  const latestPosts = parsedPosts.slice(0, POSTS_HOME);
+
+  return {
+    props: {
+      latestPosts,
+    },
+  };
 };
 
-function Home({
-  latestPost: latestPosts,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+function Home({ latestPosts }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Wrapper>
       <PageSEO
@@ -62,24 +65,24 @@ function Home({
               borderRadius: '50%',
             }}
           />
-          <h3 className="name">{siteConfig.author.name}</h3>
+          <h3 className="name">{SITE_CONFIG.author.name}</h3>
           <div>Frontend Engineer</div>
           <div>In Seoul, Korea</div>
         </ProfileSection>
         <ContactSection>
           <Icon
             kind="mail"
-            href={`mailto:${siteConfig.author.contacts.email}`}
+            href={`mailto:${SITE_CONFIG.author.contacts.email}`}
             size={24}
           />
           <Icon
             kind="github"
-            href={siteConfig.author.contacts.github}
+            href={SITE_CONFIG.author.contacts.github}
             size={24}
           />
           <Icon
             kind="linkedin"
-            href={siteConfig.author.contacts.linkedin}
+            href={SITE_CONFIG.author.contacts.linkedin}
             size={24}
           />
         </ContactSection>
@@ -87,9 +90,7 @@ function Home({
       <LatestSection>
         <ul>
           {!latestPosts.length && '포스팅이 존재하지 않습니다. 🥹'}
-          {latestPosts.map(({ title, date, summary, _raw }: any) => {
-            const slug = _raw.flattenedPath.split('/')[2];
-
+          {latestPosts.map(({ title, date, summary, slug }) => {
             return (
               <PostCard
                 key={slug}
