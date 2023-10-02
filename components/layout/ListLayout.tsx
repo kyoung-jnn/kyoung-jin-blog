@@ -17,7 +17,7 @@ interface Props {
   paginationLink: string;
 }
 
-export default function ListLayout({
+function ListLayout({
   allPosts,
   pagePosts,
   totalPage,
@@ -31,16 +31,18 @@ export default function ListLayout({
   const filteredBlogPosts = allPosts.filter(({ title, summary }) => {
     const searchContent = title + summary;
 
-    return '';
+    return searchContent
+      .toLowerCase()
+      .includes(debouncedSearchValue.toLowerCase());
   });
 
   const displayPosts = searchValue ? filteredBlogPosts : pagePosts;
 
   return (
     <Wrapper>
-      <PostListTitleSection>
-        <PostListTitle>{title}</PostListTitle>
-        <SearchInputWrapper>
+      <HeroWrapper>
+        <Title>{title}</Title>
+        <InputWrapper>
           <SearchInput
             aria-label="Search Post"
             type="text"
@@ -48,10 +50,10 @@ export default function ListLayout({
             placeholder="포스팅 검색"
           />
           <SearchIcon className="icon" />
-        </SearchInputWrapper>
-      </PostListTitleSection>
+        </InputWrapper>
+      </HeroWrapper>
       {!filteredBlogPosts.length && (
-        <div className="not-post">포스팅이 없습니다...😖</div>
+        <NotFound>포스팅이 존재하지 않습니다...😖</NotFound>
       )}
       <ul>
         {displayPosts.map(({ title, date, summary, slug }) => {
@@ -77,6 +79,8 @@ export default function ListLayout({
   );
 }
 
+export default ListLayout;
+
 const Wrapper = styled.div`
   position: relative;
   max-width: ${BREAK_POINTS.tablet + 'px'};
@@ -91,17 +95,18 @@ const Wrapper = styled.div`
   }
 `;
 
-const PostListTitleSection = styled.section`
+const HeroWrapper = styled.section`
   margin-top: 40px;
 `;
 
-const PostListTitle = styled.h1`
+const Title = styled.h1`
   font-size: 32px;
   font-weight: 700;
 `;
 
-const SearchInputWrapper = styled.div`
+const InputWrapper = styled.div`
   position: relative;
+  margin-top: 20px;
 
   > .icon {
     position: absolute;
@@ -124,4 +129,10 @@ const SearchInput = styled.input`
   :focus {
     border: 2px solid var(--focus-text);
   }
+`;
+
+const NotFound = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 40px;
 `;

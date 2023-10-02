@@ -5,7 +5,7 @@ import remarkGfm from 'remark-gfm';
 import Image from './Image';
 import Video from './Video';
 import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { materialDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { coldarkDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import Link from 'next/link';
 
 interface Props {
@@ -26,7 +26,7 @@ function Markdown({ mdString }: Props) {
             const image = node.children[0];
 
             const alt = image.properties.alt;
-            const regex = /\.(png|webp|jpeg|jpg)$/;
+            const regex = /\.(png|webp|jpeg|jpg|gif)$/;
             const hasCaption = !regex.test(alt);
 
             return (
@@ -45,7 +45,7 @@ function Markdown({ mdString }: Props) {
           return !inline && match ? (
             <SyntaxHighlighter
               {...props}
-              style={materialDark}
+              style={coldarkDark}
               language={match[1]}
               showLineNumbers={true}
               PreTag="div"

@@ -22,6 +22,12 @@ export const getPosts = async () => {
           equals: 'publish',
         },
       },
+      sorts: [
+        {
+          property: 'date',
+          direction: 'descending',
+        },
+      ],
     });
 
     return results as unknown as PageObjectResponse[];

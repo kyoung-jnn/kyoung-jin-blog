@@ -17,7 +17,7 @@ export const convertDTO = (pageObject: PageObjectResponse) => {
     }
 
     if (key === 'thumbnail') {
-      post[key] = values.files[0] || '';
+      post[key] = values.files[0]?.file.url || '';
     }
 
     if (key === 'status') {

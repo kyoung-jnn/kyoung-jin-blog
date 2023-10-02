@@ -6,7 +6,7 @@ import Comment from '@/components/Comment';
 import ScrollTopAndComment from '@/components/ScrollTopAndComment';
 import TOC from '@/components/TOC';
 import { fadeUp } from '@/utils/animation';
-import Image from '../Markdown/Image';
+import Image from 'next/image';
 import { dateToFormat } from '@/utils/time';
 import media from '@/styles/media';
 
@@ -30,7 +30,11 @@ function PostLayout({ title, date, thumbnail, children }: Props) {
           <time className="post-date" dateTime={updatedAt}>
             {updatedAt}
           </time>
-          {thumbnail && <Image src={thumbnail} alt="썸네일" priority />}
+          {thumbnail && (
+            <PostThumbnail>
+              <Image src={thumbnail} alt="post thumbnail" fill priority />
+            </PostThumbnail>
+          )}
         </PostHeader>
         <PostContent>{children}</PostContent>
       </PostWrapper>
@@ -92,6 +96,15 @@ const PostHeader = styled.header`
     font-weight: 400;
     color: var(--fontColor);
     margin-top: 00px;
+  }
+`;
+
+const PostThumbnail = styled.figure`
+  margin: 0;
+  margin-top: 10px;
+
+  > img {
+    position: relative !important;
   }
 `;
 

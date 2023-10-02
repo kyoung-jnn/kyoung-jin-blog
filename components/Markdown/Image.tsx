@@ -26,7 +26,7 @@ const ImageWrapper = styled.figure`
   position: relative;
   display: block;
   justify-content: center;
-  margin: 4px;
+  margin: 6px 0;
 
   & > span {
     position: unset !important;
