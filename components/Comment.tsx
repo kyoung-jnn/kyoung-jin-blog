@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { useTheme } from 'next-themes';
-import useMounted from '@/hooks/useMounted';
+import useMount from '@/hooks/useMount';
 import {
   commentDefaultConfig,
   commentThemeConfig,
@@ -8,14 +8,14 @@ import {
 
 function Comment() {
   const commentRef = useRef<HTMLDivElement>(null);
-  const mounted = useMounted();
+  const isMount = useMount();
   const { theme } = useTheme();
 
   const commentTheme =
     theme === 'dark' ? commentThemeConfig.darkTheme : commentThemeConfig.theme;
 
   useEffect(() => {
-    if (mounted && commentRef.current) {
+    if (isMount && commentRef.current) {
       // 기존에 존재하던 댓글 삭제 (테마 변화시)
       const existedComment = commentRef.current?.firstChild;
       if (existedComment) {
@@ -34,9 +34,9 @@ function Comment() {
 
     return () => {
       // unmounted, 댓글 스타일 삭제
-      if (mounted) document.querySelector('style')?.remove();
+      if (isMount) document.querySelector('style')?.remove();
     };
-  }, [commentTheme, mounted]);
+  }, [commentTheme, isMount]);
 
   return <section className="comment" ref={commentRef}></section>;
 }
