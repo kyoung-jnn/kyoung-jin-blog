@@ -1,11 +1,6 @@
 /* eslint-disable react/no-children-prop */
-import { MdStringObject } from 'notion-to-md/build/types';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
 import Image from './Image';
 import Video from './Video';
-import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { coldarkDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import Link from 'next/link';
 
 interface Props {

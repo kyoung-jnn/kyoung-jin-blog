@@ -11,20 +11,18 @@ import waving_hand from '@/public/waving-hand.webp';
 import { fadeLeft, fadeUp, waving } from '@/utils/animation';
 import media from '@/styles/media';
 import BREAK_POINTS from '@/constants/breakpoints';
-import { convertDTO } from '@/utils/notion';
-import { ParsedPageProperties } from '@/types/notion';
 import { getPosts } from '@/api/notion';
+import { Post } from '@/types/notion';
 
 // latest post count
 const POSTS_HOME = 5;
 
 export const getStaticProps: GetStaticProps<{
-  latestPosts: ParsedPageProperties[];
+  latestPosts: Post[];
 }> = async () => {
   const posts = await getPosts();
 
-  const parsedPosts = posts.map((post) => convertDTO(post));
-  const latestPosts = parsedPosts.slice(0, POSTS_HOME);
+  const latestPosts = posts.slice(0, POSTS_HOME);
 
   return {
     props: {
