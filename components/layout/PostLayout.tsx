@@ -1,100 +1,108 @@
-import { ReactNode, useRef } from 'react';
+import { PropsWithChildren, useRef } from 'react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import Comment from '@/components/Comment';
 import ScrollTopAndComment from '@/components/ScrollTopAndComment';
-import TOC from '@/components/TOC';
 import { fadeUp } from '@/utils/animation';
 import Image from 'next/image';
 import { dateToFormat } from '@/utils/time';
 import media from '@/styles/media';
+import TOC from '../TOC';
 
 interface Props {
   title: string;
   date: string;
   thumbnail?: string;
-  children: ReactNode;
 }
 
-function PostLayout({ title, date, thumbnail, children }: Props) {
+function PostLayout({
+  title,
+  date,
+  thumbnail,
+  children,
+}: PropsWithChildren<Props>) {
   const updatedAt = dateToFormat(new Date(date));
   const commentContainerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <Wrapper>
-      {/* 본문 영역 */}
-      <PostWrapper>
-        <PostHeader>
-          <h1 className="post-title">{title}</h1>
-          <time className="post-date" dateTime={updatedAt}>
-            {updatedAt}
-          </time>
-          {thumbnail && (
-            <PostThumbnail>
-              <Image src={thumbnail} alt="post thumbnail" fill priority />
-            </PostThumbnail>
-          )}
-        </PostHeader>
-        {children}
-      </PostWrapper>
-      {/* 목차 */}
-      <PostSideBar>
-        <TOC />
-        <ScrollTopAndComment commentContainerRef={commentContainerRef} />
-      </PostSideBar>
+    <>
+      <Wrapper>
+        {/* 본문 영역 */}
+        <PostWrapper>
+          <PostHeader>
+            <h1 className="post-title">{title}</h1>
+            <time className="post-date" dateTime={updatedAt}>
+              {updatedAt}
+            </time>
+            {thumbnail && (
+              <PostThumbnail>
+                <Image src={thumbnail} alt="post thumbnail" fill priority />
+              </PostThumbnail>
+            )}
+          </PostHeader>
+          {children}
+        </PostWrapper>
+        {/* 사이드바 */}
+        <PostSideBar>
+          <TOC />
+        </PostSideBar>
+        <PostFooter>
+          {/* 댓글 영역 */}
+          <div ref={commentContainerRef}>
+            <Comment />
+          </div>
+          <Link href="/posts/page/1">🤚 그만보기</Link>
+        </PostFooter>
+      </Wrapper>
       {/* 스크롤 */}
-      <PostFooter>
-        {/* 댓글 영역 */}
-        <div ref={commentContainerRef}>
-          <Comment />
-        </div>
-        <Link href="/posts/page/1">&larr; 돌아가기</Link>
-      </PostFooter>
-    </Wrapper>
+      <ScrollTopAndComment commentContainerRef={commentContainerRef} />
+    </>
   );
 }
 
 const Wrapper = styled.div`
   position: relative;
   display: grid;
-  grid-template-columns: minmax(auto, 768px) minmax(auto, 240px);
   justify-content: center;
   align-items: start;
-  gap: 10px;
-  margin: 0 auto;
-  padding: 10px;
-  animation: ${fadeUp} 0.5s forwards;
+  gap: 15px;
+  grid-template-rows: auto auto;
+  grid-template-columns: minmax(auto, 240px) minmax(auto, 768px) minmax(
+      auto,
+      240px
+    );
 
   ${media.desktop} {
-    padding: 50px 40px 40px;
-    grid-template-columns: minmax(auto, 768px) minmax(auto, 320px);
+    padding: 60px;
+    grid-template-columns: minmax(auto, 320px) minmax(auto, 768px) minmax(
+        auto,
+        320px
+      );
   }
 `;
 
 const PostWrapper = styled.article`
-  grid-column: 1 / 3;
-  ${media.tablet} {
-    grid-column: 1;
-  }
+  animation: ${fadeUp} 0.5s forwards;
+  grid-column: 2/3;
 `;
 
 const PostHeader = styled.header`
-  position: relative;
-  padding: 20px 0;
+  padding: 0 0 30px;
   text-align: left;
   border-bottom: 1px solid #e5e5e5;
 
   .post-title {
-    font-size: 34px;
+    font-size: 36px;
     font-weight: 700;
     letter-spacing: -1.5px;
   }
 
   .post-date {
-    font-size: 16px;
+    display: block;
+    font-size: 18px;
     font-weight: 400;
-    color: var(--fontColor);
-    margin-top: 00px;
+    margin-top: 15px;
+    color: var(--text-color);
   }
 `;
 
@@ -118,9 +126,9 @@ const PostSideBar = styled.aside`
 `;
 
 const PostFooter = styled.footer`
-  grid-column: 1 / 3;
+  grid-column: 2/3;
   margin-top: 30px;
-  font-size: 16px;
+  font-size: 18px;
   border-top: 1px solid #e5e5e5;
 `;
 

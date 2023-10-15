@@ -48,7 +48,7 @@ function PostPage({
   summary,
   thumbnail,
   title,
-  body: recordMap,
+  body,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter();
 
@@ -65,7 +65,7 @@ function PostPage({
         date={date}
       />
       <PostLayout title={title} date={date} thumbnail={thumbnail}>
-        <NotionRenderer recordMap={recordMap} />
+        <NotionRenderer recordMap={body} />
       </PostLayout>
     </>
   );

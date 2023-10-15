@@ -8,6 +8,8 @@ import 'react-notion-x/src/styles.css';
 import 'prismjs/themes/prism-tomorrow.css';
 import 'katex/dist/katex.min.css';
 import PostStyles from '@/styles/post-styles';
+import { useTheme } from 'next-themes';
+import { Theme } from './ThemeSwitch';
 
 // https://github.com/NotionX/react-notion-x/blob/master/examples/full/components/NotionPage.tsx
 const _NotionRenderer = dynamic(
@@ -80,9 +82,12 @@ interface Props {
 }
 
 function NotionRenderer({ recordMap }: Props) {
+  const { theme } = useTheme();
+
   return (
     <StyledNotionRenderer
       recordMap={recordMap}
+      darkMode={theme === Theme.dark}
       components={{
         Code,
         Collection,
@@ -99,10 +104,11 @@ function NotionRenderer({ recordMap }: Props) {
 export default NotionRenderer;
 
 const StyledNotionRenderer = styled(_NotionRenderer)`
+  position: relative;
   width: 100%;
   padding: 0;
 
-  ${PostStyles}
+  ${PostStyles};
 
   .notion-collection-page-properties {
     display: none !important;

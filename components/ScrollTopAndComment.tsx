@@ -48,10 +48,12 @@ function ScrollTopAndComment({
 }
 
 const Wrapper = styled.div`
-  position: absolute;
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
   display: flex;
+  flex-direction: column;
   gap: 10px;
-  right: 0;
 `;
 
 const StyledButton = styled.button`
