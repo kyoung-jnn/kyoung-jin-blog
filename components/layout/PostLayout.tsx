@@ -1,7 +1,6 @@
 import { ReactNode, useRef } from 'react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
-import MDXStyle from '@/styles/mdx-styles';
 import Comment from '@/components/Comment';
 import ScrollTopAndComment from '@/components/ScrollTopAndComment';
 import TOC from '@/components/TOC';
@@ -36,7 +35,7 @@ function PostLayout({ title, date, thumbnail, children }: Props) {
             </PostThumbnail>
           )}
         </PostHeader>
-        <PostContent>{children}</PostContent>
+        {children}
       </PostWrapper>
       {/* 목차 */}
       <PostSideBar>
@@ -106,10 +105,6 @@ const PostThumbnail = styled.figure`
   > img {
     position: relative !important;
   }
-`;
-
-const PostContent = styled.div`
-  ${MDXStyle}
 `;
 
 const PostSideBar = styled.aside`

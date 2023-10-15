@@ -5,23 +5,33 @@ import { getIntersectionObserver } from '@/utils/getInseresctionObserver';
 
 function TOC() {
   const [currentTable, setCurrentTable] = useState<string>('');
-  const [tables, setTables] = useState<Element[]>([]);
+  const [tables, setTables] = useState<
+    {
+      tableElement: Element;
+      highlightTag: string;
+    }[]
+  >([]);
 
   useEffect(() => {
     const observer = getIntersectionObserver(setCurrentTable);
 
     // 본문의 h 태그를 가져온다
-    const tableElements = Array.from(document.querySelectorAll('h1, h2, h3'))
-      .slice(1) // 제목은 제외
-      .map((tableElement) => {
-        tableElement['id'] = tableElement.innerHTML.replace(/\s/g, '-');
-        return tableElement;
-      });
+    const tableElements = Array.from(
+      document.querySelectorAll('h2 span span, h3 span span, h4 span span'),
+    ).map((tableElement) => {
+      // console.log(tableElement.parentNode?.parentNode?.nodeName);
+      tableElement['id'] = tableElement.innerHTML.replace(/\s/g, '-');
+
+      return {
+        tableElement,
+        highlightTag: tableElement.parentNode?.parentNode?.nodeName as string,
+      };
+    });
 
     setTables(tableElements);
 
     for (const tableElement of tableElements) {
-      observer.observe(tableElement);
+      observer.observe(tableElement.tableElement);
     }
 
     return () => observer.disconnect();
@@ -29,14 +39,14 @@ function TOC() {
 
   return (
     <Wrapper>
-      {tables.map((table, index) => (
+      {tables.map(({ tableElement, highlightTag }, index) => (
         <TableItem
-          href={'#' + table.innerHTML.replace(/\s/g, '-')}
+          href={'#' + tableElement.innerHTML.replace(/\s/g, '-')}
           key={index}
-          depth={table.tagName}
-          isActive={currentTable === table.innerHTML.replace(/\s/g, '-')}
+          depth={highlightTag}
+          isActive={currentTable === tableElement.innerHTML.replace(/\s/g, '-')}
         >
-          {table.innerHTML}
+          {tableElement.innerHTML}
         </TableItem>
       ))}
     </Wrapper>
@@ -56,8 +66,8 @@ const TableItem = styled.a<{ isActive: boolean; depth: string }>`
   color: ${({ isActive }) =>
     isActive ? css`var(--focus-text)` : css`var(--fontColor)`};
   margin-left: ${({ depth }) => {
-    if (depth === 'H2') return '7px';
-    if (depth === 'H3') return '15px';
+    if (depth === 'H3') return '7px';
+    if (depth === 'H4') return '15px';
   }};
 `;
 

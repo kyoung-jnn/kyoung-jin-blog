@@ -1,65 +1,82 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { NotionAPI } from 'notion-client';
+import { getDateValue, getTextContent } from 'notion-utils';
 import {
-  APIErrorCode,
-  Client,
-  ClientErrorCode,
-  isNotionClientError,
-} from '@notionhq/client';
-import { NotionToMarkdown } from 'notion-to-md';
-import { PageObjectResponse } from '../types/notion';
+  BlockMap,
+  CollectionPropertySchemaMap,
+  ExtendedRecordMap,
+  ID,
+} from 'notion-types';
 
-const notion = new Client({
-  auth: process.env.NOTION_API_TOKEN,
-});
+const api = new NotionAPI();
 
-export const getPosts = async () => {
-  try {
-    const databaseId = process.env.NOTION_DATEBASE_ID as string;
-    const { results } = await notion.databases.query({
-      database_id: databaseId,
-      filter: {
-        property: 'status',
-        status: {
-          equals: 'publish',
-        },
-      },
-      sorts: [
-        {
-          property: 'date',
-          direction: 'descending',
-        },
-      ],
-    });
+export const getPageIds = (response: ExtendedRecordMap) => {
+  const results: ID[] = [];
 
-    return results as unknown as PageObjectResponse[];
-  } catch (error: unknown) {
-    if (isNotionClientError(error)) {
-      switch (error.code) {
-        case ClientErrorCode.RequestTimeout:
-          break;
-        case APIErrorCode.ObjectNotFound:
-          break;
-        case APIErrorCode.Unauthorized:
-          break;
-        default:
-      }
-    }
-    return [];
-  }
-};
+  const collectionQuery = Object.values(response.collection_query)[0];
 
-export const getMarkdown = async (pageId: string) => {
-  const n2m = new NotionToMarkdown({
-    notionClient: notion,
-    config: {
-      parseChildPages: false,
-    },
+  Object.values(collectionQuery).forEach((view: any) => {
+    view?.collection_group_results?.blockIds?.forEach((id: ID) =>
+      results.push(id),
+    );
   });
 
-  try {
-    const mdblocks = await n2m.pageToMarkdown(pageId);
-    const mdString = n2m.toMarkdownString(mdblocks);
-    return mdString;
-  } catch (err) {
-    console.error(err);
-  }
+  return results;
+};
+
+export const getPageProperty = (
+  id: string,
+  blockMap: BlockMap,
+  schema: CollectionPropertySchemaMap,
+) => {
+  const results: any = {
+    id,
+  };
+
+  const {
+    value: { properties },
+  } = blockMap[id];
+  Object.entries(properties).forEach(([key, value]: any) => {
+    const type = schema[key].type;
+    const name = schema[key].name;
+
+    switch (type) {
+      case 'file': {
+        break;
+      }
+      case 'date': {
+        const dateProperty = getDateValue(value);
+        results[name] = dateProperty?.start_date;
+        break;
+      }
+      default: {
+        results[name] = getTextContent(value);
+        break;
+      }
+    }
+  });
+
+  return results;
+};
+
+export const getPosts = async () => {
+  const response = await api.getPage(process.env.NOTION_PAGE as string);
+
+  const blockMap = response.block;
+  const collection = Object.values(response.collection)[0]?.value;
+  const schema = collection?.schema;
+
+  const pageIds = getPageIds(response);
+  const results = pageIds.map((id) => {
+    return getPageProperty(id, blockMap, schema);
+  });
+
+  return results;
+};
+
+export const getPost = async (pageId: ID) => {
+  const notion = new NotionAPI();
+  const recordMap = await notion.getPage(pageId);
+
+  return recordMap;
 };

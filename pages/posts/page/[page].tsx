@@ -3,10 +3,9 @@ import ListLayout from '@/components/layout/ListLayout';
 import { PageSEO } from '@/components/SEO';
 import siteMetadata from '@/database/siteMetadata';
 import { getPosts } from 'api/notion';
-import { convertDTO } from '@/utils/notion';
 import SITE_CONFIG from '@/database/siteConfig';
-import { ParsedPageProperties } from '@/types/notion';
 import { useRouter } from 'next/router';
+import { Post } from '@/types/notion';
 
 const POSTS_PER_PAGE = 6;
 
@@ -14,7 +13,7 @@ const POSTS_PER_PAGE = 6;
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getPosts();
 
-  if (!posts) {
+  if (!posts.length) {
     return {
       paths: [],
       fallback: true,
@@ -35,33 +34,32 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps<{
-  allPosts: ParsedPageProperties[];
-  pagePosts: ParsedPageProperties[];
+  allPosts: Post[];
+  pagePosts: Post[];
   totalPage: number;
   currentPage: number;
 }> = async ({ params }) => {
   const page = params?.page as string;
 
   const posts = await getPosts();
-  const parsedPosts = posts.map((post) => convertDTO(post));
 
   const totalPage = Math.ceil(posts.length / POSTS_PER_PAGE);
   const currentPage = parseInt(page);
 
   if (isNaN(currentPage) || currentPage <= 0 || currentPage > totalPage) {
     return {
-      notFound: true, // 404
+      notFound: true,
     };
   }
 
-  const pagePosts = parsedPosts.slice(
+  const pagePosts = posts.slice(
     POSTS_PER_PAGE * (currentPage - 1),
     POSTS_PER_PAGE * currentPage,
   );
 
   return {
     props: {
-      allPosts: parsedPosts,
+      allPosts: posts,
       pagePosts,
       totalPage,
       currentPage,

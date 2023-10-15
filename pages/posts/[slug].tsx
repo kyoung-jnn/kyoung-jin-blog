@@ -2,17 +2,16 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import PostLayout from '@/components/layout/PostLayout';
 import { PostSEO } from '@/components/SEO';
 import siteMetadata from '@/database/siteMetadata';
-import { getMarkdown, getPosts } from 'api/notion';
-import Markdown from '@/components/Markdown';
-import { convertDTO } from '@/utils/notion';
+import { getPost, getPosts } from '@/api/notion';
 import SITE_CONFIG from '@/database/siteConfig';
 import { Post } from 'types/notion';
 import { useRouter } from 'next/router';
+import NotionRenderer from '@/components/NotionRender';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getPosts();
-  const slugs = posts.map(({ properties }) => {
-    return { params: { slug: properties.slug.rich_text[0].plain_text } };
+  const slugs = posts.map(({ slug }) => {
+    return { params: { slug } };
   });
 
   return {
@@ -22,11 +21,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps<Post> = async ({ params }) => {
-  const slug = params?.slug as string;
+  const currentSlug = params?.slug as string;
   const posts = await getPosts();
-  const post = posts?.find(
-    ({ properties }) => properties.slug.rich_text[0].plain_text === slug,
-  );
+  const post = posts?.find(({ slug }) => slug === currentSlug);
 
   if (!post) {
     return {
@@ -34,31 +31,24 @@ export const getStaticProps: GetStaticProps<Post> = async ({ params }) => {
     };
   }
 
-  const mdString = await getMarkdown(post.id);
-  const parsedPost = convertDTO(post);
-
-  if (!mdString) {
-    return {
-      notFound: true,
-    };
-  }
+  const recordMap = await getPost(post.id);
 
   return {
     props: {
-      body: mdString,
-      ...parsedPost,
+      ...post,
+      body: recordMap,
     },
     revalidate: SITE_CONFIG.revalidateTime,
   };
 };
 
 function PostPage({
-  body,
   date,
   slug,
   summary,
   thumbnail,
   title,
+  body: recordMap,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter();
 
@@ -75,7 +65,7 @@ function PostPage({
         date={date}
       />
       <PostLayout title={title} date={date} thumbnail={thumbnail}>
-        <Markdown mdString={body} />
+        <NotionRenderer recordMap={recordMap} />
       </PostLayout>
     </>
   );
