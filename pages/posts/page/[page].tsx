@@ -7,7 +7,7 @@ import SITE_CONFIG from '@/database/siteConfig';
 import { useRouter } from 'next/router';
 import { Post } from '@/types/notion';
 
-const POSTS_PER_PAGE = 6;
+export const POSTS_PER_PAGE = 6;
 
 // 동적 라우팅을 위한 매소드
 export const getStaticPaths: GetStaticPaths = async () => {
