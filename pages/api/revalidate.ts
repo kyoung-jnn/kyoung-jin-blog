@@ -26,7 +26,7 @@ export default async function handler(
       // 2. post list page
       const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
       const postList = Array.from({ length: totalPages }, (_, index) =>
-        res.revalidate(`/posts/page/${index}`),
+        res.revalidate(`/posts/page/${index + 1}`),
       );
       await Promise.all(postList);
 
