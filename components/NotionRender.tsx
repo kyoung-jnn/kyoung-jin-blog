@@ -10,12 +10,9 @@ import 'katex/dist/katex.min.css';
 import PostStyles from '@/styles/post-styles';
 import { useTheme } from 'next-themes';
 import { Theme } from './ThemeSwitch';
+import { NotionRenderer as _NotionRenderer } from 'react-notion-x';
 
 // https://github.com/NotionX/react-notion-x/blob/master/examples/full/components/NotionPage.tsx
-const _NotionRenderer = dynamic(
-  () => import('react-notion-x').then((m) => m.NotionRenderer),
-  { ssr: false },
-);
 
 const Code = dynamic(() =>
   import('react-notion-x/build/third-party/code').then(async (m) => {
@@ -56,20 +53,24 @@ const Code = dynamic(() =>
     return m.Code;
   }),
 );
+
 const Collection = dynamic(() =>
   import('react-notion-x/build/third-party/collection').then(
     (m) => m.Collection,
   ),
 );
+
 const Equation = dynamic(() =>
   import('react-notion-x/build/third-party/equation').then((m) => m.Equation),
 );
+
 const Pdf = dynamic(
   () => import('react-notion-x/build/third-party/pdf').then((m) => m.Pdf),
   {
     ssr: false,
   },
 );
+
 const Modal = dynamic(
   () => import('react-notion-x/build/third-party/modal').then((m) => m.Modal),
   {
@@ -89,13 +90,13 @@ function NotionRenderer({ recordMap }: Props) {
       recordMap={recordMap}
       darkMode={theme === Theme.dark}
       components={{
+        nextImage: Image,
+        nextLink: Link,
         Code,
         Collection,
         Equation,
         Modal,
         Pdf,
-        nextImage: Image,
-        nextLink: Link,
       }}
     />
   );
