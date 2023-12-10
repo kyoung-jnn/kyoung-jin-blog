@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NotionAPI } from 'notion-client';
 import { getDateValue, getTextContent } from 'notion-utils';
 import {
@@ -7,6 +6,7 @@ import {
   ExtendedRecordMap,
   ID,
 } from 'notion-types';
+import { PostProperty } from '@/types/notion';
 
 const api = new NotionAPI();
 
@@ -15,7 +15,7 @@ export const getPageIds = (response: ExtendedRecordMap) => {
 
   const collectionQuery = Object.values(response.collection_query)[0];
 
-  Object.values(collectionQuery).forEach((view: any) => {
+  Object.values(collectionQuery).forEach((view) => {
     view?.collection_group_results?.blockIds?.forEach((id: ID) =>
       results.push(id),
     );
@@ -29,13 +29,15 @@ export const getPageProperty = (
   blockMap: BlockMap,
   schema: CollectionPropertySchemaMap,
 ) => {
-  const results: any = {
+  const results = {
     id,
-  };
+  } as PostProperty;
 
   const {
     value: { properties },
   } = blockMap[id];
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Object.entries(properties).forEach(([key, value]: any) => {
     const type = schema[key].type;
     const name = schema[key].name;
@@ -46,7 +48,7 @@ export const getPageProperty = (
       }
       case 'date': {
         const dateProperty = getDateValue(value);
-        results[name] = dateProperty?.start_date;
+        results[name] = dateProperty?.start_date as PostProperty['date'];
         break;
       }
       default: {
@@ -67,11 +69,14 @@ export const getPosts = async () => {
   const schema = collection?.schema;
 
   const pageIds = getPageIds(response);
-  const results = pageIds.map((id) => {
+  const properties = pageIds.map((id) => {
     return getPageProperty(id, blockMap, schema);
   });
+  const publishedPosts = properties.filter(
+    (page) => page?.status === 'publish',
+  );
 
-  return results;
+  return publishedPosts;
 };
 
 export const getPost = async (pageId: ID) => {

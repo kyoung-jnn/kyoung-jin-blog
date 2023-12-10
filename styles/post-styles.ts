@@ -78,7 +78,7 @@ const PostStyles = css`
   // list
   ul,
   ol {
-    padding-inline-start: 1.6rem;
+    color: var(--blockquote-text);
   }
   ul > li {
     list-style: disc;

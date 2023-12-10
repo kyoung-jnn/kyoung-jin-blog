@@ -87,7 +87,8 @@ const PostWrapper = styled.article`
 `;
 
 const PostHeader = styled.header`
-  padding: 0 0 30px;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
   text-align: left;
   border-bottom: 1px solid #e5e5e5;
 

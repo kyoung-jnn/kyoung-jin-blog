@@ -5,7 +5,7 @@ import siteMetadata from '@/database/siteMetadata';
 import { getPosts } from 'api/notion';
 import SITE_CONFIG from '@/database/siteConfig';
 import { useRouter } from 'next/router';
-import { Post } from '@/types/notion';
+import { PostProperty } from '@/types/notion';
 
 export const POSTS_PER_PAGE = 6;
 
@@ -34,8 +34,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps<{
-  allPosts: Post[];
-  pagePosts: Post[];
+  allPosts: PostProperty[];
+  pagePosts: PostProperty[];
   totalPage: number;
   currentPage: number;
 }> = async ({ params }) => {

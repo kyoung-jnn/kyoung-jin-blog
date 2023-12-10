@@ -6,11 +6,11 @@ import SearchIcon from '@/components/icons/Search';
 import useDebounce from '@/hooks/useDebounce';
 import BREAK_POINTS from '@/constants/breakpoints';
 import media from '@/styles/media';
-import { Post } from '@/types/notion';
+import { PostProperty } from '@/types/notion';
 
 interface Props {
-  allPosts: Post[];
-  pagePosts: Post[];
+  allPosts: PostProperty[];
+  pagePosts: PostProperty[];
   totalPage: number;
   currentPage: number;
   title: string;

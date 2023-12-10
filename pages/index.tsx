@@ -12,13 +12,13 @@ import { fadeLeft, fadeUp, waving } from '@/utils/animation';
 import media from '@/styles/media';
 import BREAK_POINTS from '@/constants/breakpoints';
 import { getPosts } from '@/api/notion';
-import { Post } from '@/types/notion';
+import { PostProperty } from '@/types/notion';
 
 // latest post count
 const POSTS_HOME = 5;
 
 export const getStaticProps: GetStaticProps<{
-  latestPosts: Post[];
+  latestPosts: PostProperty[];
 }> = async () => {
   const posts = await getPosts();
 

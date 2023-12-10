@@ -84,11 +84,6 @@ export const PostSEO = ({
 
   const ogImageUrl = siteMetadata.socialBanner;
 
-  const authorList = {
-    '@type': 'Person',
-    name: siteMetadata.author,
-  };
-
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -100,7 +95,12 @@ export const PostSEO = ({
     image: ogImageUrl,
     datePublished: publishedAt,
     dateModified: modifiedAt,
-    author: authorList,
+    author: [
+      {
+        '@type': 'Person',
+        name: siteMetadata.author,
+      },
+    ],
     publisher: {
       '@type': 'Organization',
       name: siteMetadata.author,
