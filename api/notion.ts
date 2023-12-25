@@ -72,10 +72,11 @@ export const getPosts = async () => {
   const properties = pageIds.map((id) => {
     return getPageProperty(id, blockMap, schema);
   });
-  const publishedPosts = properties.filter(
-    (page) => page?.status === 'publish',
-  );
 
+  // In Production, Publish only 'publish' status
+  const publishedPosts = properties.filter((page) =>
+    process.env.NODE_ENV === 'production' ? page?.status === 'publish' : true,
+  );
   return publishedPosts;
 };
 

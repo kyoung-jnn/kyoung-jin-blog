@@ -78,6 +78,8 @@ const PostStyles = css`
   // list
   ul,
   ol {
+    padding-inline-start: 1.2rem;
+    font-size: 17px;
     color: var(--blockquote-text);
   }
   ul > li {
