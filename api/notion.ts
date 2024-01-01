@@ -73,7 +73,7 @@ export const getPosts = async () => {
     return getPageProperty(id, blockMap, schema);
   });
 
-  // In Production, Publish only 'publish' status
+  // In Production, Publish 'publish' page's status
   const publishedPosts = properties.filter((page) =>
     process.env.NODE_ENV === 'production' ? page?.status === 'publish' : true,
   );
