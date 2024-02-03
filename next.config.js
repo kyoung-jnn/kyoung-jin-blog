@@ -10,6 +10,9 @@ const nextConfig = {
     imageSizes: [32, 96, 128],
     deviceSizes: [768, 1280, 1920],
   },
+  compiler: {
+    emotion: true,
+  },
 };
 
 module.exports = nextConfig;

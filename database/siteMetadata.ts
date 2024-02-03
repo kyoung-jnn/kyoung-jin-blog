@@ -1,4 +1,4 @@
-// 사이트의 메타 데이터
+// site meta data
 
 const siteMetadata = {
   title: `Jin's Blog | Frontend Engineer`,

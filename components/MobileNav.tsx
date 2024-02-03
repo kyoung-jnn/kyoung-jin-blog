@@ -15,7 +15,7 @@ function MobileNav() {
       if (status) {
         document.body.style.overflow = 'auto';
       } else {
-        // 스크롤 기능 정지
+        // Nav 뒤 화면 스크롤 기능 정지
         document.body.style.overflow = 'hidden';
       }
       return !status;
@@ -33,9 +33,7 @@ function MobileNav() {
           <MenuContainer onClick={handleClick}>
             {headerMenu.map(({ title, href }) => (
               <Link key={title} href={href}>
-                <a>
-                  <MenuItem>{title}</MenuItem>
-                </a>
+                <MenuItem>{title}</MenuItem>
               </Link>
             ))}
           </MenuContainer>

@@ -1,13 +1,6 @@
-export const commentDefaultConfig = {
-  src: 'https://utteranc.es/client.js',
+export const COMMENT_CONFIG = {
   repo: 'kyoung-jnn/kyoung-jin-blog',
-  'issue-term': 'pathname',
-  label: '💬',
-  crossorigin: 'anonymous',
-  async: 'true',
-};
-
-export const commentThemeConfig = {
-  theme: 'github-light',
-  darkTheme: 'photon-dark',
-};
+  repoId: 'R_kgDOHi0BGA',
+  category: 'Comments',
+  categoryId: 'DIC_kwDOHi0BGM4Cc6dP',
+} as const;

@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { dateToFormat } from '@/utils/time';
 import media from '@/styles/media';
 import TOC from '../TOC';
+import { css } from '@emotion/react';
 
 interface Props {
   title: string;
@@ -48,10 +49,16 @@ function PostLayout({
         </PostSideBar>
         <PostFooter>
           {/* 댓글 영역 */}
-          <div ref={commentContainerRef}>
+          <section ref={commentContainerRef}>
             <Comment />
-          </div>
-          <Link href="/posts/page/1">🤚 그만보기</Link>
+          </section>
+          <section
+            css={css`
+              margin-top: 30px;
+            `}
+          >
+            <Link href="/posts/page/1">🤚 그만보기</Link>
+          </section>
         </PostFooter>
       </Wrapper>
       {/* 스크롤 */}
@@ -62,22 +69,15 @@ function PostLayout({
 
 const Wrapper = styled.div`
   position: relative;
-  display: grid;
-  justify-content: center;
-  align-items: start;
-  gap: 15px;
-  grid-template-rows: auto auto;
-  grid-template-columns: minmax(auto, 240px) minmax(auto, 768px) minmax(
-      auto,
-      240px
-    );
+  padding: 60px 10px;
 
   ${media.desktop} {
+    display: grid;
+    justify-content: center;
+    align-items: start;
+    gap: 10px;
     padding: 60px;
-    grid-template-columns: minmax(auto, 320px) minmax(auto, 768px) minmax(
-        auto,
-        320px
-      );
+    grid-template-columns: minmax(auto, 320px) minmax(auto, 768px) 320px;
   }
 `;
 
@@ -119,7 +119,8 @@ const PostThumbnail = styled.figure`
 const PostSideBar = styled.aside`
   position: relative;
   display: none;
-  ${media.tablet} {
+  flex-shrink: 0;
+  ${media.desktop} {
     display: block;
     position: sticky;
     top: 90px;
@@ -128,7 +129,7 @@ const PostSideBar = styled.aside`
 
 const PostFooter = styled.footer`
   grid-column: 2/3;
-  margin-top: 30px;
+  padding-top: 30px;
   font-size: 18px;
   border-top: 1px solid #e5e5e5;
 `;
