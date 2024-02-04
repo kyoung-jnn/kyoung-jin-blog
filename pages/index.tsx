@@ -65,7 +65,7 @@ function Home({ latestPosts }: InferGetStaticPropsType<typeof getStaticProps>) {
           />
           <h3 className="name">{SITE_CONFIG.author.name}</h3>
           <div>Frontend Engineer</div>
-          <div>In Seoul, Korea</div>
+          <div>In Seoul, South Korea</div>
         </ProfileSection>
         <ContactSection>
           <Icon
@@ -100,11 +100,9 @@ function Home({ latestPosts }: InferGetStaticPropsType<typeof getStaticProps>) {
             );
           })}
         </ul>
-        <div className="more-button-wrapper">
-          <Link href="/posts/page/1" aria-label="all posts">
-            <button>모든 포스팅보기</button>
-          </Link>
-        </div>
+        <Link href="/posts/page/1" aria-label="all posts">
+          <button>모든 포스팅보기</button>
+        </Link>
       </LatestSection>
     </Wrapper>
   );
@@ -168,11 +166,7 @@ const ContactSection = styled.section`
 const LatestSection = styled.section`
   opacity: 0;
   animation: ${fadeLeft} 1s 0.5s forwards;
-  border-top: 1px solid #e5e5e5;
-
-  > .more-button-wrapper {
-    float: right;
-  }
+  border-top: 1px solid var(--text);
 `;
 
 export default Home;

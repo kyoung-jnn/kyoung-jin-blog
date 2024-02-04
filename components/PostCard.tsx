@@ -17,7 +17,7 @@ const PostCard = ({ title, date, summary, slug }: PostCardProps) => {
           <div className="summary">{summary}</div>
         </ContentContainer>
         <DateContainer>
-          <time dateTime={date}>Published on {date}</time>
+          <time dateTime={date}>{date}</time>
         </DateContainer>
       </StyledPostCard>
     </Link>
@@ -25,39 +25,31 @@ const PostCard = ({ title, date, summary, slug }: PostCardProps) => {
 };
 
 const StyledPostCard = styled.li`
-  padding: 15px 10px;
-  margin-bottom: 10px;
-  border: 2px solid transparent;
-  border-radius: 10px;
-  color: var(--text);
+  padding: 18px 10px;
+  color: #aaaaaa;
   cursor: pointer;
 
-  transition: all 0.3s;
+  transition: color 0.4s;
   &:hover {
-    color: var(--focus-text);
-    background-color: var(--focus-bg);
-    filter: drop-shadow(0px 0px 10px var(--focus-bg));
+    color: var(--text);
   }
 `;
 
 const ContentContainer = styled.div`
-  color: var(--fontColor);
-
   .title {
     font-size: 20px;
     margin-top: 0;
   }
 
   .summary {
-    font-weight: 500;
+    font-weight: 400;
   }
 `;
 
 const DateContainer = styled.div`
-  font-size: 15px;
-  font-weight: 300;
-  margin-top: 10px;
-  color: var(--fontColor);
+  font-size: 14px;
+  font-weight: 200;
+  margin-top: 5px;
 `;
 
 export default PostCard;
