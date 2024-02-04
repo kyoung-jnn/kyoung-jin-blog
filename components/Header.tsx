@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import ThemeSwitch from '@/components/ThemeSwitch';
 import MobileNav from '@/components/MobileNav';
 import SiteConfig from '@/database/siteConfig';
-import headerNavLinks from '@/constants/headerMenu';
+
 import media from '@/styles/media';
 import BREAK_POINTS from '@/constants/breakpoints';
 import Link from 'next/link';
@@ -13,18 +13,10 @@ function Header() {
       <Nav>
         <Link href="/" aria-label="home link">
           <LeftHeaderContainer>
-            <div className="header-logo">🚀</div>
             <div className="header-title">{SiteConfig.title}</div>
           </LeftHeaderContainer>
         </Link>
         <RightHeaderContainer>
-          <div className="menu-list">
-            {headerNavLinks.map(({ title, href }) => (
-              <Link key={title} href={href} className="menu-item">
-                {title}
-              </Link>
-            ))}
-          </div>
           <ThemeSwitch />
           <MobileNav />
         </RightHeaderContainer>
@@ -38,8 +30,9 @@ export default Header;
 const Wrapper = styled.header`
   position: sticky;
   top: 0;
-  backdrop-filter: blur(4px);
+  height: 100px;
   z-index: 100;
+  background: linear-gradient(to top, transparent, var(--bg));
 `;
 
 const Nav = styled.nav`
@@ -56,11 +49,6 @@ const LeftHeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  > .header-logo {
-    font-size: 24px;
-    margin-right: 10px;
-  }
 
   > .header-title {
     display: none;

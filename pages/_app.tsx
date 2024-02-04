@@ -26,7 +26,7 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <ThemeProvider attribute="data-theme" defaultTheme="light">
+      <ThemeProvider attribute="data-theme" defaultTheme="dark">
         <Head>
           <meta content="width=device-width, initial-scale=1" name="viewport" />
         </Head>

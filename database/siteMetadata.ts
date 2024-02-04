@@ -1,7 +1,7 @@
 // site meta data
 
 const siteMetadata = {
-  title: `Jin's Blog | Frontend Engineer`,
+  title: `Kyoung Jin, Roh`,
   author: 'Kyoung Jin, Roh',
   email: 'rudwls468@gmail.com',
   description: '이것저것 끄적이는 블로그',

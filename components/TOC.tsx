@@ -56,7 +56,7 @@ function TOC() {
   );
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.nav`
   padding: 10px;
   border-left: 1px solid #e5e5e5;
 `;

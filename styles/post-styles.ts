@@ -8,10 +8,8 @@ const PostStyles = css`
   h4,
   h5,
   h6 {
-    span > span {
-      font-weight: 700;
-      letter-spacing: -0.02rem;
-    }
+    font-weight: 700;
+    letter-spacing: -0.04rem;
   }
 
   h2 {
@@ -31,9 +29,13 @@ const PostStyles = css`
 
   // default p
   div {
-    font-size: 17px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 400;
     line-height: 1.8;
+  }
+
+  a {
+    transition: opacity 0.5s;
   }
 
   // bold
@@ -42,11 +44,36 @@ const PostStyles = css`
     font-weight: 700;
   }
 
+  blockquote {
+    font-size: 16px;
+    margin: 5px 0;
+    border-left: 3px solid var(--focus-text);
+  }
+
+  // list 태그
+  ul,
+  ol {
+    padding-inline-start: 1.2rem;
+    font-size: 16px;
+  }
+  ul > li {
+    list-style: disc;
+  }
+  ol > li {
+    list-style: number;
+  }
+
+  // 노션 콜아웃
+  .notion-callout {
+    background-color: transparent;
+  }
+
+  // code 태그
   .notion-inline-code {
     font-size: 0.95rem;
-    font-weight: 600;
-    border-radius: 3px;
-    color: var(--blockquote-text);
+    font-weight: 400;
+    border-radius: 6px;
+    color: var(--text);
     background-color: var(--code-bg);
     padding: 3px 4px;
     font-family:
@@ -66,31 +93,13 @@ const PostStyles = css`
       sans-serif;
   }
 
-  blockquote {
-    font-size: 16px;
-    margin: 5px 0;
-    padding: 6px 10px;
-    color: var(--blockquote-text);
-    background-color: var(--blockquote-bg);
-    border-left: 3px solid var(--focus-text);
-  }
-
-  // list
-  ul,
-  ol {
-    padding-inline-start: 1.2rem;
-    font-size: 17px;
-    color: var(--blockquote-text);
-  }
-  ul > li {
-    list-style: disc;
-  }
-  ol > li {
-    list-style: number;
-  }
-
-  a {
-    color: var(--focus-text);
+  // 코드 에디터
+  .notion-code {
+    background-color: #232323;
+    overflow-y: hidden;
+    code {
+      font-size: 12px;
+    }
   }
 `;
 

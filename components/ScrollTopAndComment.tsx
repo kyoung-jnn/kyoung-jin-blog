@@ -49,8 +49,8 @@ function ScrollTopAndComment({
 
 const Wrapper = styled.div`
   position: fixed;
-  right: 50px;
-  bottom: 50px;
+  right: 20px;
+  bottom: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -60,18 +60,15 @@ const StyledButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
-  background-color: var(--focus-bg);
+  background-color: var(--text);
   cursor: pointer;
-  filter: drop-shadow(0px 0px 5px #d8d6e9);
-  -webkit-tap-highlight-color: transparent !important;
 
-  .icon {
+  svg {
     width: 25px;
     height: 25px;
-    fill: var(--focus-text);
   }
 `;
 

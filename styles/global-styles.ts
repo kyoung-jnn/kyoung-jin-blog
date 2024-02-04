@@ -9,6 +9,8 @@ const GlobalStyles = css`
   // Using next-themes
   :root {
     scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #2e2e2e transparent;
   }
 
   [data-theme='light'] {
@@ -53,9 +55,6 @@ const GlobalStyles = css`
     text-decoration: none;
     color: var(--text);
     transition: color 0.5s;
-    &:hover {
-      color: var(--focus-text);
-    }
   }
 
   ul,
