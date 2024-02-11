@@ -1,15 +1,17 @@
-import { PropsWithChildren, useRef } from 'react';
+import { PropsWithChildren, useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
+import smoothscroll from 'smoothscroll-polyfill'; // Safari 에서 smooth 효과 적용
 
 import Comment from '@/components/Comment';
-import ScrollTopAndComment from '@/components/ScrollTopAndComment';
 import { fadeUp } from '@/utils/animation';
 import Image from 'next/image';
 import { dateToFormat } from '@/utils/time';
 import TOC from '../TOC';
-import Sidebar from '../SideBar';
+import Sidebar from '../Sidebar';
 import GridLayout from './GridLayout';
 import { css } from '@emotion/react';
+import ArrowUpIcon from '../icons/ArrowUpIcon';
+import MessageIcon from '../icons/MessageIcon';
 
 interface Props {
   title: string;
@@ -26,54 +28,75 @@ function PostLayout({
   const updatedAt = dateToFormat(new Date(date));
   const commentContainerRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    smoothscroll.polyfill();
+  }, []);
+
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleScrollToComment = () => {
+    if (commentContainerRef.current)
+      commentContainerRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'end',
+      });
+  };
+
   return (
-    <>
-      <GridLayout>
-        {/* 사이드바 */}
-        <Sidebar>
-          <TOC />
-        </Sidebar>
-        {/* 본문 영역 */}
-        <PostWrapper>
-          <PostHeader>
-            <h1
-              css={css`
-                font-size: 25px;
-                font-weight: 700;
-                letter-spacing: -1px;
-              `}
-            >
-              {title}
-            </h1>
-            <time
-              dateTime={updatedAt}
-              css={css`
-                display: block;
-                font-size: 16px;
-                margin-top: 10px;
-                color: var(--text-color);
-              `}
-            >
-              {updatedAt}
-            </time>
-            {thumbnail && (
-              <PostThumbnail>
-                <Image src={thumbnail} alt="post thumbnail" fill priority />
-              </PostThumbnail>
-            )}
-          </PostHeader>
-          {children}
-        </PostWrapper>
-        <PostFooter>
-          {/* 댓글 영역 */}
-          <section ref={commentContainerRef}>
-            <Comment />
-          </section>
-        </PostFooter>
-      </GridLayout>
-      {/* 스크롤 */}
-      <ScrollTopAndComment commentContainerRef={commentContainerRef} />
-    </>
+    <GridLayout>
+      {/* 사이드바 */}
+      <Sidebar>
+        <TOC />
+        <div
+          css={css`
+            display: flex;
+            gap: 6px;
+          `}
+        >
+          <ArrowUpIcon width={20} height={20} onClick={handleScrollToTop} />
+          <MessageIcon width={20} height={20} onClick={handleScrollToComment} />
+        </div>
+      </Sidebar>
+      {/* 본문 영역 */}
+      <PostWrapper>
+        <PostHeader>
+          <h1
+            css={css`
+              font-size: 25px;
+              font-weight: 700;
+              letter-spacing: -1px;
+            `}
+          >
+            {title}
+          </h1>
+          <time
+            dateTime={updatedAt}
+            css={css`
+              display: block;
+              font-size: 16px;
+              margin-top: 10px;
+              color: var(--text-color);
+            `}
+          >
+            {updatedAt}
+          </time>
+          {thumbnail && (
+            <PostThumbnail>
+              <Image src={thumbnail} alt="post thumbnail" fill priority />
+            </PostThumbnail>
+          )}
+        </PostHeader>
+        {children}
+      </PostWrapper>
+      <PostFooter>
+        {/* 댓글 영역 */}
+        <section ref={commentContainerRef}>
+          <Comment />
+        </section>
+      </PostFooter>
+    </GridLayout>
   );
 }
 
@@ -101,6 +124,22 @@ const PostFooter = styled.footer`
   padding-top: 30px;
   font-size: 18px;
   border-top: 1px solid #e5e5e5;
+`;
+
+const StyledButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--text);
+  cursor: pointer;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
 `;
 
 export default PostLayout;

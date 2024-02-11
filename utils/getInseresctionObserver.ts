@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from 'react';
 
 const options = { threshold: 1 };
 
-export const getIntersectionObserver = (
+export const getScrollTableIntersectionObserver = (
   setCurrentTable: Dispatch<SetStateAction<string>>,
 ) => {
   let direction = '';

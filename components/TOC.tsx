@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { getIntersectionObserver } from '@/utils/getInseresctionObserver';
+import { getScrollTableIntersectionObserver } from '@/utils/getInseresctionObserver';
 import { fadeLeft } from '@/utils/animation';
 
 const DELAY_TIME = 500;
@@ -17,7 +17,7 @@ function TOC() {
 
   useEffect(() => {
     setTimeout(() => {
-      const observer = getIntersectionObserver(setCurrentTable);
+      const observer = getScrollTableIntersectionObserver(setCurrentTable);
 
       // 본문의 h 태그를 가져온다
       const elements = Array.from(

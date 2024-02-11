@@ -1,48 +1,46 @@
-import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import Link from 'next/link';
 
-interface PostCardProps {
+interface Props {
   title: string;
   date: string;
   slug: string;
 }
 
-const PostCard = ({ title, date, slug }: PostCardProps) => {
+function PostCard({ title, date, slug }: Props) {
   return (
-    <Link href={`/posts/${slug}`}>
-      <StyledPostCard key={slug}>
-        <ContentContainer>
-          <h2 className="title">{title}</h2>
-        </ContentContainer>
-        <DateContainer>
-          <time dateTime={date}>{date}</time>
-        </DateContainer>
-      </StyledPostCard>
+    <Link
+      href={`/posts/${slug}`}
+      css={css`
+        display: block;
+        padding: 16px 0;
+        transition: opacity 0.2s;
+        :hover {
+          opacity: 0.7;
+        }
+      `}
+    >
+      <h2
+        css={css`
+          font-size: 16px;
+          font-weight: 500;
+          margin-top: 0;
+        `}
+      >
+        {title}
+      </h2>
+      <time
+        dateTime={date}
+        css={css`
+          font-size: 14px;
+          font-weight: 200;
+          margin-top: 5px;
+        `}
+      >
+        {date}
+      </time>
     </Link>
   );
-};
-
-const StyledPostCard = styled.li`
-  padding: 18px 0;
-  cursor: pointer;
-
-  transition: color 0.3s;
-  &:hover {
-  }
-`;
-
-const ContentContainer = styled.div`
-  .title {
-    font-size: 16px;
-    font-weight: 500;
-    margin-top: 0;
-  }
-`;
-
-const DateContainer = styled.div`
-  font-size: 14px;
-  font-weight: 200;
-  margin-top: 5px;
-`;
+}
 
 export default PostCard;

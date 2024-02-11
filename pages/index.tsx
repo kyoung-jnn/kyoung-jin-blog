@@ -160,12 +160,12 @@ const MenuSection = styled.nav`
   margin: 36px 0;
   grid-template-columns: repeat(3, 1fr);
   opacity: 0;
-  animation: ${fadeLeft} 1s 0.3s forwards;
+  animation: ${fadeLeft} 1s 0.2s forwards;
 `;
 
 const LatestSection = styled.section`
   opacity: 0;
-  animation: ${fadeLeft} 1s 0.5s forwards;
+  animation: ${fadeLeft} 1s 0.4s forwards;
 `;
 
 export default Home;

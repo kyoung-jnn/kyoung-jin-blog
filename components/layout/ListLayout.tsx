@@ -5,9 +5,9 @@ import Pagination from '@/components/Pagination';
 import SearchIcon from '@/components/icons/Search';
 import useDebounce from '@/hooks/useDebounce';
 import { PostProperty } from '@/types/notion';
-import Sidebar from '../SideBar';
 import GridLayout from './GridLayout';
 import { css } from '@emotion/react';
+import Sidebar from '../Sidebar';
 
 interface Props {
   allPosts: PostProperty[];
@@ -40,7 +40,7 @@ function ListLayout({
   return (
     <GridLayout>
       <Sidebar />
-      <section>
+      <Wrapper>
         <HeroWrapper>
           <h3>개발 • dev</h3>
           <InputWrapper>
@@ -57,13 +57,11 @@ function ListLayout({
           <NotFound>포스팅이 존재하지 않습니다...😖</NotFound>
         )}
         <ul>
-          {displayPosts.map(({ title, date, slug }) => {
-            return (
-              <PostCard key={slug} title={title} date={date} slug={slug} />
-            );
-          })}
+          {displayPosts.map(({ title, date, slug }) => (
+            <PostCard key={slug} title={title} date={date} slug={slug} />
+          ))}
         </ul>
-      </section>
+      </Wrapper>
       {displayPosts.length > 0 && (
         <Pagination
           totalPage={totalPage}
@@ -80,7 +78,11 @@ function ListLayout({
 
 export default ListLayout;
 
-const HeroWrapper = styled.section`
+const Wrapper = styled.section`
+  grid-column: 2/3;
+`;
+
+const HeroWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
