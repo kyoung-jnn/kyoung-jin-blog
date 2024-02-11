@@ -67,8 +67,8 @@ const StyledButton = styled.button`
   cursor: pointer;
 
   svg {
-    width: 25px;
-    height: 25px;
+    width: 18px;
+    height: 18px;
   }
 `;
 

@@ -4,17 +4,15 @@ import Link from 'next/link';
 interface PostCardProps {
   title: string;
   date: string;
-  summary: string;
   slug: string;
 }
 
-const PostCard = ({ title, date, summary, slug }: PostCardProps) => {
+const PostCard = ({ title, date, slug }: PostCardProps) => {
   return (
     <Link href={`/posts/${slug}`}>
       <StyledPostCard key={slug}>
         <ContentContainer>
           <h2 className="title">{title}</h2>
-          <div className="summary">{summary}</div>
         </ContentContainer>
         <DateContainer>
           <time dateTime={date}>{date}</time>
@@ -25,24 +23,19 @@ const PostCard = ({ title, date, summary, slug }: PostCardProps) => {
 };
 
 const StyledPostCard = styled.li`
-  padding: 18px 10px;
-  color: #aaaaaa;
+  padding: 18px 0;
   cursor: pointer;
 
-  transition: color 0.4s;
+  transition: color 0.3s;
   &:hover {
-    color: var(--text);
   }
 `;
 
 const ContentContainer = styled.div`
   .title {
-    font-size: 20px;
+    font-size: 16px;
+    font-weight: 500;
     margin-top: 0;
-  }
-
-  .summary {
-    font-weight: 400;
   }
 `;
 

@@ -3,7 +3,8 @@
 const SITE_CONFIG = {
   title: `Kyoung Jin, Roh`,
   author: {
-    name: 'Kyoung Jin, Roh',
+    koName: '노경진',
+    enName: 'Kyoung Jin, Roh',
     photo: '/public/profile.webp',
     bio: 'Frontend Engineer',
     contacts: {

@@ -7,12 +7,13 @@ import PostCard from '@/components/PostCard';
 import { PageSEO } from '@/components/SEO';
 import SITE_CONFIG from '@/database/siteConfig';
 import siteMetadata from '@/database/siteMetadata';
-import waving_hand from '@/public/waving-hand.webp';
-import { fadeLeft, fadeUp, waving } from '@/utils/animation';
-import media from '@/styles/media';
-import BREAK_POINTS from '@/constants/breakpoints';
+import { fadeLeft, fadeUp } from '@/utils/animation';
+
 import { getPosts } from '@/api/notion';
 import { PostProperty } from '@/types/notion';
+import { css } from '@emotion/react';
+import media from '@/styles/media';
+import menu from '@/constants/menu';
 
 // latest post count
 const POSTS_HOME = 5;
@@ -33,140 +34,138 @@ export const getStaticProps: GetStaticProps<{
 
 function Home({ latestPosts }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <Wrapper>
+    <>
       <PageSEO
         title={siteMetadata.title}
         description={siteMetadata.description}
       />
-      <IntroSection>
-        <h1 className="title">
-          Hello, There
-          <AnimatedHand>
-            <Image
-              src={waving_hand}
-              alt="waving-hand-image"
-              objectFit="cover"
-              width={45}
-              height={45}
-            />
-          </AnimatedHand>
-        </h1>
-        <h2 className="subtitle">Slow and Steady.</h2>
+      <Wrapper>
         <ProfileSection>
           <Image
             src="https://avatars.githubusercontent.com/u/55469709?s=400&u=9d32f97f83bf19b48b488ce2c007f4a82b432c99&v=4"
-            alt="profile-image"
+            alt="프로필 이미지"
             aria-label="프로필 이미지"
-            width={110}
-            height={110}
-            style={{
-              borderRadius: '50%',
-            }}
+            width={90}
+            height={90}
+            css={css`
+              border-radius: 50%;
+            `}
           />
-          <h3 className="name">{SITE_CONFIG.author.name}</h3>
-          <div>Frontend Engineer</div>
-          <div>In Seoul, South Korea</div>
+          <h3
+            css={css`
+              margin-top: 10px;
+            `}
+          >
+            {SITE_CONFIG.author.koName} • {SITE_CONFIG.author.enName}
+          </h3>
+          <p
+            css={css`
+              margin-top: 8px;
+            `}
+          >
+            Frontend Engineer
+          </p>
+          <p
+            css={css`
+              margin-top: 4px;
+            `}
+          >
+            In Seoul, South Korea
+          </p>
         </ProfileSection>
         <ContactSection>
           <Icon
             kind="mail"
             href={`mailto:${SITE_CONFIG.author.contacts.email}`}
-            size={24}
+            size={18}
           />
           <Icon
             kind="github"
             href={SITE_CONFIG.author.contacts.github}
-            size={24}
+            size={18}
           />
           <Icon
             kind="linkedin"
             href={SITE_CONFIG.author.contacts.linkedin}
-            size={24}
+            size={18}
           />
         </ContactSection>
-      </IntroSection>
-      <LatestSection>
-        <ul>
-          {!latestPosts.length && '포스팅이 존재하지 않습니다. 🥹'}
-          {latestPosts.map(({ title, date, summary, slug }) => {
-            return (
-              <PostCard
-                key={slug}
-                title={title}
-                date={date}
-                summary={summary}
-                slug={slug}
-              />
-            );
-          })}
-        </ul>
-        <Link href="/posts/page/1" aria-label="all posts">
-          <button>모든 포스팅보기</button>
-        </Link>
-      </LatestSection>
-    </Wrapper>
+        <MenuSection>
+          {menu.map(({ href, name, description }) => (
+            <Link href={href} key={name}>
+              {name}
+              <p
+                css={css`
+                  font-size: 14px;
+                  margin-top: 4px;
+                `}
+              >
+                {description}
+              </p>
+            </Link>
+          ))}
+        </MenuSection>
+        <LatestSection>
+          <ul>
+            {!latestPosts.length && '포스팅이 존재하지 않습니다. 🥹'}
+            {latestPosts.map(({ title, date, slug }) => {
+              return (
+                <PostCard key={slug} title={title} date={date} slug={slug} />
+              );
+            })}
+          </ul>
+          <Link
+            href="/posts/page/1"
+            aria-label="모든 포스팅 보기 버튼"
+            css={css`
+              font-size: 14px;
+            `}
+          >
+            모든 개발관련 포스팅보기
+          </Link>
+        </LatestSection>
+      </Wrapper>
+    </>
   );
 }
 
 const Wrapper = styled.div`
   position: relative;
-  max-width: ${BREAK_POINTS.tablet + 'px'};
+  max-width: 640px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 16px;
   padding-right: 16px;
+  margin-top: 60px;
 
   ${media.tablet} {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding: 0;
   }
 `;
 
-const IntroSection = styled.section`
-  margin: 50px 0 30px;
+const ProfileSection = styled.section`
+  animation: ${fadeUp} 1s forwards;
+`;
 
-  .title {
-    font-size: 50px;
-    font-weight: 700;
-  }
-
-  .subtitle {
-    font-size: 36px;
-    font-weight: 700;
-    margin-top: 10px;
-  }
+const ContactSection = styled.section`
+  display: flex;
+  margin-top: 20px;
+  gap: 10px;
 
   animation: ${fadeUp} 1s forwards;
 `;
 
-const AnimatedHand = styled.div`
-  display: inline-block;
-  width: 45px;
-  height: 45px;
-  margin-left: 10px;
-
-  animation: ${waving} 2s;
-`;
-
-const ProfileSection = styled.section`
-  margin-top: 20px;
-
-  .name {
-    margin-top: 10px;
-  }
-`;
-
-const ContactSection = styled.section`
-  margin-top: 20px;
-  div {
-    margin-right: 15px;
-  }
+const MenuSection = styled.nav`
+  display: grid;
+  margin: 36px 0;
+  grid-template-columns: repeat(3, 1fr);
+  opacity: 0;
+  animation: ${fadeLeft} 1s 0.3s forwards;
 `;
 
 const LatestSection = styled.section`
   opacity: 0;
   animation: ${fadeLeft} 1s 0.5s forwards;
-  border-top: 1px solid var(--text);
 `;
 
 export default Home;

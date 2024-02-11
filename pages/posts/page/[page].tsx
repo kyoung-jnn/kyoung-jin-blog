@@ -91,7 +91,6 @@ export default function PostList({
         pagePosts={pagePosts}
         totalPage={totalPage}
         currentPage={currentPage}
-        title={`📒 Page, ${currentPage}`}
         paginationLink="/posts/page"
       />
     </>

@@ -10,7 +10,7 @@ const GlobalStyles = css`
   :root {
     scroll-behavior: smooth;
     scrollbar-width: thin;
-    scrollbar-color: #2e2e2e transparent;
+    scrollbar-color: var(--scrollbar-color) transparent;
   }
 
   [data-theme='light'] {
@@ -24,6 +24,8 @@ const GlobalStyles = css`
   // Default Styling
   body {
     font-family:
+      GowunBatang,
+      'Pretendard Variable',
       Pretendard,
       -apple-system,
       BlinkMacSystemFont,
@@ -45,6 +47,14 @@ const GlobalStyles = css`
     background-color: var(--bg);
   }
 
+  @font-face {
+    font-family: 'GowunBatang';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Regular.woff')
+      format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
   *,
   *:before,
   *:after {
@@ -55,6 +65,10 @@ const GlobalStyles = css`
     text-decoration: none;
     color: var(--text);
     transition: color 0.5s;
+  }
+
+  p {
+    margin: 0;
   }
 
   ul,

@@ -76,9 +76,8 @@ const rotateMoon = keyframes`
 `;
 
 const StyledButton = styled.button`
-  width: 30px;
-  height: 30px;
-  margin-left: 10px;
+  width: 24px;
+  height: 24px;
   cursor: pointer;
 
   .light-theme {

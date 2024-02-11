@@ -21,7 +21,7 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             as="style"
             crossOrigin="anonymous"
-            href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.6/static/pretendard.css"
+            href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/variable/pretendardvariable-dynamic-subset.min.css"
           />
         </Head>
         <body>

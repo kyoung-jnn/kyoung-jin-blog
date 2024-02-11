@@ -1,6 +1,8 @@
 import { css } from '@emotion/react';
 
 const PostStyles = css`
+  font-family: 'Pretendard Variable';
+
   // highlight
   h1,
   h2,
@@ -77,20 +79,8 @@ const PostStyles = css`
     background-color: var(--code-bg);
     padding: 3px 4px;
     font-family:
-      Pretendard,
-      -apple-system,
-      BlinkMacSystemFont,
-      system-ui,
-      Roboto,
-      'Helvetica Neue',
-      'Segoe UI',
-      'Apple SD Gothic Neo',
-      'Noto Sans KR',
-      'Malgun Gothic',
-      'Apple Color Emoji',
-      'Segoe UI Emoji',
-      'Segoe UI Symbol',
-      sans-serif;
+      'Pretendard Variable',
+      -apple-system;
   }
 
   // 코드 에디터

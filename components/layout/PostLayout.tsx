@@ -6,10 +6,9 @@ import ScrollTopAndComment from '@/components/ScrollTopAndComment';
 import { fadeUp } from '@/utils/animation';
 import Image from 'next/image';
 import { dateToFormat } from '@/utils/time';
-import media from '@/styles/media';
 import TOC from '../TOC';
-import { useRouter } from 'next/router';
-import ArrowBack from '../icons/ArrowBack';
+import Sidebar from '../SideBar';
+import GridLayout from './GridLayout';
 import { css } from '@emotion/react';
 
 interface Props {
@@ -24,30 +23,37 @@ function PostLayout({
   thumbnail,
   children,
 }: PropsWithChildren<Props>) {
-  const router = useRouter();
   const updatedAt = dateToFormat(new Date(date));
   const commentContainerRef = useRef<HTMLDivElement>(null);
 
   return (
     <>
-      <Wrapper>
+      <GridLayout>
         {/* 사이드바 */}
-        <PostSideBar>
-          <ArrowBack
-            width={20}
-            height={20}
-            onClick={() => router.back()}
-            css={css`
-              cursor: pointer;
-            `}
-          />
+        <Sidebar>
           <TOC />
-        </PostSideBar>
+        </Sidebar>
         {/* 본문 영역 */}
         <PostWrapper>
           <PostHeader>
-            <h1 className="post-title">{title}</h1>
-            <time className="post-date" dateTime={updatedAt}>
+            <h1
+              css={css`
+                font-size: 25px;
+                font-weight: 700;
+                letter-spacing: -1px;
+              `}
+            >
+              {title}
+            </h1>
+            <time
+              dateTime={updatedAt}
+              css={css`
+                display: block;
+                font-size: 16px;
+                margin-top: 10px;
+                color: var(--text-color);
+              `}
+            >
               {updatedAt}
             </time>
             {thumbnail && (
@@ -64,36 +70,12 @@ function PostLayout({
             <Comment />
           </section>
         </PostFooter>
-      </Wrapper>
+      </GridLayout>
       {/* 스크롤 */}
       <ScrollTopAndComment commentContainerRef={commentContainerRef} />
     </>
   );
 }
-
-const Wrapper = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding: 0 20px;
-  margin-top: 50px;
-
-  ${media.tablet} {
-    display: grid;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 10px;
-    grid-template-columns: 192px minmax(auto, 640px) 192px;
-  }
-
-  ${media.desktop} {
-    display: grid;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 10px;
-    grid-template-columns: 192px 640px 192px;
-  }
-`;
 
 const PostWrapper = styled.article`
   animation: ${fadeUp} 0.5s forwards;
@@ -103,20 +85,6 @@ const PostWrapper = styled.article`
 const PostHeader = styled.header`
   margin-bottom: 20px;
   text-align: left;
-
-  .post-title {
-    font-size: 34px;
-    font-weight: 700;
-    letter-spacing: -1.5px;
-  }
-
-  .post-date {
-    display: block;
-    font-size: 18px;
-    font-weight: 400;
-    margin-top: 15px;
-    color: var(--text-color);
-  }
 `;
 
 const PostThumbnail = styled.figure`
@@ -125,18 +93,6 @@ const PostThumbnail = styled.figure`
 
   > img {
     position: relative !important;
-  }
-`;
-
-const PostSideBar = styled.aside`
-  position: relative;
-  display: none;
-  flex-shrink: 0;
-  ${media.desktop} {
-    position: sticky;
-    display: grid;
-    gap: 20px;
-    top: 90px;
   }
 `;
 

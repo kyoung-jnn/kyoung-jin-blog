@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import Menu from '@/components/icons/Menu';
-import headerMenu from '@/constants/headerMenu';
+import menu from '@/constants/menu';
 import Link from 'next/link';
 import styled from '@emotion/styled';
 import media from '@/styles/media';
 import { fadeLeft } from '@/utils/animation';
 
-function MobileNav() {
+function MobileMenu() {
   const [hasNav, setHasNav] = useState(false);
 
   const handleClick = (e: React.MouseEvent) => {
@@ -31,9 +31,9 @@ function MobileNav() {
         <NavContainer>
           <Background />
           <MenuContainer onClick={handleClick}>
-            {headerMenu.map(({ title, href }) => (
-              <Link key={title} href={href}>
-                <MenuItem>{title}</MenuItem>
+            {menu.map(({ name, href }) => (
+              <Link key={name} href={href}>
+                <MenuItem>{name}</MenuItem>
               </Link>
             ))}
           </MenuContainer>
@@ -44,11 +44,9 @@ function MobileNav() {
 }
 
 const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
+  display: block;
   ${media.mobile} {
     display: none;
-    cursor: pointer;
   }
 `;
 
@@ -61,8 +59,8 @@ const NavContainer = styled.div`
 `;
 
 const HamburgerButton = styled.button`
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
 `;
 
 const Background = styled.div`
@@ -71,11 +69,11 @@ const Background = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: var(--focus-bg);
+  background-color: var(--bg);
   opacity: 0.8;
 `;
 
-const MenuContainer = styled.div`
+const MenuContainer = styled.section`
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -83,16 +81,17 @@ const MenuContainer = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
-  z-index: 200;
+  z-index: 10;
 `;
 
-const MenuItem = styled.div`
+const MenuItem = styled.button`
   width: 100vw;
-  font-size: 30px;
-  font-weight: 800;
+  font-size: 24px;
+  font-weight: 700;
   text-align: center;
   padding: 30px;
-  color: var(--focus-text);
+  cursor: pointer;
+  color: var(--text);
 `;
 
-export default MobileNav;
+export default MobileMenu;

@@ -40,6 +40,8 @@ function TOC() {
     }, DELAY_TIME);
   }, []);
 
+  if (!tables.length) return <></>;
+
   return (
     <Wrapper>
       {tables.map(({ tableElement, highlightTag }, index) => (
@@ -57,22 +59,24 @@ function TOC() {
 }
 
 const Wrapper = styled.nav`
-  padding: 10px;
-  border-left: 1px solid #e5e5e5;
+  display: grid;
+  gap: 10px;
+  padding: 4px 0 4px 10px;
+  border-left: 1px solid var(--gray);
+  animation: ${fadeLeft} ${DELAY_TIME}ms forwards;
 `;
 
 const TableItem = styled.a<{ isActive: boolean; depth: string }>`
-  display: block;
-  margin-bottom: 10px;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 14px;
+  font-family: 'Pretendard-Variable';
+
   color: ${({ isActive }) =>
     isActive ? css`var(--focus-text)` : css`var(--fontColor)`};
+
   margin-left: ${({ depth }) => {
     if (depth === 'H3') return '10px';
     if (depth === 'H4') return '20px';
   }};
-  animation: ${fadeLeft} ${DELAY_TIME}ms forwards;
 `;
 
 export default TOC;

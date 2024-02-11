@@ -4,16 +4,16 @@ import PostCard from '@/components/PostCard';
 import Pagination from '@/components/Pagination';
 import SearchIcon from '@/components/icons/Search';
 import useDebounce from '@/hooks/useDebounce';
-import BREAK_POINTS from '@/constants/breakpoints';
-import media from '@/styles/media';
 import { PostProperty } from '@/types/notion';
+import Sidebar from '../SideBar';
+import GridLayout from './GridLayout';
+import { css } from '@emotion/react';
 
 interface Props {
   allPosts: PostProperty[];
   pagePosts: PostProperty[];
   totalPage: number;
   currentPage: number;
-  title: string;
   paginationLink: string;
 }
 
@@ -22,7 +22,6 @@ function ListLayout({
   pagePosts,
   totalPage,
   currentPage,
-  title,
   paginationLink,
 }: Props) {
   const [searchValue, setSearchValue] = useState('');
@@ -39,95 +38,78 @@ function ListLayout({
   const displayPosts = searchValue ? filteredBlogPosts : pagePosts;
 
   return (
-    <Wrapper>
-      <HeroWrapper>
-        <Title>{title}</Title>
-        <InputWrapper>
-          <SearchInput
-            aria-label="Search Post"
-            type="text"
-            onChange={(e) => setSearchValue(e.target.value)}
-            placeholder="포스팅 검색"
-          />
-          <SearchIcon className="icon" />
-        </InputWrapper>
-      </HeroWrapper>
-      {!filteredBlogPosts.length && (
-        <NotFound>포스팅이 존재하지 않습니다...😖</NotFound>
-      )}
-      <ul>
-        {displayPosts.map(({ title, date, summary, slug }) => {
-          return (
-            <PostCard
-              key={slug}
-              title={title}
-              date={date}
-              summary={summary}
-              slug={slug}
+    <GridLayout>
+      <Sidebar />
+      <section>
+        <HeroWrapper>
+          <h3>개발 • dev</h3>
+          <InputWrapper>
+            <SearchInput
+              aria-label="포스팅 검색 인풋"
+              type="text"
+              onChange={(e) => setSearchValue(e.target.value)}
+              placeholder="포스팅 검색"
             />
-          );
-        })}
-      </ul>
+            <SearchIcon className="icon" />
+          </InputWrapper>
+        </HeroWrapper>
+        {!filteredBlogPosts.length && (
+          <NotFound>포스팅이 존재하지 않습니다...😖</NotFound>
+        )}
+        <ul>
+          {displayPosts.map(({ title, date, slug }) => {
+            return (
+              <PostCard key={slug} title={title} date={date} slug={slug} />
+            );
+          })}
+        </ul>
+      </section>
       {displayPosts.length > 0 && (
         <Pagination
           totalPage={totalPage}
           currentPage={currentPage}
           link={paginationLink}
+          css={css`
+            grid-column: 2/3;
+          `}
         />
       )}
-    </Wrapper>
+    </GridLayout>
   );
 }
 
 export default ListLayout;
 
-const Wrapper = styled.div`
-  position: relative;
-  max-width: ${BREAK_POINTS.tablet + 'px'};
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 16px;
-  padding-right: 16px;
-
-  ${media.tablet} {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-`;
-
 const HeroWrapper = styled.section`
-  margin-top: 40px;
-`;
-
-const Title = styled.h1`
-  font-size: 32px;
-  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const InputWrapper = styled.div`
   position: relative;
-  margin-top: 20px;
-
   > .icon {
     position: absolute;
     top: 25%;
-    left: 270px;
-    width: 20px;
-    color: var(--focus-text);
+    right: 5px;
+    width: 16px;
   }
 `;
 
 const SearchInput = styled.input`
-  width: 300px;
-  height: 40px;
+  width: 200px;
+  height: 30px;
   padding: 10px;
   outline: none;
-  border-radius: 5px;
-  border: 2px solid var(--focus-bg);
-  background-color: var(--bg);
+  border: 0.5px solid var(--text);
+  background-color: transparent;
   transition: border 0.5s;
+  font-size: 14px;
   :focus {
-    border: 2px solid var(--focus-text);
+    border: 1px solid var(--focus-text);
+  }
+  ::placeholder {
+    font-size: 14px;
   }
 `;
 

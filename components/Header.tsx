@@ -1,36 +1,41 @@
 import styled from '@emotion/styled';
 import ThemeSwitch from '@/components/ThemeSwitch';
-import MobileNav from '@/components/MobileNav';
+import MobileMenu from '@/components/MobileMenu';
 import SiteConfig from '@/database/siteConfig';
 
 import media from '@/styles/media';
-import BREAK_POINTS from '@/constants/breakpoints';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { memo } from 'react';
 
 function Header() {
+  const router = useRouter();
+
   return (
     <Wrapper>
       <Nav>
         <Link href="/" aria-label="home link">
           <LeftHeaderContainer>
-            <div className="header-title">{SiteConfig.title}</div>
+            {router.asPath !== '/' && (
+              <div className="header-title">{SiteConfig.title}</div>
+            )}
           </LeftHeaderContainer>
         </Link>
         <RightHeaderContainer>
           <ThemeSwitch />
-          <MobileNav />
+          <MobileMenu />
         </RightHeaderContainer>
       </Nav>
     </Wrapper>
   );
 }
 
-export default Header;
+export default memo(Header);
 
 const Wrapper = styled.header`
   position: sticky;
   top: 0;
-  height: 100px;
+  height: 70px;
   z-index: 100;
   background: linear-gradient(to top, transparent, var(--bg));
 `;
@@ -39,10 +44,10 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: ${BREAK_POINTS.tablet + 'px'};
+  max-width: 672px;
   margin-left: auto;
   margin-right: auto;
-  padding: 10px 15px;
+  padding: 10px 16px;
 `;
 
 const LeftHeaderContainer = styled.div`
@@ -51,13 +56,8 @@ const LeftHeaderContainer = styled.div`
   align-items: center;
 
   > .header-title {
-    display: none;
     font-weight: 700;
-    font-size: 17px;
-
-    ${media.mobile} {
-      display: block;
-    }
+    font-size: 16px;
   }
 `;
 
@@ -66,16 +66,13 @@ const RightHeaderContainer = styled.div`
   align-items: center;
   font-size: 16px;
   font-weight: 600;
+  gap: 6px;
 
   > .menu-list {
     display: none;
 
     ${media.mobile} {
       display: block;
-    }
-
-    > .menu-item {
-      padding: 16px;
     }
   }
 `;
