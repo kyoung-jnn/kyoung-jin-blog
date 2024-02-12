@@ -41,8 +41,7 @@ const GlobalStyles = css`
       'Segoe UI Symbol',
       sans-serif;
     font-weight: 400;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.1px;
     color: var(--text);
     background-color: var(--bg);
   }

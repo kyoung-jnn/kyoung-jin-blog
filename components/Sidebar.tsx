@@ -1,9 +1,8 @@
 import media from '@/styles/media';
-import { fadeUp } from '@/utils/animation';
-import { css } from '@emotion/react';
+import { fadeLeft } from '@/utils/animation';
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
-import ArrowBack from './icons/ArrowBack';
+import ArrowBackIcon from './icons/ArrowBackIcon';
 import { PropsWithChildren } from 'react';
 
 function Sidebar({ children }: PropsWithChildren) {
@@ -11,14 +10,7 @@ function Sidebar({ children }: PropsWithChildren) {
 
   return (
     <Wrapper>
-      <ArrowBack
-        width={20}
-        height={20}
-        onClick={() => router.back()}
-        css={css`
-          cursor: pointer;
-        `}
-      />
+      <ArrowBackIcon width={20} height={20} onClick={() => router.back()} />
       {children}
     </Wrapper>
   );
@@ -37,6 +29,6 @@ const Wrapper = styled.aside`
     display: grid;
     gap: 20px;
     top: 90px;
-    animation: ${fadeUp} 0.5s forwards;
+    animation: ${fadeLeft} 0.5s forwards;
   }
 `;

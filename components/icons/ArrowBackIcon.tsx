@@ -1,10 +1,10 @@
-import MessageSVG from '@/public/message.svg';
+import ArrowBackSVG from '@/public/arrow-back.svg';
 import { css } from '@emotion/react';
 import { ComponentProps } from 'react';
 
-function MessageIcon({ ...attributes }: ComponentProps<'svg'>) {
+function ArrowBackIcon({ ...attributes }: ComponentProps<'svg'>) {
   return (
-    <MessageSVG
+    <ArrowBackSVG
       {...attributes}
       css={css`
         cursor: pointer;
@@ -13,4 +13,4 @@ function MessageIcon({ ...attributes }: ComponentProps<'svg'>) {
   );
 }
 
-export default MessageIcon;
+export default ArrowBackIcon;

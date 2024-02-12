@@ -13,7 +13,7 @@ function ProgressBar() {
         return (
           <style>
             {
-              '#nprogress .bar { background: var(--gray7); position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 3px; }'
+              '#nprogress .bar { background: var(--gray); position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 2px; }'
             }
           </style>
         );

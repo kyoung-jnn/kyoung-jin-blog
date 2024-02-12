@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import smoothscroll from 'smoothscroll-polyfill'; // Safari 에서 smooth 효과 적용
 
 import Comment from '@/components/Comment';
-import { fadeUp } from '@/utils/animation';
+import { fadeLeft, fadeUp } from '@/utils/animation';
 import Image from 'next/image';
 import { dateToFormat } from '@/utils/time';
 import TOC from '../TOC';
@@ -53,6 +53,8 @@ function PostLayout({
           css={css`
             display: flex;
             gap: 6px;
+            opacity: 0;
+            animation: ${fadeLeft} 500ms 500ms forwards;
           `}
         >
           <ArrowUpIcon width={20} height={20} onClick={handleScrollToTop} />
@@ -124,22 +126,6 @@ const PostFooter = styled.footer`
   padding-top: 30px;
   font-size: 18px;
   border-top: 1px solid #e5e5e5;
-`;
-
-const StyledButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background-color: var(--text);
-  cursor: pointer;
-
-  svg {
-    width: 18px;
-    height: 18px;
-  }
 `;
 
 export default PostLayout;
