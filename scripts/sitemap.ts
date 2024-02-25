@@ -1,5 +1,5 @@
 import { POSTS_PER_PAGE } from 'pages/posts/page/[page]';
-import { getPosts } from '../api/notion';
+import { getPosts } from '@/repository/notion';
 import SITE_METADATA from '../database/siteMetadata';
 
 const DEFAULT_SLUG = ['/'] as const;

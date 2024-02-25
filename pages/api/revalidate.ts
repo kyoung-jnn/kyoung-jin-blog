@@ -1,4 +1,4 @@
-import { getPosts } from '@/api/notion';
+import { getPosts } from '@/repository/notion';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { POSTS_PER_PAGE } from 'pages/posts/page/[page]';
 

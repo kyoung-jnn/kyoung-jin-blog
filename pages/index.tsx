@@ -9,7 +9,7 @@ import SITE_CONFIG from '@/database/siteConfig';
 import SITE_METADATA from '@/database/siteMetadata';
 import { fadeLeft, fadeUp } from '@/utils/animation';
 
-import { getPosts } from '@/api/notion';
+import { getPosts } from '@/repository/notion';
 import { PostProperty } from '@/types/notion';
 import { css } from '@emotion/react';
 import media from '@/styles/media';

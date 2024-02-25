@@ -1,4 +1,4 @@
-import { getPosts } from '../api/notion';
+import { getPosts } from '@/repository/notion';
 import SITE_CONFIG from '../database/siteConfig';
 import SITE_METADATA from '../database/siteMetadata';
 import { Feed } from 'feed';

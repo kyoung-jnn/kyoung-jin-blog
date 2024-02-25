@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import PostLayout from '@/components/layout/PostLayout';
 import { PostSEO } from '@/components/SEO';
 import SITE_METADATA from '@/database/siteMetadata';
-import { getPost, getPosts } from '@/api/notion';
+import { getPost, getPosts } from '@/repository/notion';
 import SITE_CONFIG from '@/database/siteConfig';
 import { Post } from 'types/notion';
 import { useRouter } from 'next/router';
