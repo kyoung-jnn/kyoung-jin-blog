@@ -37,6 +37,26 @@ const nextConfig = {
       cssPropOptimization: true,
     },
   },
+  async rewrites() {
+    return [
+      {
+        source: '/rss',
+        destination: '/api/rss',
+      },
+      {
+        source: '/rss.xml',
+        destination: '/api/rss',
+      },
+      {
+        source: '/sitemap',
+        destination: '/api/sitemap',
+      },
+      {
+        source: '/sitemap.xml',
+        destination: '/api/sitemap',
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

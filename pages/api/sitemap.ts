@@ -5,11 +5,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const { secret } = req.query;
-  if (secret !== process.env.TOKEN_FOR_REVALIDATE) {
-    return res.status(401).json({ message: 'Invalid token' });
-  }
-
   try {
     const sitemap = await generateSitemap();
 

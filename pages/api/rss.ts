@@ -5,15 +5,10 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const { secret } = req.query;
-  if (secret !== process.env.TOKEN_FOR_REVALIDATE) {
-    return res.status(401).json({ message: 'Invalid token' });
-  }
-
   try {
     const rssFeed = await generateRSS();
 
-    res.setHeader('Content-Type', 'application/rss+xml');
+    res.setHeader('Content-Type', 'application/xml');
     res.write(rssFeed.rss2());
 
     res.end();

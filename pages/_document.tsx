@@ -26,7 +26,7 @@ export default class MyDocument extends Document {
           <link
             rel="alternate"
             type="application/rss+xml"
-            href="/public/rss.xml"
+            href="/rss.xml"
             title="rss"
           />
         </Head>

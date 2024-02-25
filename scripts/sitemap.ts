@@ -2,7 +2,7 @@ import { POSTS_PER_PAGE } from 'pages/posts/page/[page]';
 import { getPosts } from '@/repository/notion';
 import SITE_METADATA from '../database/siteMetadata';
 
-const DEFAULT_SLUG = ['/'] as const;
+const DEFAULT_SLUG = ['', 'gallery'] as const;
 
 const generateSitemap = async () => {
   const posts = await getPosts();
@@ -18,7 +18,7 @@ const generateSitemap = async () => {
     (slug) =>
       `<url><loc>${
         SITE_METADATA.siteUrl
-      }/${slug}</loc><lastmod>${new Date()}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>`,
+      }/${slug}</loc><lastmod>${new Date().toISOString()}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>`,
   );
 
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
@@ -27,7 +27,7 @@ const generateSitemap = async () => {
     (_, index) =>
       `<url><loc>${SITE_METADATA.siteUrl}/posts/page/${
         index + 1
-      }</loc><lastmod>${new Date()}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>`,
+      }</loc><lastmod>${new Date().toISOString()}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>`,
   );
 
   const postSitemaps = posts.map(
@@ -36,7 +36,7 @@ const generateSitemap = async () => {
         SITE_METADATA.siteUrl
       }/posts/${slug}</loc><lastmod>${new Date(
         date,
-      )}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>`,
+      ).toISOString()}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>`,
   );
 
   return template(
