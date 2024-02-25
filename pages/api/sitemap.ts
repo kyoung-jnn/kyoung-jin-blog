@@ -8,6 +8,10 @@ export default async function handler(
   try {
     const sitemap = await generateSitemap();
 
+    res.setHeader(
+      'Cache-Control',
+      'public, s-maxage=600, stale-while-revalidate',
+    );
     res.setHeader('Content-Type', 'application/xml');
     res.write(sitemap);
 
