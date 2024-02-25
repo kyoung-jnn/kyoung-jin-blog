@@ -1,5 +1,4 @@
 import generateRSS from '@/scripts/rss';
-import generateSitemap from '@/scripts/sitemap';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(
@@ -12,11 +11,6 @@ export default async function handler(
   }
 
   try {
-    const sitemap = await generateSitemap();
-
-    res.setHeader('Content-Type', 'application/xml');
-    res.write(sitemap);
-
     const rssFeed = await generateRSS();
 
     res.setHeader('Content-Type', 'application/rss+xml');
