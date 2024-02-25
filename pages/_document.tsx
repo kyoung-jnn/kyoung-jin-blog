@@ -23,6 +23,12 @@ export default class MyDocument extends Document {
             crossOrigin="anonymous"
             href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/variable/pretendardvariable-dynamic-subset.min.css"
           />
+          <link
+            rel="alternate"
+            type="application/rss+xml"
+            href="/public/rss.xml"
+            title="rss"
+          />
         </Head>
         <body>
           <Main />

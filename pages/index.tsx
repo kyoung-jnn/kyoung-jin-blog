@@ -6,7 +6,7 @@ import Link from 'next/link';
 import PostCard from '@/components/PostCard';
 import { PageSEO } from '@/components/SEO';
 import SITE_CONFIG from '@/database/siteConfig';
-import siteMetadata from '@/database/siteMetadata';
+import SITE_METADATA from '@/database/siteMetadata';
 import { fadeLeft, fadeUp } from '@/utils/animation';
 
 import { getPosts } from '@/api/notion';
@@ -36,8 +36,8 @@ function Home({ latestPosts }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <PageSEO
-        title={siteMetadata.title}
-        description={siteMetadata.description}
+        title={SITE_METADATA.title}
+        description={SITE_METADATA.description}
       />
       <Wrapper>
         <ProfileSection>

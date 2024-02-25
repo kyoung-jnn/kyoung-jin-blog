@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import PostLayout from '@/components/layout/PostLayout';
 import { PostSEO } from '@/components/SEO';
-import siteMetadata from '@/database/siteMetadata';
+import SITE_METADATA from '@/database/siteMetadata';
 import { getPost, getPosts } from '@/api/notion';
 import SITE_CONFIG from '@/database/siteConfig';
 import { Post } from 'types/notion';
@@ -25,6 +25,7 @@ export const getStaticProps: GetStaticProps<Post> = async ({ params }) => {
   const posts = await getPosts();
   const post = posts?.find(({ slug }) => slug === currentSlug);
 
+  console.log(post);
   if (!post) {
     return {
       notFound: true,
@@ -59,7 +60,7 @@ function PostPage({
   return (
     <>
       <PostSEO
-        url={`${siteMetadata.siteUrl}/posts/${slug}`}
+        url={`${SITE_METADATA.siteUrl}/posts/${slug}`}
         title={title}
         summary={summary}
         date={date}

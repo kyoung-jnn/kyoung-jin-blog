@@ -8,6 +8,8 @@ import GlobalStyles from '@/styles/global-styles';
 import * as ga from '@/utils/gtag';
 import ProgressBar from '@/components/ProgressBar';
 import { Global } from '@emotion/react';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -36,6 +38,8 @@ function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </DefaultLayout>
       </ThemeProvider>
+      <Analytics />
+      <SpeedInsights />
     </>
   );
 }

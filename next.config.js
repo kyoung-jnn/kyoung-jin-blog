@@ -31,7 +31,11 @@ const nextConfig = {
     return config;
   },
   compiler: {
-    emotion: true,
+    emotion: {
+      autoLabel: 'always',
+      labelFormat: '[local]',
+      cssPropOptimization: true,
+    },
   },
 };
 

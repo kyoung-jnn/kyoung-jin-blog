@@ -1,6 +1,6 @@
 // site meta data
 
-const siteMetadata = {
+const SITE_METADATA = {
   title: `Kyoung Jin, Roh`,
   author: 'Kyoung Jin, Roh',
   email: 'rudwls468@gmail.com',
@@ -12,11 +12,11 @@ const siteMetadata = {
   siteUrl: 'https://kyoung-jnn.com',
   siteRepo: 'https://github.com/kyoung-jnn/kyoung-jin-blog',
   siteLogo: 'https://i.ibb.co/K7PsQQY/logo.png',
-  socialBanner: 'https://i.ibb.co/vswNk1C/banner.png',
-  locale: 'ko_KR',
+  siteBanner: 'https://i.ibb.co/vswNk1C/banner.png',
+  locale: 'ko',
   analytics: {
     google: 'G-074LXJ6QT4',
   },
 };
 
-export default siteMetadata;
+export default SITE_METADATA;

@@ -4,18 +4,20 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next-sitemap && yarn ping-sitemap",
+    "build": "next build && next-sitemap",
     "start": "next start",
     "lint": "yarn eslint . --fix",
-    "ping-sitemap": "sh ./scripts/ping-sitemap.sh",
     "postinstall": "husky install"
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@giscus/react": "^2.4.0",
+    "@vercel/analytics": "^1.2.2",
+    "@vercel/speed-insights": "^1.0.10",
     "cmdk": "^0.2.1",
     "emotion-normalize": "^11.0.1",
+    "feed": "^4.2.2",
     "next": "^13.4.9",
     "next-themes": "^0.2.0",
     "nextjs-progressbar": "^0.0.16",

@@ -1,11 +1,11 @@
-import siteMetadata from '@/database/siteMetadata';
+import SITE_METADATA from '@/database/siteMetadata';
 
 export const GoogleAnalyticsScript = () => {
   return (
     <>
       <script
         async
-        src={`https://www.googletagmanager.com/gtag/js?id=${siteMetadata.analytics.google}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${SITE_METADATA.analytics.google}`}
       ></script>
       <script
         dangerouslySetInnerHTML={{
@@ -13,7 +13,7 @@ export const GoogleAnalyticsScript = () => {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${siteMetadata.analytics.google}', {
+            gtag('config', '${SITE_METADATA.analytics.google}', {
               page_path: window.location.pathname,
             });
           `,

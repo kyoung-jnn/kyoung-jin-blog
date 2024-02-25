@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Head from 'next/head';
-import siteMetadata from '@/database/siteMetadata';
+import SITE_METADATA from '@/database/siteMetadata';
 import { useRouter } from 'next/router';
 
 const CommonSEO = ({
@@ -17,21 +17,21 @@ const CommonSEO = ({
       {/* Default SEO */}
       <title>{title}</title>
       <meta name="description" content={description} />
-      <meta name="keywords" content={siteMetadata.keywords} />
-      <meta name="author" content={siteMetadata.author} />
-      <meta name="reply-to" content={siteMetadata.email} />
+      <meta name="keywords" content={SITE_METADATA.keywords} />
+      <meta name="author" content={SITE_METADATA.author} />
+      <meta name="reply-to" content={SITE_METADATA.email} />
       {/* 로봇 방문 허용 */}
       <meta name="robots" content="index, follow" />
       {/* Open Graph */}
-      <meta property="og:site_name" content={siteMetadata.siteName} />
-      <meta property="og:title" content={siteMetadata.title} />
+      <meta property="og:site_name" content={SITE_METADATA.siteName} />
+      <meta property="og:title" content={SITE_METADATA.title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={ogImage} />
-      <meta property="og:url" content={siteMetadata.siteUrl} />
-      <meta property="og:locale" content={siteMetadata.locale} />
+      <meta property="og:url" content={SITE_METADATA.siteUrl} />
+      <meta property="og:locale" content={SITE_METADATA.locale} />
       <meta property="og:type" content={ogType} />
       {/* 트위터 */}
-      <meta name="twitter:title" content={siteMetadata.title} />
+      <meta name="twitter:title" content={SITE_METADATA.title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
       <meta name="twitter:card" content={ogImage} />
@@ -41,7 +41,7 @@ const CommonSEO = ({
         href={
           canonicalUrl
             ? canonicalUrl
-            : `${siteMetadata.siteUrl}${router.asPath}`
+            : `${SITE_METADATA.siteUrl}${router.asPath}`
         }
       />
     </Head>
@@ -58,7 +58,7 @@ export const PageSEO = ({
   description: string;
   canonicalUrl?: string;
 }) => {
-  const ogImageUrl = siteMetadata.socialBanner;
+  const ogImageUrl = SITE_METADATA.siteBanner;
   return (
     <CommonSEO
       title={title}
@@ -82,7 +82,7 @@ export const PostSEO = ({
   const publishedAt = new Date(date).toISOString();
   const modifiedAt = new Date(updatedAt || date).toISOString();
 
-  const ogImageUrl = siteMetadata.socialBanner;
+  const ogImageUrl = SITE_METADATA.siteBanner;
 
   const structuredData = {
     '@context': 'https://schema.org',
@@ -98,15 +98,15 @@ export const PostSEO = ({
     author: [
       {
         '@type': 'Person',
-        name: siteMetadata.author,
+        name: SITE_METADATA.author,
       },
     ],
     publisher: {
       '@type': 'Organization',
-      name: siteMetadata.author,
+      name: SITE_METADATA.author,
       logo: {
         '@type': 'ImageObject',
-        url: `${siteMetadata.siteLogo}`,
+        url: `${SITE_METADATA.siteLogo}`,
       },
     },
     description: summary,

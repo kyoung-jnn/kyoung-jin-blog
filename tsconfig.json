@@ -25,7 +25,8 @@
       "@/public/*": ["public/*"],
       "@/hooks/*": ["hooks/*"],
       "@/api/*": ["api/*"],
-      "@/types/*": ["types/*"]
+      "@/types/*": ["types/*"],
+      "@/scripts/*": ["scripts/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "additional.d.ts"],

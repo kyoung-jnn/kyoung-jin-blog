@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import ListLayout from '@/components/layout/ListLayout';
 import { PageSEO } from '@/components/SEO';
-import siteMetadata from '@/database/siteMetadata';
+import SITE_METADATA from '@/database/siteMetadata';
 import { getPosts } from 'api/notion';
 import SITE_CONFIG from '@/database/siteConfig';
 import { useRouter } from 'next/router';
@@ -84,7 +84,7 @@ export default function PostList({
     <>
       <PageSEO
         title={`작성한 글, 포스팅 목록 | Kyoung Jin, Roh`}
-        description={siteMetadata.description}
+        description={SITE_METADATA.description}
       />
       <ListLayout
         allPosts={allPosts}
