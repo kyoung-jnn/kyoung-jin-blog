@@ -4,7 +4,7 @@ const SITE_METADATA = {
   title: `Kyoung Jin, Roh`,
   author: 'Kyoung Jin, Roh',
   email: 'rudwls468@gmail.com',
-  description: '이것저것 끄적이는 블로그',
+  description: '경진의 개인 블로그',
   keywords:
     '블로그, blog, 개인 블로그, 기술 블로그, 개발자 블로그, 자기 개발, 자기개발, kyoung jnn, kyoung-jnn, kyoung jin, kyoung-jin, 프론트엔드, 백엔드, frontend, 기술, React, Next.js, JavaScript, TypeScript',
   type: 'website',

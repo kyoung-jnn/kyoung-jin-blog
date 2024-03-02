@@ -36,7 +36,7 @@ function Home({ latestPosts }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <PageSEO
-        title={SITE_METADATA.title}
+        title={`Home | ${SITE_METADATA.title}`}
         description={SITE_METADATA.description}
       />
       <Wrapper>

@@ -3,19 +3,31 @@ import galleryData from '@/database/gallery';
 import GalleryPhoto from '@/components/GalleryPhoto';
 import GalleryVideo from '@/components/GalleryVideo';
 import { StaticImageData } from 'next/image';
+import { PageSEO } from '@/components/SEO';
+import SITE_METADATA from '@/database/siteMetadata';
 
 function GalleryPage() {
   return (
-    <Wrapper>
-      {galleryData.map(({ type, src, alt }, index) => {
-        if (type === 'image') {
-          return (
-            <GalleryPhoto key={index} src={src as StaticImageData} alt={alt} />
-          );
-        }
-        return <GalleryVideo key={index} src={src as string} alt={alt} />;
-      })}
-    </Wrapper>
+    <>
+      <PageSEO
+        title={`Gallery | ${SITE_METADATA.title}`}
+        description={`일상 및 여행 사진 | ${SITE_METADATA.description}`}
+      />
+      <Wrapper>
+        {galleryData.map(({ type, src, alt }, index) => {
+          if (type === 'image') {
+            return (
+              <GalleryPhoto
+                key={index}
+                src={src as StaticImageData}
+                alt={alt}
+              />
+            );
+          }
+          return <GalleryVideo key={index} src={src as string} alt={alt} />;
+        })}
+      </Wrapper>
+    </>
   );
 }
 
