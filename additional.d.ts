@@ -3,3 +3,5 @@ interface Window {
 }
 
 declare module 'prismjs/components/prism-*.js';
+
+declare module '*.mp4';
