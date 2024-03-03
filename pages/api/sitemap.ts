@@ -17,6 +17,6 @@ export default async function handler(
 
     res.end();
   } catch (err) {
-    return res.status(500).send('Error SEO work');
+    return res.status(500).send('Error Create Sitemap');
   }
 }

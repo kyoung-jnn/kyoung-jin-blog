@@ -19,9 +19,17 @@ function GalleryPhoto({ src, alt }: Props) {
           position: relative;
           width: 100%;
           height: 600px;
+          border-radius: 1px;
+          overflow: hidden;
         `}
       >
-        <Image src={src} fill alt={alt} style={{ objectFit: 'cover' }} />
+        <Image
+          src={src}
+          fill
+          alt={alt}
+          style={{ objectFit: 'cover' }}
+          placeholder="blur"
+        />
       </article>
       <GalleryCaption>{alt}</GalleryCaption>
     </figure>
