@@ -1,7 +1,7 @@
 import image_20240209 from '@/public/gallery/20240209.jpg';
 import image_20240301_1 from '@/public/gallery/20240301_1.jpeg';
 import image_20240301_2 from '@/public/gallery/20240301_2.jpeg';
-import image_20240303_1 from '@/public/gallery/20240303_1.jpg';
+import image_20240303_1 from '@/public/gallery/20240303_1.jpeg';
 
 export type GalleryItemType = 'image' | 'video';
 
