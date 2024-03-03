@@ -42,7 +42,7 @@ function ListLayout({
       <Sidebar />
       <Wrapper>
         <HeroWrapper>
-          <h3>개발 • dev</h3>
+          <h3>글 • article</h3>
           <InputWrapper>
             <SearchInput
               aria-label="포스팅 검색 인풋"

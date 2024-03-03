@@ -1,8 +1,8 @@
 const menu = [
   {
     href: '/posts/page/1',
-    name: '개발 • dev',
-    description: '개발 관련된 포스팅.',
+    name: '글 • article',
+    description: '개발 및 이것저것 포스팅.',
   },
   {
     href: '/gallery',

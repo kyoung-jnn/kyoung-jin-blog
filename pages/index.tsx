@@ -121,7 +121,7 @@ function Home({ latestPosts }: InferGetStaticPropsType<typeof getStaticProps>) {
               font-size: 14px;
             `}
           >
-            모든 개발관련 포스팅보기
+            모두보기
           </Link>
         </LatestSection>
       </Wrapper>

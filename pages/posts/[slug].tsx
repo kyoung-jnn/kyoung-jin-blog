@@ -25,7 +25,6 @@ export const getStaticProps: GetStaticProps<Post> = async ({ params }) => {
   const posts = await getPosts();
   const post = posts?.find(({ slug }) => slug === currentSlug);
 
-  console.log(post);
   if (!post) {
     return {
       notFound: true,
