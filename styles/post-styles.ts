@@ -10,7 +10,7 @@ const PostStyles = css`
   h4,
   h5,
   h6 {
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: -0.04rem;
   }
 
@@ -43,7 +43,7 @@ const PostStyles = css`
   // bold
   strong,
   b {
-    font-weight: 700;
+    font-weight: 600;
   }
 
   blockquote {
