@@ -91,6 +91,10 @@ const PostStyles = css`
       font-size: 12px;
     }
   }
+
+  .notion-external {
+    margin: 10px 0pc;
+  }
 `;
 
 export default PostStyles;
