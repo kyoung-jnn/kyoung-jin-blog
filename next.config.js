@@ -34,6 +34,7 @@ const nextConfig = {
     emotion: {
       autoLabel: 'always',
       labelFormat: '[filename]-[local]',
+      cssPropOptimization: false,
     },
   },
   async rewrites() {

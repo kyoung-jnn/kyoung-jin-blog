@@ -36,9 +36,9 @@ function App({ Component, pageProps }: AppProps) {
         <DefaultLayout>
           <ProgressBar />
           <Component {...pageProps} />
+          <Analytics />
         </DefaultLayout>
       </ThemeProvider>
-      <Analytics />
       <SpeedInsights />
     </>
   );
