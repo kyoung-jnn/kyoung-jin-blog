@@ -1,5 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { GoogleAnalyticsScript } from '@/components/GoogleAnalytics';
+import SITE_METADATA from '@/database/siteMetadata';
 
 export default class MyDocument extends Document {
   render() {
@@ -26,7 +27,7 @@ export default class MyDocument extends Document {
           <link
             rel="alternate"
             type="application/rss+xml"
-            href="/rss.xml"
+            href={`${SITE_METADATA.siteUrl}/rss.xml`}
             title="rss"
           />
         </Head>

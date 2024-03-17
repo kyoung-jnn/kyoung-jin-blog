@@ -12,8 +12,8 @@ export default async function handler(
       'Cache-Control',
       'public, s-maxage=600, stale-while-revalidate',
     );
-    res.setHeader('Content-Type', 'application/xml');
-    res.write(rssFeed.rss2());
+    res.setHeader('Content-Type', 'application/rss+xml; charset=utf-8;');
+    res.write(rssFeed);
 
     res.end();
   } catch (err) {

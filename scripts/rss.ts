@@ -1,53 +1,36 @@
 import { getPosts } from '@/repository/notion';
 import SITE_CONFIG from '../database/siteConfig';
 import SITE_METADATA from '../database/siteMetadata';
-import { Feed } from 'feed';
+
+import RSS from 'rss';
 
 const generateRSS = async () => {
   const posts = await getPosts();
 
-  const author = {
-    name: SITE_CONFIG.author.enName,
-    email: SITE_CONFIG.author.contacts.email,
-    link: SITE_CONFIG.author.contacts.linkedin,
-  };
-
-  const feed = new Feed({
+  const feed = new RSS({
     title: SITE_CONFIG.title,
     description: SITE_METADATA.description,
-    id: SITE_METADATA.siteUrl,
-    link: SITE_METADATA.siteUrl,
+    feed_url: `${SITE_METADATA.siteUrl}/rss.xml`,
+    site_url: SITE_METADATA.siteUrl,
+    image_url: `${SITE_METADATA.siteBanner}`,
     language: SITE_METADATA.locale,
-    image: `${SITE_METADATA.siteBanner}`,
-    favicon: `${SITE_METADATA.siteUrl}/favicon.ico`,
+    categories: ['Technologies'],
     copyright: 'All rights reserved 2023, Kyoung Jin, Roh',
-    generator: 'generate-rss',
-    feedLinks: {
-      json: `${SITE_METADATA.siteUrl}/json`,
-      atom: `${SITE_METADATA.siteUrl}/atom`,
-    },
-    author: author,
+    generator: 'kyoung-jin-blog-rss-generate',
+    pubDate: new Date(),
   });
 
   posts.forEach((post) => {
-    feed.addItem({
-      id: `${SITE_METADATA.siteUrl}/posts/${post.slug}`,
-      link: `${SITE_METADATA.siteUrl}/posts/${post.slug}`,
+    feed.item({
       title: post.title,
       description: post.summary,
-      image: post.thumbnail,
-      content: post.summary,
-      author: [author],
-      contributor: [author],
-      published: new Date(post.date),
+      url: `${SITE_METADATA.siteUrl}/posts/${post.slug}`,
+      author: SITE_CONFIG.author.koName,
       date: new Date(post.date),
-      copyright: 'All rights reserved 2023, Kyoung Jin, Roh',
     });
   });
 
-  feed.addCategory('Technologies');
-
-  return feed;
+  return feed.xml({ indent: true });
 };
 
 export default generateRSS;

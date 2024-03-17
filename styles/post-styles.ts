@@ -16,17 +16,17 @@ const PostStyles = css`
 
   h2 {
     font-size: 34px;
-    margin-top: 28px;
+    margin-top: 22px;
   }
 
   h3 {
     font-size: 28px;
-    margin-top: 26px;
+    margin-top: 18px;
   }
 
   h4 {
     font-size: 22px;
-    margin-top: 26px;
+    margin-top: 14px;
   }
 
   // default p
@@ -94,6 +94,16 @@ const PostStyles = css`
 
   .notion-external {
     margin: 10px 0pc;
+  }
+
+  // 캡션
+  .notion-asset-caption {
+    padding-top: 2px;
+    padding-bottom: 6px;
+  }
+
+  table {
+    width: 100%;
   }
 `;
 

@@ -33,8 +33,7 @@ const nextConfig = {
   compiler: {
     emotion: {
       autoLabel: 'always',
-      labelFormat: '[local]',
-      cssPropOptimization: true,
+      labelFormat: '[filename]-[local]',
     },
   },
   async rewrites() {

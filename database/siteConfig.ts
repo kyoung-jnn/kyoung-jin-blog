@@ -1,7 +1,7 @@
 // site default configuration setting
 
 const SITE_CONFIG = {
-  title: `Kyoung Jin, Roh`,
+  title: `Kyoung Jin, Roh의 블로그`,
   author: {
     koName: '노경진',
     enName: 'Kyoung Jin, Roh',
