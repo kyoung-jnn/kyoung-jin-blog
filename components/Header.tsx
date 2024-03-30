@@ -17,7 +17,7 @@ function Header() {
         <Link href="/" aria-label="home link">
           <LeftHeaderContainer>
             {router.asPath !== '/' && (
-              <div className="header-title">{SiteConfig.title}</div>
+              <p className="header-title">{SiteConfig.title}</p>
             )}
           </LeftHeaderContainer>
         </Link>

@@ -41,6 +41,7 @@ export default PostCard;
 const Wrapper = styled.li`
   display: block;
   padding: 16px 0;
+  cursor: pointer;
   transition: opacity 0.2s;
   :hover {
     opacity: 0.7;
