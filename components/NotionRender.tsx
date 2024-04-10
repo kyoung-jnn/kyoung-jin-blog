@@ -11,6 +11,7 @@ import PostStyles from '@/styles/post-styles';
 import { useTheme } from 'next-themes';
 import { Theme } from './ThemeSwitch';
 import { NotionRenderer as _NotionRenderer } from 'react-notion-x';
+import { useEffect, useState } from 'react';
 
 // https://github.com/NotionX/react-notion-x/blob/master/examples/full/components/NotionPage.tsx
 
@@ -83,12 +84,18 @@ interface Props {
 }
 
 function NotionRenderer({ recordMap }: Props) {
+  const [init, setInit] = useState(true);
+
   const { theme } = useTheme();
+
+  useEffect(() => {
+    setInit(false);
+  }, [theme]);
 
   return (
     <StyledNotionRenderer
       recordMap={recordMap}
-      darkMode={theme === Theme.dark}
+      darkMode={init ? true : theme === Theme.dark}
       components={{
         nextImage: Image,
         nextLink: Link,
