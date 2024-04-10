@@ -23,6 +23,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<Post> = async ({ params }) => {
   const currentSlug = params?.slug as string;
   const posts = await getPosts();
+
   const post = posts?.find(({ slug }) => slug === currentSlug);
 
   if (!post) {
