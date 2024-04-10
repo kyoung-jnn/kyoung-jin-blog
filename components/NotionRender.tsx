@@ -85,7 +85,6 @@ interface Props {
 function NotionRenderer({ recordMap }: Props) {
   const { theme } = useTheme();
 
-  console.log(theme);
   return (
     <StyledNotionRenderer
       recordMap={recordMap}
