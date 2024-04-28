@@ -1,6 +1,6 @@
 import { getPosts } from '@/repository/notion';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { POSTS_PER_PAGE } from 'pages/post/page/[page]';
+import { POSTS_PER_PAGE } from 'pages/posts/page/[page]';
 
 // https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration#using-on-demand-revalidation
 export default async function handler(
