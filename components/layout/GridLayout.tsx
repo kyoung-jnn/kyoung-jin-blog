@@ -9,7 +9,6 @@ function GridLayout({ children }: PropsWithChildren) {
         position: relative;
         display: flex;
         flex-direction: column;
-        padding: 0 20px;
         margin-top: 60px;
 
         ${media.tablet} {

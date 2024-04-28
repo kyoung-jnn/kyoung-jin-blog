@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Head from 'next/head';
 import SITE_METADATA from '@/database/siteMetadata';
@@ -67,74 +69,5 @@ export const PageSEO = ({
       ogImage={ogImageUrl}
       canonicalUrl={canonicalUrl}
     />
-  );
-};
-
-// Post Page
-export const PostSEO = ({
-  url,
-  title,
-  summary,
-  date,
-  updatedAt,
-  canonicalUrl,
-}: any) => {
-  const publishedAt = new Date(date).toISOString();
-  const modifiedAt = new Date(updatedAt || date).toISOString();
-
-  const ogImageUrl = SITE_METADATA.siteBanner;
-
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': url,
-    },
-    headline: title,
-    image: ogImageUrl,
-    datePublished: publishedAt,
-    dateModified: modifiedAt,
-    author: [
-      {
-        '@type': 'Person',
-        name: SITE_METADATA.author,
-      },
-    ],
-    publisher: {
-      '@type': 'Organization',
-      name: SITE_METADATA.author,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${SITE_METADATA.siteLogo}`,
-      },
-    },
-    description: summary,
-  };
-
-  return (
-    <>
-      <CommonSEO
-        title={title}
-        description={summary}
-        ogType="article"
-        ogImage={ogImageUrl}
-        canonicalUrl={canonicalUrl}
-      />
-      <Head>
-        {date && (
-          <>
-            <meta property="article:published_time" content={publishedAt} />
-            <meta property="article:modified_time" content={modifiedAt} />
-          </>
-        )}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData, null, 2),
-          }}
-        />
-      </Head>
-    </>
   );
 };

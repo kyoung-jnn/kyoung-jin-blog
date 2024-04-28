@@ -1,4 +1,5 @@
-import React from 'react';
+'use client';
+
 import _ProgressBar from 'nextjs-progressbar';
 
 function ProgressBar() {

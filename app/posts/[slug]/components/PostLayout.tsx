@@ -1,3 +1,5 @@
+'use client';
+
 import { PropsWithChildren, useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
 import smoothscroll from 'smoothscroll-polyfill'; // Safari 에서 smooth 효과 적용
@@ -6,12 +8,12 @@ import Comment from '@/components/Comment';
 import { fadeLeft, fadeUp } from '@/utils/animation';
 import Image from 'next/image';
 import { dateToFormat } from '@/utils/time';
-import TOC from '../TOC';
-import Sidebar from '../Sidebar';
-import GridLayout from './GridLayout';
+import TOC from '../../../../components/TOC';
+import Sidebar from '../../../../components/Sidebar';
+import GridLayout from '../../../../components/layout/GridLayout';
 import { css } from '@emotion/react';
-import ArrowUpIcon from '../icons/ArrowUpIcon';
-import MessageIcon from '../icons/MessageIcon';
+import ArrowUpIcon from '../../../../components/icons/ArrowUpIcon';
+import MessageIcon from '../../../../components/icons/MessageIcon';
 
 interface Props {
   title: string;

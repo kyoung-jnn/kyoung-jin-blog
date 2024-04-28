@@ -1,9 +1,9 @@
 import media from '@/styles/media';
 import { fadeLeft } from '@/utils/animation';
 import styled from '@emotion/styled';
-import { useRouter } from 'next/router';
 import ArrowBackIcon from './icons/ArrowBackIcon';
 import { PropsWithChildren } from 'react';
+import { useRouter } from 'next/navigation';
 
 function Sidebar({ children }: PropsWithChildren) {
   const router = useRouter();
