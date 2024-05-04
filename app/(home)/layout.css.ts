@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
-export const main = style({
+export const section = style({
   position: 'relative',
   maxWidth: 640,
   margin: '0 auto',

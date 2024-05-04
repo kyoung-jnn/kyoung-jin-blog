@@ -4,7 +4,6 @@ import { ReactNode } from 'react';
 import Footer from 'app/components/Footer';
 import Header from 'app/components/Header';
 import ThemeProvider from '@/components/ThemeProvider';
-import { main } from './page.css';
 
 function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -16,7 +15,7 @@ function RootLayout({ children }: { children: ReactNode }) {
         <ThemeProvider>
           <ProgressBar />
           <Header />
-          <div className={main}>{children}</div>
+          <main>{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

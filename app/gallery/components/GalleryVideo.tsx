@@ -1,4 +1,4 @@
-import GalleryCaption from './GalleryCaption';
+import GalleryCaption from '../../../components/GalleryCaption';
 import { css } from '@emotion/react';
 
 interface Props {

@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import Image, { StaticImageData } from 'next/image';
-import GalleryCaption from './GalleryCaption';
+import GalleryCaption from '../../../components/GalleryCaption';
 
 interface Props {
   src: StaticImageData;
@@ -29,6 +29,7 @@ function GalleryPhoto({ src, alt }: Props) {
           alt={alt}
           style={{ objectFit: 'cover' }}
           placeholder="blur"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </article>
       <GalleryCaption>{alt}</GalleryCaption>
