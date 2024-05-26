@@ -35,7 +35,7 @@ export async function generateStaticParams() {
 
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
   const paths = Array.from({ length: totalPages }, (_, index) => ({
-    page: index.toString(),
+    page: (index + 1).toString(),
   }));
 
   return paths;
