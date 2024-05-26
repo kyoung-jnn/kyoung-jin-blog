@@ -1,6 +1,8 @@
+'use client';
+
 import { useState } from 'react';
 import styled from '@emotion/styled';
-import PostCard from 'app/components/PostCard';
+import PostCard from '@/components/PostCard';
 import Pagination from '@/components/Pagination';
 import SearchIcon from '@/components/icons/Search';
 import useDebounce from '@/hooks/useDebounce';

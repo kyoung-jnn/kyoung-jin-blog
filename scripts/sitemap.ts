@@ -1,6 +1,6 @@
 import { getPosts } from '@/repository/notion';
 import SITE_METADATA from '../database/siteMetadata';
-import { POSTS_PER_PAGE } from 'pages/posts/page/[page]';
+import { POSTS_PER_PAGE } from '@/constants/post';
 
 const DEFAULT_SLUG = ['', 'gallery'] as const;
 

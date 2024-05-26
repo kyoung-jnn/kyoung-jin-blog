@@ -1,5 +1,5 @@
 import React from 'react';
-import PostCard from '@/app/components/PostCard';
+import PostCard from '@/components/PostCard';
 import { wrapper } from './Articles.css';
 import Link from 'next/link';
 import { PostProperty } from '@/types/notion';

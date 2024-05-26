@@ -6,6 +6,7 @@ import { Twitter } from 'next/dist/lib/metadata/types/twitter-types';
 export const defaultMetadata: Metadata = {
   robots: { index: true, follow: true },
   title: SITE_METADATA.title,
+  description: SITE_METADATA.description,
   applicationName: SITE_METADATA.title,
   keywords: SITE_METADATA.keywords,
   publisher: SITE_METADATA.author,
