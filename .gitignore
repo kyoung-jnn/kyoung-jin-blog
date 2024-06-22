@@ -15,7 +15,6 @@
 # production
 /build
 
-rss.xml
 sitemap.xml
 
 # misc
