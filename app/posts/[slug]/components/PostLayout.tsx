@@ -104,7 +104,7 @@ function PostLayout({
   );
 }
 
-const PostWrapper = styled.article`
+const PostWrapper = styled.main`
   animation: ${fadeUp} 0.5s forwards;
   grid-column: 2/3;
 `;
