@@ -43,7 +43,8 @@ export async function generateMetadata({
     description: summary,
     openGraph: {
       ...defaultOpenGraph,
-      url: url,
+      url,
+      title,
       description: summary,
       publishedTime: date,
       modifiedTime: date,
