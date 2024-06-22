@@ -39,7 +39,7 @@ function RootLayout({ children }: { children: ReactNode }) {
         <ThemeProvider>
           <ProgressBar />
           <Header />
-          {children}
+          <div>{children}</div>
           <Footer />
         </ThemeProvider>
       </body>
