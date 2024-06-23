@@ -11,8 +11,6 @@ import {
 import SITE_METADATA from '@/database/siteMetadata';
 import JsonLD from './components/JsonLD';
 
-export const revalidate = 604800; // a week
-
 type Params = { slug: string };
 
 export async function generateStaticParams() {

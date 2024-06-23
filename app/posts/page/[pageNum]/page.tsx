@@ -10,10 +10,10 @@ import {
 import { POSTS_PER_PAGE } from '@/constants/post';
 import SITE_METADATA from '@/database/siteMetadata';
 
-type Params = { page: string };
+type Params = { pageNum: string };
 
 export async function generateMetadata({
-  params: { page },
+  params: { pageNum },
 }: {
   params: Params;
 }): Promise<Metadata> {
@@ -22,7 +22,7 @@ export async function generateMetadata({
     title: `글 목록 | Kyoung Jin, Roh`,
     openGraph: {
       ...defaultOpenGraph,
-      url: `${SITE_METADATA.siteUrl}/posts/page/${page}`,
+      url: `${SITE_METADATA.siteUrl}/posts/page/${pageNum}`,
     },
     twitter: {
       ...defaultTwitterMetadata,
@@ -41,11 +41,15 @@ export async function generateStaticParams() {
   return paths;
 }
 
-export default async function Page({ params: { page } }: { params: Params }) {
+export default async function Page({
+  params: { pageNum },
+}: {
+  params: Params;
+}) {
   const posts = await getPosts();
 
   const totalPage = Math.ceil(posts.length / POSTS_PER_PAGE);
-  const currentPage = parseInt(page);
+  const currentPage = parseInt(pageNum);
 
   if (isNaN(currentPage) || currentPage <= 0 || currentPage > totalPage) {
     return {
