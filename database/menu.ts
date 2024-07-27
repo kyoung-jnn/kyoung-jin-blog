@@ -1,4 +1,4 @@
-const menu = [
+const MENU_LIST = [
   {
     href: '/posts/page/1',
     name: '글 • article',
@@ -11,4 +11,4 @@ const menu = [
   },
 ] as const;
 
-export default menu;
+export default MENU_LIST;

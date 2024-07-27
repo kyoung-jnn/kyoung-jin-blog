@@ -7,7 +7,7 @@ import {
   defaultMetadata,
   defaultOpenGraph,
   defaultTwitterMetadata,
-} from '@/constants/metadata';
+} from '@/database/metadata';
 import SITE_METADATA from '@/database/siteMetadata';
 import JsonLD from './components/JsonLD';
 

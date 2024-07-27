@@ -4,7 +4,7 @@ import Profile from '../../components/Profile';
 import Articles from '../../components/Articles';
 import SITE_METADATA from '@/database/siteMetadata';
 import { Metadata } from 'next';
-import { defaultMetadata, defaultOpenGraph } from '@/constants/metadata';
+import { defaultMetadata, defaultOpenGraph } from '@/database/metadata';
 
 const POSTS_HOME = 5;
 

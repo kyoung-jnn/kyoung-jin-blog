@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Menu from '@/components/icons/Menu';
-import menu from '@/constants/menu';
+import MENU_LIST from '@/database/menu';
 import Link from 'next/link';
 import styled from '@emotion/styled';
 import media from '@/styles/media';
@@ -31,7 +31,7 @@ function MobileMenu() {
         <NavContainer>
           <Background />
           <MenuContainer onClick={handleClick}>
-            {menu.map(({ name, href }) => (
+            {MENU_LIST.map(({ name, href }) => (
               <Link key={name} href={href}>
                 <MenuItem>{name}</MenuItem>
               </Link>

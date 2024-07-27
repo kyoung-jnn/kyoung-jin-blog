@@ -9,7 +9,7 @@ import { fadeLeft, fadeUp } from '@/utils/animation';
 
 import { css } from '@emotion/react';
 import media from '@/styles/media';
-import menu from '@/constants/menu';
+import MENU_LIST from '@/database/menu';
 
 function HomeClientPage() {
   return (
@@ -33,7 +33,7 @@ function HomeClientPage() {
           />
         </ContactSection>
         <MenuSection>
-          {menu.map(({ href, name, description }) => (
+          {MENU_LIST.map(({ href, name, description }) => (
             <Link href={href} key={name}>
               {name}
               <p

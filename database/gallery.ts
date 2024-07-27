@@ -5,7 +5,7 @@ import image_20240303_1 from '@/public/gallery/20240303_1.jpeg';
 
 export type GalleryItemType = 'image' | 'video';
 
-const galleryData = [
+const GALLERY_DATA_LIST = [
   { type: 'image', src: image_20240209, alt: '첫 합주 2024.02.' },
   {
     type: 'image',
@@ -34,4 +34,4 @@ const galleryData = [
   },
 ] as const;
 
-export default galleryData;
+export default GALLERY_DATA_LIST;

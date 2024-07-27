@@ -9,14 +9,14 @@ interface Props {
 
 function PostCard({ title, date, slug }: Props) {
   return (
-    <article className={css.wrapper}>
-      <Link href={`/posts/${slug}`}>
+    <Link href={`/posts/${slug}`}>
+      <article className={css.wrapper}>
         <h2 className={css.h2}>{title}</h2>
         <time dateTime={date} className={css.time}>
           {date}
         </time>
-      </Link>
-    </article>
+      </article>
+    </Link>
   );
 }
 

@@ -6,8 +6,8 @@ import {
   defaultMetadata,
   defaultOpenGraph,
   defaultTwitterMetadata,
-} from '@/constants/metadata';
-import { POSTS_PER_PAGE } from '@/constants/post';
+} from '@/database/metadata';
+import { POSTS_PER_PAGE } from '@/database/post';
 import SITE_METADATA from '@/database/siteMetadata';
 
 type Params = { pageNum: string };
