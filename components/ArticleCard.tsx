@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import * as css from './PostCard.css';
+import * as css from './ArticleCard.css';
 
 interface Props {
   title: string;
@@ -7,17 +7,17 @@ interface Props {
   slug: string;
 }
 
-function PostCard({ title, date, slug }: Props) {
+function ArticleCard({ title, date, slug }: Props) {
   return (
     <Link href={`/posts/${slug}`}>
       <article className={css.wrapper}>
         <h2 className={css.h2}>{title}</h2>
         <time dateTime={date} className={css.time}>
-          {date}
+          {new Date(date).getFullYear()}
         </time>
       </article>
     </Link>
   );
 }
 
-export default PostCard;
+export default ArticleCard;

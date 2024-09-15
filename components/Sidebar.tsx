@@ -1,16 +1,17 @@
 import media from '@/styles/media';
 import { fadeLeft } from '@/utils/animation';
 import styled from '@emotion/styled';
-import ArrowBackIcon from './icons/ArrowBackIcon';
 import { PropsWithChildren } from 'react';
 import { useRouter } from 'next/navigation';
+import IconButton from './IconButton';
 
 function Sidebar({ children }: PropsWithChildren) {
   const router = useRouter();
 
   return (
     <Wrapper>
-      <ArrowBackIcon width={20} height={20} onClick={() => router.back()} />
+      <IconButton name="ArrowUpLeft" onClick={() => router.back()} />
+
       {children}
     </Wrapper>
   );

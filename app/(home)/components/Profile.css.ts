@@ -12,6 +12,17 @@ export const fadeUp = keyframes({
 });
 
 export const wrapper = style({
+  display: 'grid',
+  gap: 4,
   opacity: 0,
   animation: `${fadeUp} 1s forwards`,
+});
+
+export const title = style({
+  fontWeight: 600,
+});
+
+export const desciption = style({
+  color: 'var(--gray-9)',
+  fontSize: 15,
 });

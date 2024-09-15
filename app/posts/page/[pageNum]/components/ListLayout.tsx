@@ -2,14 +2,14 @@
 
 import { useState } from 'react';
 import styled from '@emotion/styled';
-import PostCard from '@/components/PostCard';
+import ArticleCard from '@/components/ArticleCard';
 import Pagination from '@/components/Pagination';
-import SearchIcon from '@/components/icons/Search';
 import useDebounce from '@/hooks/useDebounce';
 import { PostProperty } from '@/types/notion';
-import GridLayout from './GridLayout';
+import GridLayout from '../../../../../components/layout/GridLayout';
 import { css } from '@emotion/react';
-import Sidebar from '../Sidebar';
+import Sidebar from '../../../../../components/Sidebar';
+import IconButton from '@/components/IconButton';
 
 interface Props {
   allPosts: PostProperty[];
@@ -44,7 +44,6 @@ function ListLayout({
       <Sidebar />
       <Wrapper>
         <HeroWrapper>
-          <h3>글 • article</h3>
           <InputWrapper>
             <SearchInput
               aria-label="포스팅 검색 인풋"
@@ -52,7 +51,7 @@ function ListLayout({
               onChange={(e) => setSearchValue(e.target.value)}
               placeholder="포스팅 검색"
             />
-            <SearchIcon className="icon" />
+            <IconButton name="Search" />
           </InputWrapper>
         </HeroWrapper>
         {!filteredBlogPosts.length && (
@@ -60,7 +59,7 @@ function ListLayout({
         )}
         <ul>
           {displayPosts.map(({ title, date, slug }) => (
-            <PostCard key={slug} title={title} date={date} slug={slug} />
+            <ArticleCard key={slug} title={title} date={date} slug={slug} />
           ))}
         </ul>
       </Wrapper>
@@ -105,12 +104,13 @@ const SearchInput = styled.input`
   height: 30px;
   padding: 10px;
   outline: none;
-  border: 0.5px solid var(--text);
+  border: 1px solid var(--gray-8);
+  border-radius: 3px;
   background-color: transparent;
-  transition: border 0.5s;
   font-size: 14px;
+  transition: border 0.5s;
   :focus {
-    border: 1px solid var(--focus-text);
+    border: 1px solid var(--gray-12);
   }
   ::placeholder {
     font-size: 14px;

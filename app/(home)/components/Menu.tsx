@@ -1,8 +1,6 @@
-/** @jsxImportSource @emotion/react */
 'use client';
 
 import styled from '@emotion/styled';
-import Icon from '@/components/icons';
 import Link from 'next/link';
 import SITE_CONFIG from '@/database/siteConfig';
 import { fadeLeft, fadeUp } from '@/utils/animation';
@@ -10,27 +8,22 @@ import { fadeLeft, fadeUp } from '@/utils/animation';
 import { css } from '@emotion/react';
 import media from '@/styles/media';
 import MENU_LIST from '@/database/menu';
+import IconButton from '@/components/IconButton';
 
-function HomeClientPage() {
+function Menu() {
   return (
     <>
       <Wrapper>
         <ContactSection>
-          <Icon
-            kind="mail"
-            href={`mailto:${SITE_CONFIG.author.contacts.email}`}
-            size={18}
-          />
-          <Icon
-            kind="github"
-            href={SITE_CONFIG.author.contacts.github}
-            size={18}
-          />
-          <Icon
-            kind="linkedin"
-            href={SITE_CONFIG.author.contacts.linkedin}
-            size={18}
-          />
+          <Link href={`mailto:${SITE_CONFIG.author.contact.email}`}>
+            <IconButton name="Mail" />
+          </Link>
+          <Link href={SITE_CONFIG.author.contact.github} target="_blank">
+            <IconButton name="BrandGithub" />
+          </Link>
+          <Link href={SITE_CONFIG.author.contact.linkedin} target="_blank">
+            <IconButton name="BrandLinkedIn" />
+          </Link>
         </ContactSection>
         <MenuSection>
           {MENU_LIST.map(({ href, name, description }) => (
@@ -55,31 +48,21 @@ function HomeClientPage() {
 const Wrapper = styled.div`
   position: relative;
   max-width: 640px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 16px;
-  padding-right: 16px;
-  margin-top: 60px;
-
-  ${media.tablet} {
-    padding: 0;
-  }
+  margin: 36px 0;
 `;
 
 const ContactSection = styled.section`
   display: flex;
-  margin-top: 20px;
   gap: 10px;
-
   animation: ${fadeUp} 1s forwards;
 `;
 
 const MenuSection = styled.nav`
   display: grid;
-  margin: 36px 0;
   grid-template-columns: repeat(3, 1fr);
+  margin: 36px 0;
   opacity: 0;
   animation: ${fadeLeft} 1s 0.2s forwards;
 `;
 
-export default HomeClientPage;
+export default Menu;

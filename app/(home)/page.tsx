@@ -1,7 +1,7 @@
 import { getPosts } from '@/repository/notion';
-import HomeClientPage from '../../components/HomeClientPage';
-import Profile from '../../components/Profile';
-import Articles from '../../components/Articles';
+import Menu from './components/Menu';
+import Profile from './components/Profile';
+import ArticleList from './components/ArticleList';
 import SITE_METADATA from '@/database/siteMetadata';
 import { Metadata } from 'next';
 import { defaultMetadata, defaultOpenGraph } from '@/database/metadata';
@@ -21,8 +21,8 @@ export default async function HomePage() {
   return (
     <>
       <Profile />
-      <HomeClientPage />
-      <Articles latestPosts={latestPosts} />
+      <Menu />
+      <ArticleList latestPosts={latestPosts} />
     </>
   );
 }

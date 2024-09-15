@@ -1,10 +1,10 @@
 import React from 'react';
-import PostCard from '@/components/PostCard';
-import { wrapper } from './Articles.css';
+import ArticleCard from '@/components/ArticleCard';
+import { wrapper } from './ArticleList.css';
 import Link from 'next/link';
 import { PostProperty } from '@/types/notion';
 
-function Articles({ latestPosts }: { latestPosts: PostProperty[] }) {
+function ArticleList({ latestPosts }: { latestPosts: PostProperty[] }) {
   return (
     <section className={wrapper}>
       <ul>
@@ -12,16 +12,16 @@ function Articles({ latestPosts }: { latestPosts: PostProperty[] }) {
         {latestPosts.map(({ title, date, slug }) => {
           return (
             <li key={slug}>
-              <PostCard title={title} date={date} slug={slug} />
+              <ArticleCard title={title} date={date} slug={slug} />
             </li>
           );
         })}
       </ul>
       <Link href="/posts/page/1" aria-label="모든 포스팅 보기 버튼">
-        모두보기
+        전체보기
       </Link>
     </section>
   );
 }
 
-export default Articles;
+export default ArticleList;

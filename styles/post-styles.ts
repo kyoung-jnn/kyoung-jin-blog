@@ -1,7 +1,9 @@
 import { css } from '@emotion/react';
 
 const PostStyles = css`
-  font-family: 'Pretendard Variable';
+  * {
+    font-family: inherit;
+  }
 
   // highlight
   h1,
@@ -11,7 +13,7 @@ const PostStyles = css`
   h5,
   h6 {
     font-weight: 600;
-    letter-spacing: -0.04rem;
+    letter-spacing: -0.2px;
   }
 
   h2 {
@@ -31,9 +33,7 @@ const PostStyles = css`
 
   // default p
   div {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.8;
+    line-height: 1.7;
   }
 
   a {
@@ -48,8 +48,8 @@ const PostStyles = css`
 
   blockquote {
     font-size: 16px;
-    margin: 5px 0;
-    border-left: 3px solid var(--focus-text);
+    margin: 4px 0;
+    background-color: var(--gray-5);
   }
 
   // list 태그
@@ -65,6 +65,10 @@ const PostStyles = css`
     list-style: number;
   }
 
+  table {
+    width: 100%;
+  }
+
   // 노션 콜아웃
   .notion-callout {
     background-color: transparent;
@@ -73,19 +77,17 @@ const PostStyles = css`
   // code 태그
   .notion-inline-code {
     font-size: 0.95rem;
-    font-weight: 400;
-    border-radius: 6px;
-    color: var(--text);
-    background-color: var(--code-bg);
-    padding: 3px 4px;
-    font-family:
-      'Pretendard Variable',
-      -apple-system;
+    border-radius: 3px;
+
+    color: var(--gray-13);
+    background-color: var(--gray-5);
+
+    padding: 2px 4px;
   }
 
   // 코드 에디터
   .notion-code {
-    background-color: #232323;
+    background-color: #202020;
     overflow-y: hidden;
     code {
       font-size: 12px;
@@ -100,10 +102,6 @@ const PostStyles = css`
   .notion-asset-caption {
     padding-top: 2px;
     padding-bottom: 6px;
-  }
-
-  table {
-    width: 100%;
   }
 `;
 

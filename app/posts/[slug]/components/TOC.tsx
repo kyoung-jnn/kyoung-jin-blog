@@ -58,16 +58,15 @@ const Wrapper = styled.nav`
   display: grid;
   gap: 10px;
   padding: 4px 0 4px 10px;
-  border-left: 1px solid var(--gray);
+  border-left: 1px solid var(--gray-12);
   animation: ${fadeLeft} 500ms forwards;
 `;
 
 const TableItem = styled.a<{ isActive: boolean; depth: string }>`
-  font-size: 14px;
-  font-family: 'Pretendard-Variable';
-
+  font-size: 13px;
+  transition: color 0.2s;
   color: ${({ isActive }) =>
-    isActive ? css`var(--focus-text)` : css`var(--fontColor)`};
+    isActive ? css`var(--gray-12)` : css`var(--gray-9)`};
 
   margin-left: ${({ depth }) => {
     if (depth === 'H3') return '10px';

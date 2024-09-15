@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import Menu from '@/components/icons/Menu';
 import MENU_LIST from '@/database/menu';
 import Link from 'next/link';
 import styled from '@emotion/styled';
 import media from '@/styles/media';
 import { fadeLeft } from '@/utils/animation';
+import IconButton from './IconButton';
 
 function MobileMenu() {
   const [hasNav, setHasNav] = useState(false);
@@ -25,7 +25,7 @@ function MobileMenu() {
   return (
     <Wrapper>
       <HamburgerButton aria-label="Toggle Menu Button" onClick={handleClick}>
-        <Menu />
+        <IconButton name="Menu" />
       </HamburgerButton>
       {hasNav && (
         <NavContainer>
@@ -69,7 +69,7 @@ const Background = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: var(--bg);
+  background-color: var(--gray-3);
   opacity: 0.8;
 `;
 
@@ -91,7 +91,7 @@ const MenuItem = styled.button`
   text-align: center;
   padding: 30px;
   cursor: pointer;
-  color: var(--text);
+  color: var(--gray-12);
 `;
 
 export default MobileMenu;

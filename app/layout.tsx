@@ -7,6 +7,9 @@ import ThemeProvider from '@/components/ThemeProvider';
 import SITE_METADATA from '@/database/siteMetadata';
 import { GoogleAnalyticsScript } from '@/components/GoogleAnalytics';
 
+import 'normalize.css';
+import '@/styles/global.css';
+
 function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ko" suppressHydrationWarning>

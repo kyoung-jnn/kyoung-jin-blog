@@ -5,7 +5,7 @@ export const header = style({
   top: 0,
   height: 70,
   zIndex: 100,
-  background: 'linear-gradient(to top, transparent, var(--bg))',
+  background: 'linear-gradient(to top, transparent, var(--gray-4))',
 });
 
 export const nav = style({

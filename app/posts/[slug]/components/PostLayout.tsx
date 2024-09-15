@@ -8,12 +8,11 @@ import Comment from '@/components/Comment';
 import { fadeLeft, fadeUp } from '@/utils/animation';
 import Image from 'next/image';
 import { dateToFormat } from '@/utils/time';
-import TOC from '../../../../components/TOC';
+import TOC from './TOC';
 import Sidebar from '../../../../components/Sidebar';
 import GridLayout from '../../../../components/layout/GridLayout';
 import { css } from '@emotion/react';
-import ArrowUpIcon from '../../../../components/icons/ArrowUpIcon';
-import MessageIcon from '../../../../components/icons/MessageIcon';
+import IconButton from '@/components/IconButton';
 
 interface Props {
   title: string;
@@ -59,8 +58,8 @@ function PostLayout({
             animation: ${fadeLeft} 500ms 500ms forwards;
           `}
         >
-          <ArrowUpIcon width={20} height={20} onClick={handleScrollToTop} />
-          <MessageIcon width={20} height={20} onClick={handleScrollToComment} />
+          <IconButton name="ArrowUpLeft" onClick={handleScrollToTop} />
+          <IconButton name="ArrowUpLeft" onClick={handleScrollToComment} />
         </div>
       </Sidebar>
       {/* 본문 영역 */}
@@ -81,7 +80,7 @@ function PostLayout({
               display: block;
               font-size: 16px;
               margin-top: 10px;
-              color: var(--text-color);
+              color: var(--gray-10);
             `}
           >
             {updatedAt}
@@ -127,7 +126,7 @@ const PostFooter = styled.footer`
   grid-column: 2/3;
   padding-top: 30px;
   font-size: 18px;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid var(--gray-10);
 `;
 
 export default PostLayout;

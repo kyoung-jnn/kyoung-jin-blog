@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import ListLayout from '@/components/layout/ListLayout';
+import ListLayout from '@/app/posts/page/[pageNum]/components/ListLayout';
 import { getPosts } from '@/repository/notion';
 
 import {

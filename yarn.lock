@@ -4909,16 +4909,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"emotion-normalize@npm:^11.0.1":
-  version: 11.0.1
-  resolution: "emotion-normalize@npm:11.0.1"
-  peerDependencies:
-    "@emotion/react": ^11.0.0
-    react: ">=16.3.0"
-  checksum: 19254ff13d12f463b5dc91b33c1a961f6bf4cefd1011979c1f8889cb84d8e86b83c770b516ec22a379142f9e8833e3d1e99e1c6052947d24ed13cc2abe8f5779
-  languageName: node
-  linkType: hard
-
 "encoding@npm:^0.1.13":
   version: 0.1.13
   resolution: "encoding@npm:0.1.13"
@@ -7182,7 +7172,6 @@ __metadata:
     "@vercel/analytics": "npm:^1.2.2"
     "@vercel/speed-insights": "npm:^1.0.10"
     cmdk: "npm:^0.2.1"
-    emotion-normalize: "npm:^11.0.1"
     eslint: "npm:8.18.0"
     eslint-config-next: "npm:^14.2.2"
     eslint-config-prettier: "npm:^8.8.0"
@@ -7194,6 +7183,7 @@ __metadata:
     next: "npm:^14.2.2"
     next-themes: "npm:^0.3.0"
     nextjs-progressbar: "npm:^0.0.16"
+    normalize.css: "npm:^8.0.1"
     notion-client: "npm:^6.16.0"
     notion-types: "npm:^6.16.0"
     notion-utils: "npm:^6.16.0"
@@ -7961,6 +7951,13 @@ __metadata:
   version: 7.2.0
   resolution: "normalize-url@npm:7.2.0"
   checksum: d7f76bdd2b9a2ad06036a591cee2ca68794a0cfdc466b0be36f1b26c16963a6fa1627f97c852ef1d933c4ec3361473ea2a37cb8695a930e43f8b443953a2e415
+  languageName: node
+  linkType: hard
+
+"normalize.css@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "normalize.css@npm:8.0.1"
+  checksum: 4ddf56d1af5ca755fa5e692e718316d8758ecb792aa96e1ad206824b5810a043763d681d6f7697d46573515f5e9690038b4c91a95c1997567128815545fb8cd7
   languageName: node
   linkType: hard
 

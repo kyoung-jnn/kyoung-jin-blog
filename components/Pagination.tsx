@@ -39,7 +39,7 @@ const PaginationContainer = styled.div`
 const PaginationNav = styled.nav`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  color: var(--text);
+  color: var(--gray-13);
   font-size: 16px;
 
   .center {

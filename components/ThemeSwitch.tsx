@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
-import Sun from '@/components/icons/Sun';
-import Moon from '@/components/icons/Moon';
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
 import Image from 'next/image';
+
+import Icon from './Icon';
 
 export const Theme = {
   light: 'light',
@@ -17,15 +17,15 @@ const ThemeSwitch = () => {
 
   useEffect(() => setMounted(true), []);
 
-  const themeClickHandler = () => {
+  const handleClick = () => {
     setTheme(theme === Theme.dark ? Theme.light : Theme.dark);
   };
 
   return (
     <StyledButton
-      aria-label="Toggle Dark Mode"
       type="button"
-      onClick={themeClickHandler}
+      aria-label="toggle theme button"
+      onClick={handleClick}
     >
       {!mounted ? (
         <Image
@@ -37,9 +37,9 @@ const ThemeSwitch = () => {
           height={40}
         />
       ) : theme === Theme.light ? (
-        <Sun className="light-theme" />
+        <Icon name="Sun" className="light-theme" />
       ) : (
-        <Moon className="dark-theme" />
+        <Icon name="Moon" className="dark-theme" />
       )}
     </StyledButton>
   );
