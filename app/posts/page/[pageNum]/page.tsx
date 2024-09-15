@@ -7,8 +7,9 @@ import {
   defaultOpenGraph,
   defaultTwitterMetadata,
 } from '@/database/metadata';
-import { POSTS_PER_PAGE } from '@/database/post';
+import { POSTS_PER_PAGE } from '@/database/posts';
 import SITE_METADATA from '@/database/siteMetadata';
+import GridLayout from '@/components/layout/GridLayout';
 
 type Params = { pageNum: string };
 
@@ -19,7 +20,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   return {
     ...defaultMetadata,
-    title: `글 목록 | Kyoung Jin, Roh`,
+    title: `Articles | KyoungJin Roh`,
     openGraph: {
       ...defaultOpenGraph,
       url: `${SITE_METADATA.siteUrl}/posts/page/${pageNum}`,
@@ -46,9 +47,9 @@ export default async function Page({
 }: {
   params: Params;
 }) {
-  const posts = await getPosts();
+  const allPosts = await getPosts();
 
-  const totalPage = Math.ceil(posts.length / POSTS_PER_PAGE);
+  const totalPage = Math.ceil(allPosts.length / POSTS_PER_PAGE);
   const currentPage = parseInt(pageNum);
 
   if (isNaN(currentPage) || currentPage <= 0 || currentPage > totalPage) {
@@ -57,18 +58,19 @@ export default async function Page({
     };
   }
 
-  const pagePosts = posts.slice(
+  const pagePosts = allPosts.slice(
     POSTS_PER_PAGE * (currentPage - 1),
     POSTS_PER_PAGE * currentPage,
   );
 
   return (
-    <ListLayout
-      allPosts={posts}
-      pagePosts={pagePosts}
-      totalPage={totalPage}
-      currentPage={currentPage}
-      paginationLink="/posts/page"
-    />
+    <GridLayout>
+      <ListLayout
+        pagePosts={pagePosts}
+        totalPage={totalPage}
+        currentPage={currentPage}
+        paginationLink="/posts/page"
+      />
+    </GridLayout>
   );
 }

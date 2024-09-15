@@ -58,8 +58,8 @@ function PostLayout({
             animation: ${fadeLeft} 500ms 500ms forwards;
           `}
         >
-          <IconButton name="ArrowUpLeft" onClick={handleScrollToTop} />
-          <IconButton name="ArrowUpLeft" onClick={handleScrollToComment} />
+          <IconButton name="ArrowUp" onClick={handleScrollToTop} />
+          <IconButton name="Messages" onClick={handleScrollToComment} />
         </div>
       </Sidebar>
       {/* 본문 영역 */}

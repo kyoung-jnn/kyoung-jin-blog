@@ -17,7 +17,7 @@ export async function GET() {
     image_url: `${SITE_METADATA.siteBanner}`,
     language: SITE_METADATA.locale,
     categories: ['Technologies'],
-    copyright: 'All rights reserved 2023, Kyoung Jin, Roh',
+    copyright: 'All rights reserved 2023, KyoungJin Roh',
     generator: 'kyoung-jin-blog-rss-generate',
     pubDate: new Date(),
   });

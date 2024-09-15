@@ -8,8 +8,10 @@ import Menu from '@/public/svg/menu.svg';
 import Sun from '@/public/svg/sun.svg';
 import Moon from '@/public/svg/moon.svg';
 import Search from '@/public/svg/search.svg';
+import ArrowUp from '@/public/svg/arrow-up.svg';
 
 export const svg = {
+  ArrowUp,
   ArrowUpLeft,
   BrandGithub,
   BrandLinkedIn,

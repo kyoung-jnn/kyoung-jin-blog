@@ -1,3 +1,5 @@
+'use client';
+
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import { ComponentProps } from 'react';
@@ -34,13 +36,15 @@ export default Pagination;
 
 const PaginationContainer = styled.div`
   padding: 6px 0;
+  grid-column: 2/3;
 `;
 
 const PaginationNav = styled.nav`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+
   color: var(--gray-13);
-  font-size: 16px;
+  font-size: 14px;
 
   .center {
     text-align: center;

@@ -6,7 +6,7 @@ import SITE_CONFIG from '@/database/siteConfig';
 import { fadeLeft, fadeUp } from '@/utils/animation';
 
 import { css } from '@emotion/react';
-import media from '@/styles/media';
+
 import MENU_LIST from '@/database/menu';
 import IconButton from '@/components/IconButton';
 

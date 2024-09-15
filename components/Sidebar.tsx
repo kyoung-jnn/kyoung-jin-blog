@@ -1,3 +1,5 @@
+'use client';
+
 import media from '@/styles/media';
 import { fadeLeft } from '@/utils/animation';
 import styled from '@emotion/styled';
@@ -11,7 +13,6 @@ function Sidebar({ children }: PropsWithChildren) {
   return (
     <Wrapper>
       <IconButton name="ArrowUpLeft" onClick={() => router.back()} />
-
       {children}
     </Wrapper>
   );
@@ -22,8 +23,6 @@ export default Sidebar;
 const Wrapper = styled.aside`
   position: relative;
   display: none;
-  flex-shrink: 0;
-  padding: 8px 0;
 
   ${media.desktop} {
     position: sticky;

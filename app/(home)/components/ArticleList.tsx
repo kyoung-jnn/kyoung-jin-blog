@@ -1,4 +1,3 @@
-import React from 'react';
 import ArticleCard from '@/components/ArticleCard';
 import { wrapper } from './ArticleList.css';
 import Link from 'next/link';
@@ -12,7 +11,9 @@ function ArticleList({ latestPosts }: { latestPosts: PostProperty[] }) {
         {latestPosts.map(({ title, date, slug }) => {
           return (
             <li key={slug}>
-              <ArticleCard title={title} date={date} slug={slug} />
+              <Link href={`/posts/${slug}`}>
+                <ArticleCard title={title} date={date} />
+              </Link>
             </li>
           );
         })}

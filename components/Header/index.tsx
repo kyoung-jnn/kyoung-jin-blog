@@ -16,11 +16,7 @@ function Header() {
     <header className={css.header}>
       <nav className={css.nav}>
         <Link href="/" aria-label="home link">
-          <div className={css.leftNav}>
-            {pathname !== '/' && (
-              <p className="header-title">{SiteConfig.title}</p>
-            )}
-          </div>
+          <p className={css.leftNav}>{pathname !== '/' && SiteConfig.title}</p>
         </Link>
         <div className={css.rightNav}>
           <ThemeSwitch />

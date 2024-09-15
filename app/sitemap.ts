@@ -1,4 +1,4 @@
-import { POSTS_PER_PAGE } from '@/database/post';
+import { POSTS_PER_PAGE } from '@/database/posts';
 import SITE_METADATA from '@/database/siteMetadata';
 import { getPosts } from '@/repository/notion';
 import { MetadataRoute } from 'next';

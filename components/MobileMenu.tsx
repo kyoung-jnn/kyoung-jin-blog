@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import MENU_LIST from '@/database/menu';
 import Link from 'next/link';
@@ -24,9 +26,12 @@ function MobileMenu() {
 
   return (
     <Wrapper>
-      <HamburgerButton aria-label="Toggle Menu Button" onClick={handleClick}>
-        <IconButton name="Menu" />
-      </HamburgerButton>
+      <IconButton
+        name="Menu"
+        aria-label="Toggle Menu Button"
+        onClick={handleClick}
+      />
+
       {hasNav && (
         <NavContainer>
           <Background />
@@ -56,11 +61,6 @@ const NavContainer = styled.div`
   left: 0;
   z-index: 100;
   animation: ${fadeLeft} 0.5s ease-in-out;
-`;
-
-const HamburgerButton = styled.button`
-  width: 24px;
-  height: 24px;
 `;
 
 const Background = styled.div`

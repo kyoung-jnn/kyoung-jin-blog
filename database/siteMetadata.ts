@@ -1,8 +1,8 @@
 // site meta data
 
 const SITE_METADATA = {
-  title: `Kyoung Jin, Roh`,
-  author: 'Kyoung Jin, Roh',
+  title: `KyoungJin Roh`,
+  author: 'KyoungJin Roh',
   email: 'rudwls468@gmail.com',
   description: '경진의 개인 블로그',
   keywords:

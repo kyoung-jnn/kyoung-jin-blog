@@ -22,8 +22,8 @@ export const leftNav = style({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  fontWeight: 700,
-  fontSize: 16,
+  fontWeight: 500,
+  fontSize: 14,
 });
 
 export const rightNav = style({

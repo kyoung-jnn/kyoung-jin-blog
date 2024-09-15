@@ -4,5 +4,5 @@ export const footer = style({
   display: 'flex',
   justifyContent: 'center',
   padding: '40px 0',
-  fontSize: 16,
+  fontSize: 14,
 });

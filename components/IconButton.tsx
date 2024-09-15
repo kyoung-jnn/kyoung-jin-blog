@@ -2,7 +2,7 @@
 
 import React, { ComponentProps } from 'react';
 import styled from '@emotion/styled';
-import Icon from '../Icon';
+import Icon from './Icon';
 
 interface Props extends ComponentProps<'button'> {
   name: ComponentProps<typeof Icon>['name'];
@@ -27,6 +27,6 @@ const Wrapper = styled.button`
   transition: background-color 0.2s;
   cursor: pointer;
   :hover {
-    background-color: var(--gray-5);
+    background-color: var(--gray-4);
   }
 `;

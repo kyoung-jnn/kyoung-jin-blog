@@ -6,12 +6,10 @@ export const wrapper = style({
   alignContent: 'center',
   padding: '12px',
   transition: 'all 0.4s',
-  borderRadius: 12,
+  borderRadius: 6,
   cursor: 'pointer',
-  ':hover': {
-    opacity: 0.7,
-    backgroundColor: 'var(--gray-5)',
-  },
+
+  ':hover': { backgroundColor: 'var(--gray-4)' },
 });
 
 export const h2 = style({
