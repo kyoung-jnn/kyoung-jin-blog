@@ -10,9 +10,9 @@ import Image from 'next/image';
 import { dateToFormat } from '@/utils/time';
 import TOC from './TOC';
 import Sidebar from '../../../../components/Sidebar';
-import GridLayout from '../../../../components/layout/GridLayout';
 import { css } from '@emotion/react';
 import IconButton from '@/components/IconButton';
+import * as styles from './PostLayout.css';
 
 interface Props {
   title: string;
@@ -46,7 +46,7 @@ function PostLayout({
   };
 
   return (
-    <GridLayout>
+    <div className={styles.wrapper}>
       {/* 사이드바 */}
       <Sidebar>
         <TOC />
@@ -93,13 +93,11 @@ function PostLayout({
         </PostHeader>
         {children}
       </PostWrapper>
-      <PostFooter>
+      <PostFooter ref={commentContainerRef}>
         {/* 댓글 영역 */}
-        <section ref={commentContainerRef}>
-          <Comment />
-        </section>
+        <Comment />
       </PostFooter>
-    </GridLayout>
+    </div>
   );
 }
 

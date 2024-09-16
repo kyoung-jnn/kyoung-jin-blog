@@ -1,8 +1,21 @@
-// site meta data
-
-const SITE_METADATA = {
+/**
+ * site configuration
+ */
+const SITE_CONFIG = {
   title: `KyoungJin Roh`,
-  author: 'KyoungJin Roh',
+  author: {
+    name: '노경진',
+    enName: 'KyoungJin Roh',
+    bio: 'Frontend Engineer',
+    contact: {
+      email: 'rudwls468@gmail.com',
+      github: 'https://github.com/kyoung-jnn',
+      rss: 'https://kyoung-jnn.com/rss.xml',
+      linkedin:
+        'https://www.linkedin.com/in/%EA%B2%BD%EC%A7%84-%EB%85%B8-028b7421b/',
+      twitter: '',
+    },
+  },
   email: 'rudwls468@gmail.com',
   description: '경진의 개인 블로그',
   keywords:
@@ -19,4 +32,4 @@ const SITE_METADATA = {
   },
 };
 
-export default SITE_METADATA;
+export default SITE_CONFIG;

@@ -2,16 +2,16 @@ import { getPosts } from '@/repository/notion';
 import Menu from './components/Menu';
 import Profile from './components/Profile';
 import ArticleList from './components/ArticleList';
-import SITE_METADATA from '@/database/siteMetadata';
+import SITE_CONFIG from '@/database/config';
 import { Metadata } from 'next';
-import { defaultMetadata, defaultOpenGraph } from '@/database/metadata';
+import { META_DATA, OPEN_GRAPH } from '@/database/metadata';
 
-const POSTS_HOME = 5;
+const POSTS_HOME = 7;
 
 export const metadata: Metadata = {
-  ...defaultMetadata,
-  title: `홈 | ${SITE_METADATA.title}`,
-  openGraph: defaultOpenGraph,
+  ...META_DATA,
+  title: `Home • ${SITE_CONFIG.title}`,
+  openGraph: OPEN_GRAPH,
 };
 
 export default async function HomePage() {

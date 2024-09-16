@@ -1,6 +1,6 @@
 'use client';
 
-import GALLERY_DATA_LIST from '@/database/gallery';
+import GALLERY_LIST from '@/database/gallery';
 import GalleryPhoto from './components/GalleryPhoto';
 import GalleryVideo from './components/GalleryVideo';
 import { StaticImageData } from 'next/image';
@@ -12,7 +12,7 @@ export default function GalleryPage() {
         title={`Gallery | ${SITE_METADATA.title}`}
         description={`일상 및 여행 사진 | ${SITE_METADATA.description}`}
       /> */}
-      {GALLERY_DATA_LIST.map(({ type, src, alt }, index) => {
+      {GALLERY_LIST.map(({ type, src, alt }, index) => {
         if (type === 'image') {
           return (
             <GalleryPhoto key={index} src={src as StaticImageData} alt={alt} />

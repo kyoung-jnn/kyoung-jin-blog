@@ -2,53 +2,77 @@
 
 import styled from '@emotion/styled';
 import Link from 'next/link';
-import SITE_CONFIG from '@/database/siteConfig';
+import SITE_CONFIG from '@/database/config';
 import { fadeLeft, fadeUp } from '@/utils/animation';
-
-import { css } from '@emotion/react';
 
 import MENU_LIST from '@/database/menu';
 import IconButton from '@/components/IconButton';
 
+import { css } from '@emotion/react';
+
 function Menu() {
   return (
-    <>
-      <Wrapper>
-        <ContactSection>
-          <Link href={`mailto:${SITE_CONFIG.author.contact.email}`}>
-            <IconButton name="Mail" />
-          </Link>
-          <Link href={SITE_CONFIG.author.contact.github} target="_blank">
-            <IconButton name="BrandGithub" />
-          </Link>
-          <Link href={SITE_CONFIG.author.contact.linkedin} target="_blank">
-            <IconButton name="BrandLinkedIn" />
-          </Link>
-        </ContactSection>
-        <MenuSection>
-          {MENU_LIST.map(({ href, name, description }) => (
-            <Link href={href} key={name}>
-              {name}
+    <Wrapper>
+      <ContactSection>
+        <Link
+          href={`mailto:${SITE_CONFIG.author.contact.email}`}
+          aria-label="mail link"
+        >
+          <IconButton name="Mail" />
+        </Link>
+        <Link
+          href={SITE_CONFIG.author.contact.github}
+          target="_blank"
+          aria-label="github link"
+        >
+          <IconButton name="BrandGithub" />
+        </Link>
+        <Link
+          href={SITE_CONFIG.author.contact.linkedin}
+          target="_blank"
+          aria-label="linked in link"
+        >
+          <IconButton name="BrandLinkedIn" />
+        </Link>
+      </ContactSection>
+      <MenuSection>
+        {MENU_LIST.map(({ href, name, description }) => (
+          <div key={href}>
+            <Link href={href}>
               <p
                 css={css`
-                  font-size: 14px;
-                  margin-top: 4px;
+                  text-decoration: underline;
+                  text-decoration-color: var(--gray-7);
+                  text-underline-offset: 5px;
+
+                  transition: text-decoration-color 0.4s;
+                  :hover {
+                    text-decoration-color: var(--gray-11);
+                  }
                 `}
               >
-                {description}
+                {name}
               </p>
             </Link>
-          ))}
-        </MenuSection>
-      </Wrapper>
-    </>
+            <p
+              css={css`
+                font-size: 13px;
+                margin-top: 10px;
+              `}
+            >
+              {description}
+            </p>{' '}
+          </div>
+        ))}
+      </MenuSection>
+    </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
   position: relative;
   max-width: 640px;
-  margin: 36px 0;
+  padding: 36px 12px;
 `;
 
 const ContactSection = styled.section`
@@ -60,7 +84,7 @@ const ContactSection = styled.section`
 const MenuSection = styled.nav`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin: 36px 0;
+  margin-top: 36px;
   opacity: 0;
   animation: ${fadeLeft} 1s 0.2s forwards;
 `;

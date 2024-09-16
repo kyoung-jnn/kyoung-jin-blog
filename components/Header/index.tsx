@@ -2,7 +2,7 @@
 
 import ThemeSwitch from '@/components/ThemeSwitch';
 import MobileMenu from '@/components/MobileMenu';
-import SiteConfig from '@/database/siteConfig';
+import SiteConfig from '@/database/config';
 
 import Link from 'next/link';
 import { memo } from 'react';

@@ -1,6 +1,6 @@
 import { style, keyframes } from '@vanilla-extract/css';
 
-export const fadeUp = keyframes({
+const fadeUp = keyframes({
   '0%': {
     opacity: 0,
     transform: 'translateY(10px)',
@@ -16,6 +16,7 @@ export const wrapper = style({
   gap: 4,
   opacity: 0,
   animation: `${fadeUp} 1s forwards`,
+  padding: '0 12px',
 });
 
 export const title = style({

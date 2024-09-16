@@ -1,4 +1,4 @@
-import SITE_CONFIG from '@/database/siteConfig';
+import SITE_CONFIG from '@/database/config';
 import * as css from './Footer.css';
 
 function Footer() {

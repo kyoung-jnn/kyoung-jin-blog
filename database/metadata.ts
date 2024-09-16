@@ -1,32 +1,32 @@
-import SITE_METADATA from '@/database/siteMetadata';
+import SITE_CONFIG from '@/database/config';
 import { Metadata } from 'next';
 import { OpenGraph } from 'next/dist/lib/metadata/types/opengraph-types';
 import { Twitter } from 'next/dist/lib/metadata/types/twitter-types';
 
-export const defaultMetadata: Metadata = {
+export const META_DATA: Metadata = {
   robots: { index: true, follow: true },
-  title: SITE_METADATA.title,
-  description: SITE_METADATA.description,
-  applicationName: SITE_METADATA.title,
-  keywords: SITE_METADATA.keywords,
-  publisher: SITE_METADATA.author,
-  creator: SITE_METADATA.author,
-  authors: [{ name: SITE_METADATA.author, url: SITE_METADATA.siteUrl }],
+  title: SITE_CONFIG.title,
+  description: SITE_CONFIG.description,
+  applicationName: SITE_CONFIG.title,
+  keywords: SITE_CONFIG.keywords,
+  publisher: SITE_CONFIG.author.name,
+  creator: SITE_CONFIG.author.name,
+  authors: [{ name: SITE_CONFIG.author.name, url: SITE_CONFIG.siteUrl }],
   category: 'technology',
 };
 
-export const defaultOpenGraph: OpenGraph = {
-  siteName: SITE_METADATA.siteName,
-  title: SITE_METADATA.title,
-  description: SITE_METADATA.description,
-  images: SITE_METADATA.siteBanner,
-  url: SITE_METADATA.siteUrl,
-  locale: SITE_METADATA.locale,
-  type: 'website',
+export const META_DATA_TWITTER: Twitter = {
+  card: 'summary_large_image',
+  site: SITE_CONFIG.siteName,
+  creator: SITE_CONFIG.author.name,
 };
 
-export const defaultTwitterMetadata: Twitter = {
-  card: 'summary_large_image',
-  site: SITE_METADATA.siteName,
-  creator: SITE_METADATA.author,
+export const OPEN_GRAPH: OpenGraph = {
+  siteName: SITE_CONFIG.siteName,
+  title: SITE_CONFIG.title,
+  description: SITE_CONFIG.description,
+  images: SITE_CONFIG.siteBanner,
+  url: SITE_CONFIG.siteUrl,
+  locale: SITE_CONFIG.locale,
+  type: 'website',
 };

@@ -2,7 +2,7 @@ import ArticleCard from '@/components/ArticleCard';
 import Pagination from '@/components/Pagination';
 import { PostProperty } from '@/types/notion';
 import Sidebar from '../../../../../components/Sidebar';
-import { List, Wrapper, title } from './ListLayout.css';
+import * as styles from './ListLayout.css';
 import Link from 'next/link';
 
 interface Props {
@@ -19,11 +19,11 @@ function ListLayout({
   paginationLink,
 }: Props) {
   return (
-    <>
+    <div className={styles.wrapper}>
       <Sidebar />
-      <div className={Wrapper}>
-        <h1 className={title}>Articles</h1>
-        <ul className={List}>
+      <div className={styles.content}>
+        <h1 className={styles.title}>Articles</h1>
+        <ul className={styles.list}>
           {pagePosts.map(({ title, date, slug }) => (
             <li key={slug}>
               <Link href={`/posts/${slug}`}>
@@ -40,7 +40,7 @@ function ListLayout({
           link={paginationLink}
         />
       )}
-    </>
+    </div>
   );
 }
 
