@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import ListLayout from '@/app/posts/page/[pageNum]/components/ListLayout';
 import { getPosts } from '@/repository/notion';
 
-import { META_DATA, OPEN_GRAPH, META_DATA_TWITTER } from '@/database/metadata';
+import { METADATA, OPEN_GRAPH, METADATA_TWITTER } from '@/database/metadata';
 import { POSTS_PER_PAGE } from '@/database/posts';
 import SITE_CONFIG from '@/database/config';
 
@@ -14,14 +14,14 @@ export async function generateMetadata({
   params: Params;
 }): Promise<Metadata> {
   return {
-    ...META_DATA,
+    ...METADATA,
     title: `Articles | KyoungJin Roh`,
     openGraph: {
       ...OPEN_GRAPH,
       url: `${SITE_CONFIG.siteUrl}/posts/page/${pageNum}`,
     },
     twitter: {
-      ...META_DATA_TWITTER,
+      ...METADATA_TWITTER,
     },
   };
 }

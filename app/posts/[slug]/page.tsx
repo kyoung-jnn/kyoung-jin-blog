@@ -3,7 +3,7 @@ import PostLayout from '@/app/posts/[slug]/components/PostLayout';
 import { getPost, getPosts } from '@/repository/notion';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { META_DATA, OPEN_GRAPH, META_DATA_TWITTER } from '@/database/metadata';
+import { METADATA, OPEN_GRAPH, METADATA_TWITTER } from '@/database/metadata';
 import SITE_CONFIG from '@/database/config';
 import JsonLD from './components/JsonLD';
 
@@ -32,7 +32,7 @@ export async function generateMetadata({
   const { title, date, thumbnail, summary } = post;
 
   return {
-    ...META_DATA,
+    ...METADATA,
     title,
     description: summary,
     openGraph: {
@@ -48,7 +48,7 @@ export async function generateMetadata({
       }),
     },
     twitter: {
-      ...META_DATA_TWITTER,
+      ...METADATA_TWITTER,
       title,
       description: summary,
       ...(thumbnail && {

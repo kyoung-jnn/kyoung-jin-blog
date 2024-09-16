@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { OpenGraph } from 'next/dist/lib/metadata/types/opengraph-types';
 import { Twitter } from 'next/dist/lib/metadata/types/twitter-types';
 
-export const META_DATA: Metadata = {
+export const METADATA: Metadata = {
   robots: { index: true, follow: true },
   title: SITE_CONFIG.title,
   description: SITE_CONFIG.description,
@@ -15,7 +15,7 @@ export const META_DATA: Metadata = {
   category: 'technology',
 };
 
-export const META_DATA_TWITTER: Twitter = {
+export const METADATA_TWITTER: Twitter = {
   card: 'summary_large_image',
   site: SITE_CONFIG.siteName,
   creator: SITE_CONFIG.author.name,

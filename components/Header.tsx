@@ -2,23 +2,25 @@
 
 import ThemeSwitch from '@/components/ThemeSwitch';
 import MobileMenu from '@/components/MobileMenu';
-import SiteConfig from '@/database/config';
+import SITE_CONFIG from '@/database/config';
 
 import Link from 'next/link';
 import { memo } from 'react';
 import { usePathname } from 'next/navigation';
-import * as css from './index.css';
+import * as styles from './Header.css';
 
 function Header() {
   const pathname = usePathname();
 
   return (
-    <header className={css.header}>
-      <nav className={css.nav}>
+    <header className={styles.header}>
+      <nav className={styles.nav}>
         <Link href="/" aria-label="home link">
-          <p className={css.leftNav}>{pathname !== '/' && SiteConfig.title}</p>
+          <p className={styles.leftNav}>
+            {pathname !== '/' && SITE_CONFIG.author.enName}
+          </p>
         </Link>
-        <div className={css.rightNav}>
+        <div className={styles.rightNav}>
           <ThemeSwitch />
           <MobileMenu />
         </div>

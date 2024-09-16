@@ -31,13 +31,13 @@ const PostStyles = css`
     margin-top: 14px;
   }
 
-  // default p
+  // paragraph
   div {
     line-height: 1.7;
   }
 
   a {
-    transition: opacity 0.5s;
+    transition: opacity 0.4s;
   }
 
   // bold
@@ -52,7 +52,7 @@ const PostStyles = css`
     background-color: var(--gray-5);
   }
 
-  // list 태그
+  // list
   ul,
   ol {
     padding-inline-start: 1.2rem;
@@ -69,7 +69,7 @@ const PostStyles = css`
     width: 100%;
   }
 
-  // 노션 콜아웃
+  // callout
   .notion-callout {
     background-color: transparent;
   }
@@ -85,7 +85,7 @@ const PostStyles = css`
     padding: 2px 4px;
   }
 
-  // 코드 에디터
+  // code editor
   .notion-code {
     background-color: #202020;
     overflow-y: hidden;
@@ -98,10 +98,15 @@ const PostStyles = css`
     margin: 10px 0pc;
   }
 
-  // 캡션
+  // caption
   .notion-asset-caption {
     padding-top: 2px;
     padding-bottom: 6px;
+  }
+
+  // notion page properties
+  .notion-collection-page-properties {
+    display: none !important;
   }
 `;
 

@@ -1,4 +1,4 @@
-import * as css from './ArticleCard.css';
+import * as styles from './ArticleCard.css';
 
 interface Props {
   title: string;
@@ -7,9 +7,9 @@ interface Props {
 
 function ArticleCard({ title, date }: Props) {
   return (
-    <article className={css.wrapper}>
-      <h2 className={css.h2}>{title}</h2>
-      <time dateTime={date} className={css.time}>
+    <article className={styles.wrapper}>
+      <h2 className={styles.h2}>{title}</h2>
+      <time dateTime={date} className={styles.time}>
         {new Date(date).getFullYear()}
       </time>
     </article>

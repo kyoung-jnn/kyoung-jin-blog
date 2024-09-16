@@ -3,26 +3,26 @@ import { style } from '@vanilla-extract/css';
 export const header = style({
   position: 'sticky',
   top: 0,
-  height: 70,
+  height: 44,
   zIndex: 100,
-  background: 'linear-gradient(to top, transparent, var(--gray-4))',
+  backdropFilter: 'saturate(150%) blur(3px)',
 });
 
 export const nav = style({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  maxWidth: 672,
+  maxWidth: 664,
   marginLeft: 'auto',
   marginRight: 'auto',
-  padding: '10px 16px',
+  padding: '10px 12px',
 });
 
 export const leftNav = style({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  fontWeight: 500,
+  fontWeight: 400,
   fontSize: 14,
 });
 

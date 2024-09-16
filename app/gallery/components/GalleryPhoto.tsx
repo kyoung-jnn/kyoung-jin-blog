@@ -1,6 +1,8 @@
+'use client';
+
 import { css } from '@emotion/react';
 import Image, { StaticImageData } from 'next/image';
-import GalleryCaption from '../../../components/GalleryCaption';
+import GalleryCaption from '../../posts/page/[pageNum]/components/GalleryCaption';
 
 interface Props {
   src: StaticImageData;

@@ -20,7 +20,7 @@ export const wrapper = style({
 });
 
 export const title = style({
-  fontWeight: 600,
+  fontSize: 26,
 });
 
 export const desciption = style({

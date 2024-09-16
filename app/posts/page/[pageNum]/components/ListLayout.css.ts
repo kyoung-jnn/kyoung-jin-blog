@@ -14,12 +14,12 @@ export const wrapper = style({
       display: 'grid',
       justifyContent: 'center',
       alignItems: 'flex-start',
-      gridTemplateColumns: '192px 640px 192px',
+      gridTemplateColumns: '180px 664px 180px',
     },
   },
 });
 
-export const title = style({ paddingLeft: 12, margin: 0 });
+export const title = style({ padding: '0 12px', margin: 0, fontSize: 26 });
 
 export const content = style({
   gridColumn: '2/3',

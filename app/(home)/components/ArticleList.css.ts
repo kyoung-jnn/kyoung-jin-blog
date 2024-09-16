@@ -14,5 +14,5 @@ const fadeLeft = keyframes({
 });
 export const wrapper = style({
   opacity: 0,
-  animation: `${fadeLeft} 1s forwards`,
+  animation: `${fadeLeft} 1s 0.3s forwards`,
 });
