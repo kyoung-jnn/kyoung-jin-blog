@@ -10,9 +10,9 @@ import Image from 'next/image';
 import { dateToFormat } from '@/utils/time';
 import TOC from './TOC';
 import Sidebar from '../../../../components/Sidebar';
-import GridLayout from '../../../../components/layout/GridLayout';
 import { css } from '@emotion/react';
 import IconButton from '@/components/IconButton';
+import * as styles from './PostLayout.css';
 
 interface Props {
   title: string;
@@ -46,7 +46,7 @@ function PostLayout({
   };
 
   return (
-    <GridLayout>
+    <div className={styles.wrapper}>
       {/* 사이드바 */}
       <Sidebar>
         <TOC />
@@ -55,7 +55,7 @@ function PostLayout({
             display: flex;
             gap: 6px;
             opacity: 0;
-            animation: ${fadeLeft} 500ms 500ms forwards;
+            animation: ${fadeLeft} 0.4s 0.2s forwards;
           `}
         >
           <IconButton name="ArrowUp" onClick={handleScrollToTop} />
@@ -67,9 +67,7 @@ function PostLayout({
         <PostHeader>
           <h1
             css={css`
-              font-size: 25px;
-              font-weight: 700;
-              letter-spacing: -1px;
+              font-size: 30px;
             `}
           >
             {title}
@@ -79,7 +77,7 @@ function PostLayout({
             css={css`
               display: block;
               font-size: 16px;
-              margin-top: 10px;
+              margin-top: 8px;
               color: var(--gray-10);
             `}
           >
@@ -93,13 +91,11 @@ function PostLayout({
         </PostHeader>
         {children}
       </PostWrapper>
-      <PostFooter>
+      <PostFooter ref={commentContainerRef}>
         {/* 댓글 영역 */}
-        <section ref={commentContainerRef}>
-          <Comment />
-        </section>
+        <Comment />
       </PostFooter>
-    </GridLayout>
+    </div>
   );
 }
 
@@ -124,9 +120,10 @@ const PostThumbnail = styled.figure`
 
 const PostFooter = styled.footer`
   grid-column: 2/3;
-  padding-top: 30px;
+  margin-top: 24px;
+  padding-top: 24px;
   font-size: 18px;
-  border-top: 1px solid var(--gray-10);
+  border-top: 1px solid var(--gray-9);
 `;
 
 export default PostLayout;

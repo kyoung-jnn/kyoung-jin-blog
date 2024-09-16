@@ -119,8 +119,4 @@ const StyledNotionRenderer = styled(_NotionRenderer)`
   padding: 0;
 
   ${PostStyles};
-
-  .notion-collection-page-properties {
-    display: none !important;
-  }
 `;

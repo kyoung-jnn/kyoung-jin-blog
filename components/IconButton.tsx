@@ -27,6 +27,6 @@ const Wrapper = styled.button`
   transition: background-color 0.2s;
   cursor: pointer;
   :hover {
-    background-color: var(--gray-4);
+    background-color: var(--gray-5);
   }
 `;

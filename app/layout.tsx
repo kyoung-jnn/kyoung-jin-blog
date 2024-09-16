@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import ThemeProvider from '@/components/ThemeProvider';
-import SITE_METADATA from '@/database/siteMetadata';
+import SITE_CONFIG from '@/database/config';
 import { GoogleAnalyticsScript } from '@/components/GoogleAnalytics';
 
 import 'normalize.css';
@@ -32,7 +32,7 @@ function RootLayout({ children }: { children: ReactNode }) {
         <link
           rel="alternate"
           type="application/rss+xml"
-          href={`${SITE_METADATA.siteUrl}/rss.xml`}
+          href={`${SITE_CONFIG.siteUrl}/rss.xml`}
           title="rss"
         />
         {/* Global Site Tag (gtag.js) - Google Analytics */}

@@ -1,4 +1,4 @@
-import SITE_METADATA from '@/database/siteMetadata';
+import SITE_CONFIG from '@/database/config';
 import React from 'react';
 
 type Props = {
@@ -18,12 +18,12 @@ function JsonLD({
   date,
   updatedAt,
 }: Props) {
-  const url = `${SITE_METADATA.siteUrl}/posts/${slug}`;
+  const url = `${SITE_CONFIG.siteUrl}/posts/${slug}`;
 
   const publishedAt = new Date(date).toISOString();
   const modifiedAt = new Date(updatedAt || date).toISOString();
 
-  const image = _image ?? SITE_METADATA.siteBanner;
+  const image = _image ?? SITE_CONFIG.siteBanner;
 
   const structuredData = {
     '@context': 'https://schema.org',
@@ -40,15 +40,15 @@ function JsonLD({
     author: [
       {
         '@type': 'Person',
-        name: SITE_METADATA.author,
+        name: SITE_CONFIG.author.name,
       },
     ],
     publisher: {
       '@type': 'Organization',
-      name: SITE_METADATA.author,
+      name: SITE_CONFIG.author.name,
       logo: {
         '@type': 'ImageObject',
-        url: `${SITE_METADATA.siteLogo}`,
+        url: `${SITE_CONFIG.siteLogo}`,
       },
     },
   };

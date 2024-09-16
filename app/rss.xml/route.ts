@@ -1,5 +1,4 @@
-import SITE_CONFIG from '@/database/siteConfig';
-import SITE_METADATA from '@/database/siteMetadata';
+import SITE_CONFIG from '@/database/config';
 import { getPosts } from '@/repository/notion';
 
 import RSS from 'rss';
@@ -11,11 +10,11 @@ export async function GET() {
 
   const feed = new RSS({
     title: SITE_CONFIG.title,
-    description: SITE_METADATA.description,
-    feed_url: `${SITE_METADATA.siteUrl}/rss.xml`,
-    site_url: SITE_METADATA.siteUrl,
-    image_url: `${SITE_METADATA.siteBanner}`,
-    language: SITE_METADATA.locale,
+    description: SITE_CONFIG.description,
+    feed_url: `${SITE_CONFIG.siteUrl}/rss.xml`,
+    site_url: SITE_CONFIG.siteUrl,
+    image_url: `${SITE_CONFIG.siteBanner}`,
+    language: SITE_CONFIG.locale,
     categories: ['Technologies'],
     copyright: 'All rights reserved 2023, KyoungJin Roh',
     generator: 'kyoung-jin-blog-rss-generate',
@@ -26,8 +25,8 @@ export async function GET() {
     feed.item({
       title: post.title,
       description: post.summary,
-      url: `${SITE_METADATA.siteUrl}/posts/${post.slug}`,
-      author: SITE_CONFIG.author.koName,
+      url: `${SITE_CONFIG.siteUrl}/posts/${post.slug}`,
+      author: SITE_CONFIG.author.name,
       date: new Date(post.date),
     });
   });

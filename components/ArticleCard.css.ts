@@ -4,7 +4,7 @@ export const wrapper = style({
   display: 'flex',
   justifyContent: 'space-between',
   alignContent: 'center',
-  padding: '12px',
+  padding: '10px 12px',
   transition: 'all 0.4s',
   borderRadius: 6,
   cursor: 'pointer',

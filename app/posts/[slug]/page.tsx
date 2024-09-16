@@ -3,12 +3,8 @@ import PostLayout from '@/app/posts/[slug]/components/PostLayout';
 import { getPost, getPosts } from '@/repository/notion';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import {
-  defaultMetadata,
-  defaultOpenGraph,
-  defaultTwitterMetadata,
-} from '@/database/metadata';
-import SITE_METADATA from '@/database/siteMetadata';
+import { METADATA, OPEN_GRAPH, METADATA_TWITTER } from '@/database/metadata';
+import SITE_CONFIG from '@/database/config';
 import JsonLD from './components/JsonLD';
 
 type Params = { slug: string };
@@ -32,15 +28,15 @@ export async function generateMetadata({
 
   if (!post) return {};
 
-  const url = `${SITE_METADATA.siteUrl}/posts/${currentSlug}`;
+  const url = `${SITE_CONFIG.siteUrl}/posts/${currentSlug}`;
   const { title, date, thumbnail, summary } = post;
 
   return {
-    ...defaultMetadata,
+    ...METADATA,
     title,
     description: summary,
     openGraph: {
-      ...defaultOpenGraph,
+      ...OPEN_GRAPH,
       url,
       title,
       description: summary,
@@ -52,7 +48,7 @@ export async function generateMetadata({
       }),
     },
     twitter: {
-      ...defaultTwitterMetadata,
+      ...METADATA_TWITTER,
       title,
       description: summary,
       ...(thumbnail && {

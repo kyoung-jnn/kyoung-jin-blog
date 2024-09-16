@@ -1,5 +1,3 @@
-'use client';
-
 import React, { ComponentProps } from 'react';
 import { IconName, svg } from './svg';
 

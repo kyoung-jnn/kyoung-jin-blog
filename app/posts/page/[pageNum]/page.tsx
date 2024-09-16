@@ -2,14 +2,9 @@ import { Metadata } from 'next';
 import ListLayout from '@/app/posts/page/[pageNum]/components/ListLayout';
 import { getPosts } from '@/repository/notion';
 
-import {
-  defaultMetadata,
-  defaultOpenGraph,
-  defaultTwitterMetadata,
-} from '@/database/metadata';
+import { METADATA, OPEN_GRAPH, METADATA_TWITTER } from '@/database/metadata';
 import { POSTS_PER_PAGE } from '@/database/posts';
-import SITE_METADATA from '@/database/siteMetadata';
-import GridLayout from '@/components/layout/GridLayout';
+import SITE_CONFIG from '@/database/config';
 
 type Params = { pageNum: string };
 
@@ -19,14 +14,14 @@ export async function generateMetadata({
   params: Params;
 }): Promise<Metadata> {
   return {
-    ...defaultMetadata,
+    ...METADATA,
     title: `Articles | KyoungJin Roh`,
     openGraph: {
-      ...defaultOpenGraph,
-      url: `${SITE_METADATA.siteUrl}/posts/page/${pageNum}`,
+      ...OPEN_GRAPH,
+      url: `${SITE_CONFIG.siteUrl}/posts/page/${pageNum}`,
     },
     twitter: {
-      ...defaultTwitterMetadata,
+      ...METADATA_TWITTER,
     },
   };
 }
@@ -64,13 +59,11 @@ export default async function Page({
   );
 
   return (
-    <GridLayout>
-      <ListLayout
-        pagePosts={pagePosts}
-        totalPage={totalPage}
-        currentPage={currentPage}
-        paginationLink="/posts/page"
-      />
-    </GridLayout>
+    <ListLayout
+      pagePosts={pagePosts}
+      totalPage={totalPage}
+      currentPage={currentPage}
+      paginationLink="/posts/page"
+    />
   );
 }

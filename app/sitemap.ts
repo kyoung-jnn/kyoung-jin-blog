@@ -1,5 +1,5 @@
 import { POSTS_PER_PAGE } from '@/database/posts';
-import SITE_METADATA from '@/database/siteMetadata';
+import SITE_CONFIG from '@/database/config';
 import { getPosts } from '@/repository/notion';
 import { MetadataRoute } from 'next';
 
@@ -10,7 +10,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const totalPageCount = Math.ceil(posts.length / POSTS_PER_PAGE);
 
   const defaultSitemap: MetadataRoute.Sitemap = DEFAULT_SLUG.map((slug) => ({
-    url: `${SITE_METADATA.siteUrl}/${slug}`,
+    url: `${SITE_CONFIG.siteUrl}/${slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly',
     priority: 1,
@@ -19,7 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const pageSitemap: MetadataRoute.Sitemap = Array.from(
     { length: totalPageCount },
     (_, index) => ({
-      url: `${SITE_METADATA.siteUrl}/posts/page/${index + 1}`,
+      url: `${SITE_CONFIG.siteUrl}/posts/page/${index + 1}`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
@@ -27,7 +27,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   );
 
   const postSitemap: MetadataRoute.Sitemap = posts.map(({ slug, date }) => ({
-    url: `${SITE_METADATA.siteUrl}/posts/${slug}`,
+    url: `${SITE_CONFIG.siteUrl}/posts/${slug}`,
     lastModified: new Date(date),
     changeFrequency: 'weekly',
     priority: 1,
