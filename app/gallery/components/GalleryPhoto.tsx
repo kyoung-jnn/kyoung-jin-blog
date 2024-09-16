@@ -2,7 +2,7 @@
 
 import { css } from '@emotion/react';
 import Image, { StaticImageData } from 'next/image';
-import GalleryCaption from '../../posts/page/[pageNum]/components/GalleryCaption';
+import GalleryCaption from './GalleryCaption';
 
 interface Props {
   src: StaticImageData;

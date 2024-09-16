@@ -1,6 +1,6 @@
 'use client';
 
-import GalleryCaption from '../../posts/page/[pageNum]/components/GalleryCaption';
+import GalleryCaption from './GalleryCaption';
 import { css } from '@emotion/react';
 
 interface Props {

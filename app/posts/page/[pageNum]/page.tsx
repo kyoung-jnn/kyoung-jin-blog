@@ -1,10 +1,14 @@
 import { Metadata } from 'next';
-import ListLayout from '@/app/posts/page/[pageNum]/components/ListLayout';
 import { getPosts } from '@/repository/notion';
 
 import { METADATA, OPEN_GRAPH, METADATA_TWITTER } from '@/database/metadata';
 import { POSTS_PER_PAGE } from '@/database/posts';
 import SITE_CONFIG from '@/database/config';
+import Pagination from '@/components/Pagination';
+import Link from 'next/link';
+import ArticleCard from '@/components/ArticleCard';
+import Sidebar from '@/components/Sidebar';
+import * as styles from './page.css';
 
 type Params = { pageNum: string };
 
@@ -59,11 +63,23 @@ export default async function Page({
   );
 
   return (
-    <ListLayout
-      pagePosts={pagePosts}
-      totalPage={totalPage}
-      currentPage={currentPage}
-      paginationLink="/posts/page"
-    />
+    <div className={styles.wrapper}>
+      <Sidebar />
+      <div className={styles.content}>
+        <h1 className={styles.title}>Articles</h1>
+        <ul className={styles.list}>
+          {pagePosts.map(({ title, date, slug }) => (
+            <li key={slug}>
+              <Link href={`/posts/${slug}`}>
+                <ArticleCard key={slug} title={title} date={date} />
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+      {pagePosts.length > 0 && (
+        <Pagination totalPage={totalPage} currentPage={currentPage} />
+      )}
+    </div>
   );
 }

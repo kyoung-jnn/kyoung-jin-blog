@@ -3,11 +3,12 @@
 import media from '@/styles/media';
 import { fadeLeft } from '@/utils/animation';
 import styled from '@emotion/styled';
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, memo } from 'react';
 import { useRouter } from 'next/navigation';
 import IconButton from './IconButton';
 
 function Sidebar({ children }: PropsWithChildren) {
+  console.log('Sidebar');
   const router = useRouter();
 
   return (
@@ -18,7 +19,7 @@ function Sidebar({ children }: PropsWithChildren) {
   );
 }
 
-export default Sidebar;
+export default memo(Sidebar);
 
 const Wrapper = styled.aside`
   position: relative;

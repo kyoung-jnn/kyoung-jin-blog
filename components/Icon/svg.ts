@@ -9,6 +9,8 @@ import Sun from '@/public/svg/sun.svg';
 import Moon from '@/public/svg/moon.svg';
 import Search from '@/public/svg/search.svg';
 import ArrowUp from '@/public/svg/arrow-up.svg';
+import ArrowRight from '@/public/svg/arrow-right.svg';
+import ArrowLeft from '@/public/svg/arrow-left.svg';
 
 export const svg = {
   ArrowUp,
@@ -22,6 +24,8 @@ export const svg = {
   Sun,
   Moon,
   Search,
+  ArrowRight,
+  ArrowLeft,
 };
 
 export type IconName = keyof typeof svg;
