@@ -8,12 +8,11 @@ import ArticleList from './components/ArticleList';
 import Menu from './components/Menu';
 import Profile from './components/Profile';
 
-
 const POSTS_HOME = 7;
 
 export const metadata: Metadata = {
   ...METADATA,
-  title: `Home • ${SITE_CONFIG.title}`,
+  title: `Home • ${SITE_CONFIG.author.enName}`,
   openGraph: OPEN_GRAPH,
 };
 

@@ -1,4 +1,3 @@
-
 import { Metadata } from 'next';
 import Link from 'next/link';
 import React from 'react';
@@ -23,7 +22,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   return {
     ...METADATA,
-    title: `Articles | KyoungJin Roh`,
+    title: `Articles | ${SITE_CONFIG.author.enName}`,
     openGraph: {
       ...OPEN_GRAPH,
       url: `${SITE_CONFIG.siteUrl}/posts/page/${pageNum}`,

@@ -18,12 +18,12 @@ export const METADATA: Metadata = {
 
 export const METADATA_TWITTER: Twitter = {
   card: 'summary_large_image',
-  site: SITE_CONFIG.siteName,
+  site: SITE_CONFIG.title,
   creator: SITE_CONFIG.author.name,
 };
 
 export const OPEN_GRAPH: OpenGraph = {
-  siteName: SITE_CONFIG.siteName,
+  siteName: SITE_CONFIG.title,
   title: SITE_CONFIG.title,
   description: SITE_CONFIG.description,
   images: SITE_CONFIG.siteBanner,

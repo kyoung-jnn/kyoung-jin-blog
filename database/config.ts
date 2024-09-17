@@ -21,7 +21,6 @@ const SITE_CONFIG = {
       twitter: '',
     },
   },
-  siteName: `KyoungJin Roh's Blog`,
   siteUrl: 'https://kyoung-jnn.com',
   siteRepo: 'https://github.com/kyoung-jnn/kyoung-jin-blog',
   siteLogo: 'https://i.ibb.co/K7PsQQY/logo.png',
