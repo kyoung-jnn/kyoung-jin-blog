@@ -1,10 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useTheme } from 'next-themes';
-import styled from '@emotion/styled';
-import { keyframes } from '@emotion/react';
 import Image from 'next/image';
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
+
+import { keyframes } from '@emotion/react';
+import styled from '@emotion/styled';
 
 import Icon from './Icon';
 

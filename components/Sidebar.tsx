@@ -1,14 +1,15 @@
 'use client';
 
-import media from '@/styles/media';
-import { fadeLeft } from '@/utils/animation';
-import styled from '@emotion/styled';
-import { PropsWithChildren, memo } from 'react';
 import { useRouter } from 'next/navigation';
+import { PropsWithChildren, memo } from 'react';
+
+import styled from '@emotion/styled';
+
+import media from '@/styles/media';
+
 import IconButton from './IconButton';
 
 function Sidebar({ children }: PropsWithChildren) {
-  console.log('Sidebar');
   const router = useRouter();
 
   return (
@@ -30,6 +31,5 @@ const Wrapper = styled.aside`
     display: grid;
     gap: 20px;
     top: 90px;
-    animation: ${fadeLeft} 0.5s forwards;
   }
 `;

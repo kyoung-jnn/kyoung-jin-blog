@@ -1,19 +1,22 @@
 'use client';
 
-import dynamic from 'next/dynamic';
-import Image from 'next/image';
-import Link from 'next/link';
-import { ExtendedRecordMap } from 'notion-types';
-import styled from '@emotion/styled';
-
 import 'react-notion-x/src/styles.css';
 import 'prismjs/themes/prism-tomorrow.css';
 import 'katex/dist/katex.min.css';
-import PostStyles from '@/styles/post-styles';
+
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
+import Link from 'next/link';
 import { useTheme } from 'next-themes';
-import { Theme } from './ThemeSwitch';
-import { NotionRenderer as _NotionRenderer } from 'react-notion-x';
 import { useEffect, useState } from 'react';
+import { NotionRenderer as _NotionRenderer } from 'react-notion-x';
+
+import styled from '@emotion/styled';
+import { ExtendedRecordMap } from 'notion-types';
+
+import PostStyles from '@/styles/post-styles';
+
+import { Theme } from './ThemeSwitch';
 
 // https://github.com/NotionX/react-notion-x/blob/master/examples/full/components/NotionPage.tsx
 

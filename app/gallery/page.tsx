@@ -1,10 +1,13 @@
+import { Metadata } from 'next';
+import { StaticImageData } from 'next/image';
+
+import SITE_CONFIG from '@/database/config';
 import GALLERY_LIST from '@/database/gallery';
+import { METADATA, OPEN_GRAPH } from '@/database/metadata';
+
 import GalleryPhoto from './components/GalleryPhoto';
 import GalleryVideo from './components/GalleryVideo';
-import { StaticImageData } from 'next/image';
-import { Metadata } from 'next';
-import { METADATA, OPEN_GRAPH } from '@/database/metadata';
-import SITE_CONFIG from '@/database/config';
+
 
 export const metadata: Metadata = {
   ...METADATA,

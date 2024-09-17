@@ -1,7 +1,10 @@
-import ArticleCard from '@/components/ArticleCard';
-import * as styles from './ArticleList.css';
 import Link from 'next/link';
+
+import ArticleCard from '@/components/ArticleCard';
+
 import { PostProperty } from '@/types/notion';
+
+import * as styles from './ArticleList.css';
 
 function ArticleList({ latestPosts }: { latestPosts: PostProperty[] }) {
   return (

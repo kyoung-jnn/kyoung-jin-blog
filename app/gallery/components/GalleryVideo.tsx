@@ -1,7 +1,8 @@
 'use client';
 
-import GalleryCaption from './GalleryCaption';
 import { css } from '@emotion/react';
+
+import GalleryCaption from './GalleryCaption';
 
 interface Props {
   src: string;

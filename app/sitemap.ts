@@ -1,7 +1,9 @@
-import { POSTS_PER_PAGE } from '@/database/posts';
-import SITE_CONFIG from '@/database/config';
-import { getPosts } from '@/repository/notion';
 import { MetadataRoute } from 'next';
+
+import SITE_CONFIG from '@/database/config';
+import { POSTS_PER_PAGE } from '@/database/posts';
+import { getPosts } from '@/repository/notion';
+
 
 const DEFAULT_SLUG = ['', 'gallery'] as const;
 

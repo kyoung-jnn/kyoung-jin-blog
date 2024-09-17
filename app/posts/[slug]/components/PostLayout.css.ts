@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+
 import BREAK_POINT from '@/constants/breakpoints';
 
 export const wrapper = style({

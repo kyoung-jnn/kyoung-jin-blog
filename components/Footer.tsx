@@ -1,4 +1,5 @@
 import SITE_CONFIG from '@/database/config';
+
 import * as styles from './Footer.css';
 
 function Footer() {

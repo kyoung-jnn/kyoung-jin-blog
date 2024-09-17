@@ -1,12 +1,18 @@
 'use client';
 
-import ThemeSwitch from '@/components/ThemeSwitch';
-import MobileMenu from '@/components/MobileMenu';
-import SITE_CONFIG from '@/database/config';
 
 import Link from 'next/link';
-import { memo } from 'react';
 import { usePathname } from 'next/navigation';
+import { memo } from 'react';
+
+import MobileMenu from '@/components/MobileMenu';
+import ThemeSwitch from '@/components/ThemeSwitch';
+
+import SITE_CONFIG from '@/database/config';
+
+
+
+
 import * as styles from './Header.css';
 
 function Header() {

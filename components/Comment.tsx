@@ -1,6 +1,8 @@
 import { useTheme } from 'next-themes';
-import { COMMENT_CONFIG } from '@/database/commentConfig';
+
 import Giscus, { Theme } from '@giscus/react';
+
+import { COMMENT_CONFIG } from '@/database/commentConfig';
 
 function Comment() {
   const { theme } = useTheme();

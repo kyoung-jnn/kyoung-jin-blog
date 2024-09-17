@@ -1,11 +1,12 @@
 import { NotionAPI } from 'notion-client';
-import { getDateValue, getTextContent } from 'notion-utils';
 import {
   BlockMap,
   CollectionPropertySchemaMap,
   ExtendedRecordMap,
   ID,
 } from 'notion-types';
+import { getDateValue, getTextContent } from 'notion-utils';
+
 import { PostProperty } from '@/types/notion';
 
 const api = new NotionAPI();

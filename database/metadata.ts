@@ -1,7 +1,8 @@
-import SITE_CONFIG from '@/database/config';
 import { Metadata } from 'next';
 import { OpenGraph } from 'next/dist/lib/metadata/types/opengraph-types';
 import { Twitter } from 'next/dist/lib/metadata/types/twitter-types';
+
+import SITE_CONFIG from '@/database/config';
 
 export const METADATA: Metadata = {
   robots: { index: true, follow: true },

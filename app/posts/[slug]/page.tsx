@@ -1,10 +1,14 @@
-import NotionRenderer from '@/components/NotionRender';
-import PostLayout from '@/app/posts/[slug]/components/PostLayout';
-import { getPost, getPosts } from '@/repository/notion';
-import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { METADATA, OPEN_GRAPH, METADATA_TWITTER } from '@/database/metadata';
+import { notFound } from 'next/navigation';
+
+import NotionRenderer from '@/components/NotionRender';
+
+import PostLayout from '@/app/posts/[slug]/components/PostLayout';
 import SITE_CONFIG from '@/database/config';
+import { METADATA, OPEN_GRAPH, METADATA_TWITTER } from '@/database/metadata';
+import { getPost, getPosts } from '@/repository/notion';
+
+
 import JsonLD from './components/JsonLD';
 
 type Params = { slug: string };

@@ -1,10 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import styled from '@emotion/styled';
+
 import { css } from '@emotion/react';
-import { getScrollTableIntersectionObserver } from '@/utils/getInseresctionObserver';
+import styled from '@emotion/styled';
+
 import { fadeLeft } from '@/utils/animation';
+import { getScrollTableIntersectionObserver } from '@/utils/getInseresctionObserver';
 
 function TOC() {
   const [currentTable, setCurrentTable] = useState<string>('');

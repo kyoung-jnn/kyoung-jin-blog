@@ -1,13 +1,17 @@
-import { Metadata } from 'next';
-import { getPosts } from '@/repository/notion';
 
+import { Metadata } from 'next';
+import Link from 'next/link';
+import React from 'react';
+
+import ArticleCard from '@/components/ArticleCard';
+import Pagination from '@/components/Pagination';
+import Sidebar from '@/components/Sidebar';
+
+import SITE_CONFIG from '@/database/config';
 import { METADATA, OPEN_GRAPH, METADATA_TWITTER } from '@/database/metadata';
 import { POSTS_PER_PAGE } from '@/database/posts';
-import SITE_CONFIG from '@/database/config';
-import Pagination from '@/components/Pagination';
-import Link from 'next/link';
-import ArticleCard from '@/components/ArticleCard';
-import Sidebar from '@/components/Sidebar';
+import { getPosts } from '@/repository/notion';
+
 import * as styles from './page.css';
 
 type Params = { pageNum: string };

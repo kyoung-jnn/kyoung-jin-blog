@@ -1,5 +1,6 @@
-import SITE_CONFIG from '@/database/config';
 import React from 'react';
+
+import SITE_CONFIG from '@/database/config';
 
 type Props = {
   slug: string;

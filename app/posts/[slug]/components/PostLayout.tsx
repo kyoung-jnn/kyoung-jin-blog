@@ -1,18 +1,22 @@
 'use client';
 
+import Image from 'next/image';
 import { PropsWithChildren, useEffect, useRef } from 'react';
+
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import smoothscroll from 'smoothscroll-polyfill'; // Safari 에서 smooth 효과 적용
 
 import Comment from '@/components/Comment';
+import IconButton from '@/components/IconButton';
+
 import { fadeLeft, fadeUp } from '@/utils/animation';
-import Image from 'next/image';
 import { dateToFormat } from '@/utils/time';
+
+import * as styles from './PostLayout.css';
 import TOC from './TOC';
 import Sidebar from '../../../../components/Sidebar';
-import { css } from '@emotion/react';
-import IconButton from '@/components/IconButton';
-import * as styles from './PostLayout.css';
+
 
 interface Props {
   title: string;

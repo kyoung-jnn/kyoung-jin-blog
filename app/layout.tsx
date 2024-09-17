@@ -1,11 +1,13 @@
-import ProgressBar from '@/components/ProgressBar';
-
 import { ReactNode } from 'react';
+
 import Footer from '@/components/Footer';
-import Header from '@/components/Header';
-import ThemeProvider from '@/components/ThemeProvider';
-import SITE_CONFIG from '@/database/config';
 import { GoogleAnalyticsScript } from '@/components/GoogleAnalytics';
+import Header from '@/components/Header';
+import ProgressBar from '@/components/ProgressBar';
+import ThemeProvider from '@/components/ThemeProvider';
+
+import SITE_CONFIG from '@/database/config';
+
 
 import 'normalize.css';
 import '@/styles/global.css';

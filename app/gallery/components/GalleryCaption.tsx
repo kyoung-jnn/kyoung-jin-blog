@@ -1,5 +1,6 @@
-import { css } from '@emotion/react';
 import { PropsWithChildren } from 'react';
+
+import { css } from '@emotion/react';
 
 function GalleryCaption({ children }: PropsWithChildren) {
   return (

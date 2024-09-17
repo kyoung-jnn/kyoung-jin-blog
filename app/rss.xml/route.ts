@@ -1,7 +1,8 @@
+import RSS from 'rss';
+
 import SITE_CONFIG from '@/database/config';
 import { getPosts } from '@/repository/notion';
 
-import RSS from 'rss';
 
 export const dynamic = 'force-dynamic';
 

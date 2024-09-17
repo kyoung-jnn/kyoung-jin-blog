@@ -1,10 +1,13 @@
+import { Metadata } from 'next';
+
+import SITE_CONFIG from '@/database/config';
+import { METADATA, OPEN_GRAPH } from '@/database/metadata';
 import { getPosts } from '@/repository/notion';
+
+import ArticleList from './components/ArticleList';
 import Menu from './components/Menu';
 import Profile from './components/Profile';
-import ArticleList from './components/ArticleList';
-import SITE_CONFIG from '@/database/config';
-import { Metadata } from 'next';
-import { METADATA, OPEN_GRAPH } from '@/database/metadata';
+
 
 const POSTS_HOME = 7;
 
