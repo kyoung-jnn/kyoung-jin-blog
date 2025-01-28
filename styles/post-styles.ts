@@ -56,7 +56,10 @@ const PostStyles = css`
   ul,
   ol {
     padding-inline-start: 1.2rem;
-    font-size: 16px;
+    font-size: 15px;
+  }
+  li {
+    padding: 3px 0px;
   }
   ul > li {
     list-style: disc;

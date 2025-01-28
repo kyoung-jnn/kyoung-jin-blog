@@ -8,7 +8,6 @@ import SITE_CONFIG from '@/database/config';
 import { METADATA, OPEN_GRAPH, METADATA_TWITTER } from '@/database/metadata';
 import { getPost, getPosts } from '@/repository/notion';
 
-
 import JsonLD from './components/JsonLD';
 
 type Params = { slug: string };

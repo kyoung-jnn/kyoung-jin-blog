@@ -8,7 +8,6 @@ import ThemeProvider from '@/components/ThemeProvider';
 
 import SITE_CONFIG from '@/database/config';
 
-
 import 'normalize.css';
 import '@/styles/global.css';
 
@@ -44,7 +43,7 @@ function RootLayout({ children }: { children: ReactNode }) {
         <ThemeProvider>
           <ProgressBar />
           <Header />
-          <div>{children}</div>
+          {children}
           <Footer />
         </ThemeProvider>
       </body>

@@ -17,7 +17,6 @@ import * as styles from './PostLayout.css';
 import TOC from './TOC';
 import Sidebar from '../../../../components/Sidebar';
 
-
 interface Props {
   title: string;
   date: string;
