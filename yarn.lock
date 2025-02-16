@@ -3574,20 +3574,33 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vercel/analytics@npm:^1.2.2":
-  version: 1.2.2
-  resolution: "@vercel/analytics@npm:1.2.2"
-  dependencies:
-    server-only: "npm:^0.0.1"
+"@vercel/analytics@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "@vercel/analytics@npm:1.5.0"
   peerDependencies:
+    "@remix-run/react": ^2
+    "@sveltejs/kit": ^1 || ^2
     next: ">= 13"
-    react: ^18 || ^19
+    react: ^18 || ^19 || ^19.0.0-rc
+    svelte: ">= 4"
+    vue: ^3
+    vue-router: ^4
   peerDependenciesMeta:
+    "@remix-run/react":
+      optional: true
+    "@sveltejs/kit":
+      optional: true
     next:
       optional: true
     react:
       optional: true
-  checksum: 82c89846356b370574414aa511d5a341535dcc7ba3b0a5eabfc7644df6d52a7b30253247627382faf4a0cc4192715cea718fe91027f7ba35efba80256064a005
+    svelte:
+      optional: true
+    vue:
+      optional: true
+    vue-router:
+      optional: true
+  checksum: 43d33ea83b32f5203fec21b7f43c399e398f0c37d2dd341d522969e0e6ee23fd652a2766a4203a3ce573f711beee5ee1ab7d36316f767a4901160e3e96ee31e5
   languageName: node
   linkType: hard
 
@@ -7261,7 +7274,7 @@ __metadata:
     "@vanilla-extract/css": "npm:^1.14.2"
     "@vanilla-extract/next-plugin": "npm:^2.4.0"
     "@vanilla-extract/sprinkles": "npm:^1.6.1"
-    "@vercel/analytics": "npm:^1.2.2"
+    "@vercel/analytics": "npm:^1.5.0"
     "@vercel/speed-insights": "npm:^1.0.10"
     cmdk: "npm:^0.2.1"
     eslint: "npm:8.18.0"
@@ -9361,13 +9374,6 @@ __metadata:
   bin:
     semver: bin/semver.js
   checksum: fbfe717094ace0aa8d6332d7ef5ce727259815bd8d8815700853f4faf23aacbd7192522f0dc5af6df52ef4fa85a355ebd2f5d39f554bd028200d6cf481ab9b53
-  languageName: node
-  linkType: hard
-
-"server-only@npm:^0.0.1":
-  version: 0.0.1
-  resolution: "server-only@npm:0.0.1"
-  checksum: 4704f0ef85da0be981af6d4ed8e739d39bcfd265b9c246a684060acda5642d0fdc6daffc2308e71e2682c5f508090978802eae0a77623c9b90a49f9ae68048d6
   languageName: node
   linkType: hard
 

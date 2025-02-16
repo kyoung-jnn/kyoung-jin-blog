@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
 
+import { Analytics } from '@vercel/analytics/next';
+
 import Footer from '@/components/Footer';
 import { GoogleAnalyticsScript } from '@/components/GoogleAnalytics';
 import Header from '@/components/Header';
@@ -46,6 +48,7 @@ function RootLayout({ children }: { children: ReactNode }) {
           {children}
           <Footer />
         </ThemeProvider>
+        <Analytics mode="production" />;
       </body>
     </html>
   );
