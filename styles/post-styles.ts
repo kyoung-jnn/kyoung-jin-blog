@@ -77,7 +77,7 @@ const PostStyles = css`
     background-color: transparent;
   }
 
-  // code 태그
+  // code
   .notion-inline-code {
     font-size: 0.95rem;
     border-radius: 3px;
@@ -104,7 +104,7 @@ const PostStyles = css`
   // caption
   .notion-asset-caption {
     padding-top: 2px;
-    padding-bottom: 6px;
+    padding-bottom: 0px;
   }
 
   // notion page properties
