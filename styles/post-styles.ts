@@ -111,6 +111,16 @@ const PostStyles = css`
   .notion-collection-page-properties {
     display: none !important;
   }
+
+  // table
+  .notion-simple-table {
+    width: auto;
+    margin: 10px 20px;
+
+    td {
+      padding: 6px;
+    }
+  }
 `;
 
 export default PostStyles;
