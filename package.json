@@ -2,6 +2,7 @@
   "name": "kyoung-jin-blog",
   "private": true,
   "license": "MIT",
+  "packageManager": "yarn@4.0.2",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -16,11 +17,10 @@
     "@vanilla-extract/css": "^1.14.2",
     "@vanilla-extract/next-plugin": "^2.4.0",
     "@vanilla-extract/sprinkles": "^1.6.1",
-    "cmdk": "^1.0.4",
+    "cmdk": "^1.1.1",
     "next": "^14.2.2",
     "next-themes": "^0.3.0",
     "nextjs-progressbar": "^0.0.16",
-    "normalize.css": "^8.0.1",
     "notion-client": "^7.1.6",
     "notion-types": "^7.1.6",
     "notion-utils": "^7.1.6",
@@ -54,6 +54,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.0.3",
     "prettier": "^3.0.0",
+    "sass": "^1.86.0",
     "typescript": "^5.8.2"
   },
   "lint-staged": {
@@ -61,6 +62,5 @@
       "eslint",
       "prettier --write"
     ]
-  },
-  "packageManager": "yarn@4.0.2"
+  }
 }

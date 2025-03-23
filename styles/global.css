@@ -1,3 +1,5 @@
+@import 'normalize.css';
+
 [class='dark'] {
   --gray-1: #111111;
   --gray-2: #191919;
