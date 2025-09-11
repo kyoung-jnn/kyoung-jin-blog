@@ -4,7 +4,6 @@ import SITE_CONFIG from '@/database/config';
 import { POSTS_PER_PAGE } from '@/database/posts';
 import { getPosts } from '@/repository/notion';
 
-
 const DEFAULT_SLUG = ['', 'gallery'] as const;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -30,7 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const postSitemap: MetadataRoute.Sitemap = posts.map(({ slug, date }) => ({
     url: `${SITE_CONFIG.siteUrl}/posts/${slug}`,
-    lastModified: new Date(date),
+    lastModified: date ? new Date(date) : new Date(),
     changeFrequency: 'weekly',
     priority: 1,
   }));
