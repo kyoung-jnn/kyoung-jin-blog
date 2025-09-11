@@ -3,10 +3,12 @@ import image_20240301_1 from '@/public/gallery/20240301_1.jpeg';
 import image_20240301_2 from '@/public/gallery/20240301_2.jpeg';
 import image_20240303_1 from '@/public/gallery/20240303_1.jpeg';
 import image_20240803 from '@/public/gallery/20240803.jpg';
+import image_20250410 from '@/public/gallery/20250410.jpg';
 
 export type GalleryItemType = 'image' | 'video';
 
 const GALLERY_LIST = [
+  { type: 'image', src: image_20250410, alt: '이사 후, 산책 2025.04.' },
   { type: 'image', src: image_20240803, alt: '펜타포트 락 페스티벌 2024.08.' },
   {
     type: 'image',
